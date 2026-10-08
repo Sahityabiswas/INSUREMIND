@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "insurance_product_knowledge_base",
+  "type": "object",
+  "required": [
+    "product_id",
+    "product_type",
+    "coverage",
+    "premium",
+    "sum_insured",
+    "eligibility",
+    "age_range",
+    "waiting_period",
+    "deductible",
+    "exclusions",
+    "benefits",
+    "limits",
+    "conditions",
+    "source",
+    "version"
+  ],
+  "properties": {
+    "product_id": { "type": "string" },
+    "product_type": { "type": "string" },
+    "coverage": { "type": "string" },
+    "premium": { "enum": ["low", "mid", "high"] },
+    "sum_insured": { "type": "string" },
+    "eligibility": { "type": "string" },
+    "age_range": {
+      "type": "array",
+      "prefixItems": [{ "type": "integer" }, { "type": "integer" }],
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "waiting_period": { "type": "string" },
+    "deductible": { "type": "string" },
+    "exclusions": { "type": "array", "items": { "type": "string" } },
+    "benefits": { "type": "array", "items": { "type": "string" } },
+    "limits": { "type": "string" },
+    "conditions": { "type": "string" },
+    "source": { "type": "string" },
+    "version": { "type": "string" }
+  }
+}

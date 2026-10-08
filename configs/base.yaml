@@ -1,0 +1,40 @@
+seed: 42
+dataset:
+  version: v2
+  n_conversations: 1200
+  min_turns: 8
+  max_turns: 12
+  train_ratio: 0.7
+  val_ratio: 0.15
+  n_profiles: 3000
+ppo:
+  learning_rate: 0.0003
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_range: 0.2
+  batch_size: 256
+  n_steps: 1024
+  n_epochs: 4
+  total_timesteps: 20000
+  entropy_coef: 0.01
+  max_grad_norm: 0.5
+reward:
+  need_discovery: 0.2
+  useful_clarification: 0.1
+  objection_resolution: 0.3
+  engagement_improved: 0.3
+  trust_improved: 0.3
+  suitable_product: 0.5
+  qualified_lead: 1.0
+  suitable_purchase: 5.0
+  repetition: -0.3
+  premature_closing: -0.5
+  pressure: -1.0
+  unsupported_claim: -2.0
+  unsuitable_recommendation: -3.0
+  frustration: -1.0
+environment:
+  max_turns: 20
+  version: v2
+strategy_taxonomy_version: v1.1
+product_db_version: v1

@@ -1,0 +1,4 @@
+# Optional; the text-only project remains independent of audio dependencies.
+vosk==0.3.45
+sounddevice>=0.5,<0.6
+text2num>=3,<4

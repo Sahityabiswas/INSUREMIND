@@ -1,0 +1,22 @@
+{
+  "conversations": 1200,
+  "turns": 20396,
+  "source_mix": {
+    "synthetic": 20396
+  },
+  "source_ratios": {
+    "synthetic": 1.0
+  },
+  "splits": {
+    "train": 812,
+    "val": 164,
+    "test": 224
+  },
+  "split_unit": "scenario_and_normalized_transcript",
+  "scenario_groups": 572,
+  "duplicate_transcripts_grouped": 51,
+  "repeated_turn_texts": 20325,
+  "near_duplicate_policy": "All variants sharing need/profile/budget/coverage/gap are kept in one split",
+  "version": "v2",
+  "profiles": 3000
+}

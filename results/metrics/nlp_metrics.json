@@ -1,0 +1,34 @@
+{
+  "intent": {
+    "accuracy": 1.0,
+    "macro_f1": 1.0,
+    "weighted_f1": 1.0,
+    "test_examples": 1848,
+    "task": "customer_intent",
+    "dataset": "insurance_sales_dialogue_dataset v2 (synthetic)"
+  },
+  "emotion": {
+    "accuracy": 0.537,
+    "macro_f1": 0.515,
+    "weighted_f1": 0.489,
+    "test_examples": 1848,
+    "task": "customer_emotion",
+    "dataset": "insurance_sales_dialogue_dataset v2 (synthetic)"
+  },
+  "objection": {
+    "accuracy": 1.0,
+    "macro_f1": 1.0,
+    "weighted_f1": 1.0,
+    "test_examples": 1848,
+    "task": "objection_type",
+    "dataset": "insurance_sales_dialogue_dataset v2 (synthetic)"
+  },
+  "stage": {
+    "accuracy": 0.37,
+    "macro_f1": 0.306,
+    "weighted_f1": 0.351,
+    "test_examples": 1848,
+    "task": "sales_stage",
+    "dataset": "insurance_sales_dialogue_dataset v2 (synthetic)"
+  }
+}

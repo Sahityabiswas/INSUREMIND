@@ -1,0 +1,22 @@
+evaluation:
+  episodes: 200
+  ablation_episodes: 100
+  seeds: [42, 43, 44]
+  agents:
+    - random
+    - rule
+    - supervised
+    - direct_llm_if_configured
+    - ppo
+metrics:
+  outcome:
+    - conversion
+    - qualified_lead
+    - objection_resolution
+  conversation:
+    - satisfaction
+    - average_turns
+    - pressure_violations
+  factuality:
+    - unsupported
+    - unsuitable_recommendation

@@ -1,0 +1,110 @@
+{
+  "val": {
+    "text_nlp": {
+      "intent": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "weighted_f1": 1.0,
+        "test_examples": 42
+      },
+      "emotion": {
+        "accuracy": 0.405,
+        "macro_f1": 0.346,
+        "weighted_f1": 0.387,
+        "test_examples": 42
+      },
+      "objection": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "weighted_f1": 1.0,
+        "test_examples": 42
+      },
+      "stage": {
+        "accuracy": 0.524,
+        "macro_f1": 0.25,
+        "weighted_f1": 0.468,
+        "test_examples": 42
+      }
+    },
+    "speech_adapted_nlp": {
+      "intent": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "weighted_f1": 1.0,
+        "test_examples": 42
+      },
+      "emotion": {
+        "accuracy": 0.381,
+        "macro_f1": 0.337,
+        "weighted_f1": 0.372,
+        "test_examples": 42
+      },
+      "objection": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "weighted_f1": 1.0,
+        "test_examples": 42
+      },
+      "stage": {
+        "accuracy": 0.524,
+        "macro_f1": 0.25,
+        "weighted_f1": 0.468,
+        "test_examples": 42
+      }
+    }
+  },
+  "test": {
+    "text_nlp": {
+      "intent": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "weighted_f1": 1.0,
+        "test_examples": 42
+      },
+      "emotion": {
+        "accuracy": 0.381,
+        "macro_f1": 0.398,
+        "weighted_f1": 0.378,
+        "test_examples": 42
+      },
+      "objection": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "weighted_f1": 1.0,
+        "test_examples": 42
+      },
+      "stage": {
+        "accuracy": 0.381,
+        "macro_f1": 0.159,
+        "weighted_f1": 0.337,
+        "test_examples": 42
+      }
+    },
+    "speech_adapted_nlp": {
+      "intent": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "weighted_f1": 1.0,
+        "test_examples": 42
+      },
+      "emotion": {
+        "accuracy": 0.405,
+        "macro_f1": 0.413,
+        "weighted_f1": 0.403,
+        "test_examples": 42
+      },
+      "objection": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "weighted_f1": 1.0,
+        "test_examples": 42
+      },
+      "stage": {
+        "accuracy": 0.381,
+        "macro_f1": 0.159,
+        "weighted_f1": 0.337,
+        "test_examples": 42
+      }
+    }
+  }
+}

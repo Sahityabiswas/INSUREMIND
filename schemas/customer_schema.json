@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "insurance_customer_profiles",
+  "type": "object",
+  "required": [
+    "customer_id",
+    "synthetic",
+    "primary_need",
+    "personality",
+    "initial_trust",
+    "initial_purchase_intent"
+  ],
+  "properties": {
+    "customer_id": { "type": "string" },
+    "synthetic": { "const": true },
+    "age": { "type": "integer", "minimum": 18, "maximum": 100 },
+    "source_type": { "const": "synthetic" },
+    "age_group": { "type": "string" },
+    "family_size": { "type": "integer", "minimum": 1 },
+    "income_band": { "type": "string" },
+    "budget": { "enum": ["low", "mid", "high", "unknown"] },
+    "existing_coverage": { "type": "string" },
+    "insurance_experience": { "type": "string" },
+    "primary_need": { "type": "string" },
+    "risk_attitude": { "type": "string" },
+    "personality": { "type": "string" },
+    "patience": { "type": "integer", "minimum": 0 },
+    "initial_trust": { "type": "number", "minimum": 0, "maximum": 1 },
+    "initial_purchase_intent": { "type": "number", "minimum": 0, "maximum": 1 }
+  }
+}

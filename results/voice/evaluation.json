@@ -1,0 +1,183 @@
+{
+  "per_seed": [
+    {
+      "agent": "voice_ppo",
+      "seed": 42,
+      "reward": 6.064,
+      "turns": 11.84,
+      "conversion": 0.0,
+      "satisfaction": 0.6774000000000001,
+      "violations": 0.0,
+      "asr_retries": 0.0,
+      "missed_stop_turns": 0.0
+    },
+    {
+      "agent": "rule",
+      "seed": 42,
+      "reward": 4.661,
+      "turns": 11.57,
+      "conversion": 0.0,
+      "satisfaction": 0.6325000000000001,
+      "violations": 0.74,
+      "asr_retries": 0.0,
+      "missed_stop_turns": 0.0
+    },
+    {
+      "agent": "text_trained_ppo",
+      "seed": 42,
+      "reward": 5.7219999999999995,
+      "turns": 11.79,
+      "conversion": 0.0,
+      "satisfaction": 0.6682000000000001,
+      "violations": 0.25,
+      "asr_retries": 0.0,
+      "missed_stop_turns": 0.0
+    },
+    {
+      "agent": "voice_ppo",
+      "seed": 43,
+      "reward": 6.421999999999998,
+      "turns": 12.03,
+      "conversion": 0.0,
+      "satisfaction": 0.6875,
+      "violations": 0.0,
+      "asr_retries": 0.0,
+      "missed_stop_turns": 0.0
+    },
+    {
+      "agent": "rule",
+      "seed": 43,
+      "reward": 4.6499999999999995,
+      "turns": 11.99,
+      "conversion": 0.0,
+      "satisfaction": 0.647,
+      "violations": 1.3,
+      "asr_retries": 0.0,
+      "missed_stop_turns": 0.0
+    },
+    {
+      "agent": "text_trained_ppo",
+      "seed": 43,
+      "reward": 5.9319999999999995,
+      "turns": 12.06,
+      "conversion": 0.0,
+      "satisfaction": 0.6757000000000001,
+      "violations": 0.42,
+      "asr_retries": 0.0,
+      "missed_stop_turns": 0.0
+    },
+    {
+      "agent": "voice_ppo",
+      "seed": 44,
+      "reward": 6.861999999999999,
+      "turns": 12.09,
+      "conversion": 0.0,
+      "satisfaction": 0.7338,
+      "violations": 0.0,
+      "asr_retries": 0.0,
+      "missed_stop_turns": 0.0
+    },
+    {
+      "agent": "rule",
+      "seed": 44,
+      "reward": 5.174999999999999,
+      "turns": 12.0,
+      "conversion": 0.0,
+      "satisfaction": 0.6799000000000001,
+      "violations": 0.87,
+      "asr_retries": 0.0,
+      "missed_stop_turns": 0.0
+    },
+    {
+      "agent": "text_trained_ppo",
+      "seed": 44,
+      "reward": 6.5299999999999985,
+      "turns": 12.05,
+      "conversion": 0.0,
+      "satisfaction": 0.7312000000000001,
+      "violations": 0.26,
+      "asr_retries": 0.0,
+      "missed_stop_turns": 0.0
+    }
+  ],
+  "aggregate": {
+    "voice_ppo": {
+      "reward": {
+        "mean": 6.449333333333332,
+        "seed_sd": 0.39970155533014007
+      },
+      "conversion": {
+        "mean": 0.0,
+        "seed_sd": 0.0
+      },
+      "satisfaction": {
+        "mean": 0.6995666666666667,
+        "seed_sd": 0.030073964376738413
+      },
+      "violations": {
+        "mean": 0.0,
+        "seed_sd": 0.0
+      },
+      "asr_retries": {
+        "mean": 0.0,
+        "seed_sd": 0.0
+      },
+      "missed_stop_turns": {
+        "mean": 0.0,
+        "seed_sd": 0.0
+      }
+    },
+    "rule": {
+      "reward": {
+        "mean": 4.828666666666666,
+        "seed_sd": 0.2999838884562521
+      },
+      "conversion": {
+        "mean": 0.0,
+        "seed_sd": 0.0
+      },
+      "satisfaction": {
+        "mean": 0.6531333333333333,
+        "seed_sd": 0.02428792566962715
+      },
+      "violations": {
+        "mean": 0.9700000000000001,
+        "seed_sd": 0.2930870177950569
+      },
+      "asr_retries": {
+        "mean": 0.0,
+        "seed_sd": 0.0
+      },
+      "missed_stop_turns": {
+        "mean": 0.0,
+        "seed_sd": 0.0
+      }
+    },
+    "text_trained_ppo": {
+      "reward": {
+        "mean": 6.061333333333333,
+        "seed_sd": 0.41923899309741314
+      },
+      "conversion": {
+        "mean": 0.0,
+        "seed_sd": 0.0
+      },
+      "satisfaction": {
+        "mean": 0.6917,
+        "seed_sd": 0.03441293361513951
+      },
+      "violations": {
+        "mean": 0.31,
+        "seed_sd": 0.09539392014169455
+      },
+      "asr_retries": {
+        "mean": 0.0,
+        "seed_sd": 0.0
+      },
+      "missed_stop_turns": {
+        "mean": 0.0,
+        "seed_sd": 0.0
+      }
+    }
+  }
+}

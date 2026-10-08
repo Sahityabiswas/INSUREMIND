@@ -1,0 +1,173 @@
+{
+  "mean_train_reward": 3.7791594454072786,
+  "training_steps": 20000,
+  "random_seed": 43,
+  "hyperparameters": {
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "clip_range": 0.2,
+    "batch_size": 256,
+    "n_steps": 1024,
+    "n_epochs": 4,
+    "entropy_coef": 0.01,
+    "max_grad_norm": 0.5,
+    "lr": 0.0003
+  },
+  "reward_weights": {
+    "need_discovery": 0.2,
+    "useful_clarification": 0.1,
+    "objection_resolution": 0.3,
+    "engagement_improved": 0.3,
+    "trust_improved": 0.3,
+    "suitable_product": 0.5,
+    "qualified_lead": 1.0,
+    "suitable_purchase": 5.0,
+    "repetition": -0.3,
+    "premature_closing": -0.5,
+    "pressure": -1.0,
+    "unsupported_claim": -2.0,
+    "unsuitable_recommendation": -3.0,
+    "frustration": -1.0
+  },
+  "environment_options": {
+    "max_turns": 20,
+    "banned_actions": [
+      "DISCOVER_COVERAGE_GAP",
+      "VALUE_FRAMING",
+      "RISK_EXPLANATION",
+      "AFFORDABILITY_FRAMING",
+      "YES_YES_FRAMING",
+      "COMPARE_OPTIONS",
+      "OFFER_ALTERNATIVE"
+    ]
+  },
+  "model_version": "linear_ppo_v2_adam",
+  "dataset_version": "v2",
+  "environment_version": "v2",
+  "strategy_taxonomy_version": "v1.1",
+  "product_database_version": "v1",
+  "evaluation_split": "held-out simulated seeds",
+  "warm_start": true,
+  "history": [
+    {
+      "steps": 1024,
+      "episodes": 133,
+      "mean_reward": 2.9339999999999997,
+      "value_loss": 7.897016415451034
+    },
+    {
+      "steps": 2048,
+      "episodes": 272,
+      "mean_reward": 2.7670000000000003,
+      "value_loss": 7.192625751071075
+    },
+    {
+      "steps": 3072,
+      "episodes": 405,
+      "mean_reward": 2.954,
+      "value_loss": 7.623317237048263
+    },
+    {
+      "steps": 4096,
+      "episodes": 539,
+      "mean_reward": 3.4689999999999994,
+      "value_loss": 9.22543302331581
+    },
+    {
+      "steps": 5120,
+      "episodes": 673,
+      "mean_reward": 3.1830000000000003,
+      "value_loss": 8.146077942657094
+    },
+    {
+      "steps": 6144,
+      "episodes": 802,
+      "mean_reward": 3.3759999999999994,
+      "value_loss": 6.497704191356322
+    },
+    {
+      "steps": 7168,
+      "episodes": 923,
+      "mean_reward": 3.978,
+      "value_loss": 8.009115876559052
+    },
+    {
+      "steps": 8192,
+      "episodes": 1045,
+      "mean_reward": 3.577,
+      "value_loss": 7.363732372838962
+    },
+    {
+      "steps": 9216,
+      "episodes": 1153,
+      "mean_reward": 3.8259999999999996,
+      "value_loss": 6.200062908079097
+    },
+    {
+      "steps": 10240,
+      "episodes": 1275,
+      "mean_reward": 3.4129999999999994,
+      "value_loss": 7.473530878240897
+    },
+    {
+      "steps": 11264,
+      "episodes": 1391,
+      "mean_reward": 4.355,
+      "value_loss": 9.55122295664113
+    },
+    {
+      "steps": 12288,
+      "episodes": 1499,
+      "mean_reward": 4.198,
+      "value_loss": 7.26566029841682
+    },
+    {
+      "steps": 13312,
+      "episodes": 1607,
+      "mean_reward": 4.1819999999999995,
+      "value_loss": 7.051856427912007
+    },
+    {
+      "steps": 14336,
+      "episodes": 1716,
+      "mean_reward": 4.2570000000000014,
+      "value_loss": 7.811656230504288
+    },
+    {
+      "steps": 15360,
+      "episodes": 1826,
+      "mean_reward": 4.361000000000001,
+      "value_loss": 8.934521065060533
+    },
+    {
+      "steps": 16384,
+      "episodes": 1933,
+      "mean_reward": 4.81,
+      "value_loss": 9.707038934181853
+    },
+    {
+      "steps": 17408,
+      "episodes": 2043,
+      "mean_reward": 3.737,
+      "value_loss": 5.7490136295711185
+    },
+    {
+      "steps": 18432,
+      "episodes": 2146,
+      "mean_reward": 4.409000000000001,
+      "value_loss": 7.644404486060235
+    },
+    {
+      "steps": 19456,
+      "episodes": 2250,
+      "mean_reward": 4.453,
+      "value_loss": 7.8888555416794555
+    },
+    {
+      "steps": 20000,
+      "episodes": 2308,
+      "mean_reward": 4.771,
+      "value_loss": 8.779543149318295
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "mean_train_reward": 3.652656587473002,
+  "training_steps": 20000,
+  "random_seed": 42,
+  "hyperparameters": {
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "clip_range": 0.2,
+    "batch_size": 256,
+    "n_steps": 1024,
+    "n_epochs": 4,
+    "entropy_coef": 0.01,
+    "max_grad_norm": 0.5,
+    "lr": 0.0003
+  },
+  "reward_weights": {
+    "need_discovery": 0.2,
+    "useful_clarification": 0.1,
+    "objection_resolution": 0.3,
+    "engagement_improved": 0.3,
+    "trust_improved": 0.3,
+    "suitable_product": 0.5,
+    "qualified_lead": 1.0,
+    "suitable_purchase": 5.0,
+    "repetition": -0.3,
+    "premature_closing": -0.5,
+    "pressure": -1.0,
+    "unsupported_claim": -2.0,
+    "unsuitable_recommendation": -3.0,
+    "frustration": -1.0
+  },
+  "environment_options": {
+    "max_turns": 20,
+    "banned_actions": [
+      "DISCOVER_COVERAGE_GAP",
+      "VALUE_FRAMING",
+      "RISK_EXPLANATION",
+      "AFFORDABILITY_FRAMING",
+      "YES_YES_FRAMING",
+      "COMPARE_OPTIONS",
+      "OFFER_ALTERNATIVE"
+    ]
+  },
+  "model_version": "linear_ppo_v2_adam",
+  "dataset_version": "v2",
+  "environment_version": "v2",
+  "strategy_taxonomy_version": "v1.1",
+  "product_database_version": "v1",
+  "evaluation_split": "held-out simulated seeds",
+  "warm_start": true,
+  "history": [
+    {
+      "steps": 1024,
+      "episodes": 140,
+      "mean_reward": 2.884,
+      "value_loss": 6.750213615150928
+    },
+    {
+      "steps": 2048,
+      "episodes": 268,
+      "mean_reward": 3.0149999999999992,
+      "value_loss": 7.62101095477059
+    },
+    {
+      "steps": 3072,
+      "episodes": 400,
+      "mean_reward": 3.074,
+      "value_loss": 9.101570652391066
+    },
+    {
+      "steps": 4096,
+      "episodes": 539,
+      "mean_reward": 3.0180000000000007,
+      "value_loss": 7.423903687505688
+    },
+    {
+      "steps": 5120,
+      "episodes": 678,
+      "mean_reward": 3.1609999999999996,
+      "value_loss": 8.896771107852278
+    },
+    {
+      "steps": 6144,
+      "episodes": 800,
+      "mean_reward": 3.6209999999999996,
+      "value_loss": 7.165481439189389
+    },
+    {
+      "steps": 7168,
+      "episodes": 922,
+      "mean_reward": 3.602,
+      "value_loss": 7.412773052719059
+    },
+    {
+      "steps": 8192,
+      "episodes": 1040,
+      "mean_reward": 3.454000000000001,
+      "value_loss": 8.0497967289525
+    },
+    {
+      "steps": 9216,
+      "episodes": 1163,
+      "mean_reward": 3.61,
+      "value_loss": 5.922520796095204
+    },
+    {
+      "steps": 10240,
+      "episodes": 1276,
+      "mean_reward": 3.9189999999999996,
+      "value_loss": 8.298500858687078
+    },
+    {
+      "steps": 11264,
+      "episodes": 1401,
+      "mean_reward": 4.090999999999999,
+      "value_loss": 9.963537984198782
+    },
+    {
+      "steps": 12288,
+      "episodes": 1513,
+      "mean_reward": 3.58,
+      "value_loss": 6.032363346737847
+    },
+    {
+      "steps": 13312,
+      "episodes": 1627,
+      "mean_reward": 4.19,
+      "value_loss": 8.583293735091212
+    },
+    {
+      "steps": 14336,
+      "episodes": 1730,
+      "mean_reward": 4.109,
+      "value_loss": 6.862055614013515
+    },
+    {
+      "steps": 15360,
+      "episodes": 1843,
+      "mean_reward": 3.9020000000000006,
+      "value_loss": 7.808231734667374
+    },
+    {
+      "steps": 16384,
+      "episodes": 1947,
+      "mean_reward": 4.272,
+      "value_loss": 6.861708679095612
+    },
+    {
+      "steps": 17408,
+      "episodes": 2049,
+      "mean_reward": 3.555,
+      "value_loss": 4.807383336193818
+    },
+    {
+      "steps": 18432,
+      "episodes": 2153,
+      "mean_reward": 4.125000000000001,
+      "value_loss": 5.966406102127787
+    },
+    {
+      "steps": 19456,
+      "episodes": 2255,
+      "mean_reward": 4.210999999999999,
+      "value_loss": 7.216722166066822
+    },
+    {
+      "steps": 20000,
+      "episodes": 2315,
+      "mean_reward": 4.667000000000001,
+      "value_loss": 10.55558820757084
+    }
+  ]
+}

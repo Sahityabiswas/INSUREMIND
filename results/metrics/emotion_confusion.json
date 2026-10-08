@@ -1,0 +1,82 @@
+{
+  "ANGRY": {
+    "ANGRY": 42,
+    "ANXIOUS": 0,
+    "CONCERNED": 0,
+    "FRUSTRATED": 0,
+    "NEUTRAL": 0,
+    "POSITIVE": 0,
+    "SATISFIED": 0,
+    "SKEPTICAL": 0
+  },
+  "ANXIOUS": {
+    "ANGRY": 0,
+    "ANXIOUS": 51,
+    "CONCERNED": 7,
+    "FRUSTRATED": 0,
+    "NEUTRAL": 149,
+    "POSITIVE": 5,
+    "SATISFIED": 0,
+    "SKEPTICAL": 0
+  },
+  "CONCERNED": {
+    "ANGRY": 0,
+    "ANXIOUS": 38,
+    "CONCERNED": 237,
+    "FRUSTRATED": 0,
+    "NEUTRAL": 147,
+    "POSITIVE": 5,
+    "SATISFIED": 0,
+    "SKEPTICAL": 0
+  },
+  "FRUSTRATED": {
+    "ANGRY": 41,
+    "ANXIOUS": 0,
+    "CONCERNED": 0,
+    "FRUSTRATED": 13,
+    "NEUTRAL": 0,
+    "POSITIVE": 0,
+    "SATISFIED": 0,
+    "SKEPTICAL": 0
+  },
+  "NEUTRAL": {
+    "ANGRY": 0,
+    "ANXIOUS": 41,
+    "CONCERNED": 6,
+    "FRUSTRATED": 0,
+    "NEUTRAL": 153,
+    "POSITIVE": 7,
+    "SATISFIED": 0,
+    "SKEPTICAL": 0
+  },
+  "POSITIVE": {
+    "ANGRY": 0,
+    "ANXIOUS": 26,
+    "CONCERNED": 7,
+    "FRUSTRATED": 0,
+    "NEUTRAL": 133,
+    "POSITIVE": 5,
+    "SATISFIED": 243,
+    "SKEPTICAL": 0
+  },
+  "SATISFIED": {
+    "ANGRY": 0,
+    "ANXIOUS": 0,
+    "CONCERNED": 0,
+    "FRUSTRATED": 0,
+    "NEUTRAL": 0,
+    "POSITIVE": 0,
+    "SATISFIED": 253,
+    "SKEPTICAL": 0
+  },
+  "SKEPTICAL": {
+    "ANGRY": 0,
+    "ANXIOUS": 0,
+    "CONCERNED": 0,
+    "FRUSTRATED": 0,
+    "NEUTRAL": 0,
+    "POSITIVE": 0,
+    "SATISFIED": 0,
+    "SKEPTICAL": 239
+  }
+}

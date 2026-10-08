@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ppo_customer_state",
+  "type": "object",
+  "required": [
+    "intent",
+    "emotion",
+    "need",
+    "budget",
+    "existing_coverage",
+    "coverage_gap",
+    "objection",
+    "severity",
+    "purchase_intent",
+    "profile",
+    "sales_stage",
+    "trust",
+    "engagement",
+    "satisfaction",
+    "previous_strategy",
+    "previous_action",
+    "previous_reaction",
+    "turn_count"
+  ],
+  "properties": {
+    "intent": { "type": "string" },
+    "emotion": { "type": "string" },
+    "emotion_probs": { "type": "object" },
+    "need": { "type": "string" },
+    "budget": { "enum": ["low", "mid", "high", "unknown"] },
+    "existing_coverage": { "type": "string" },
+    "coverage_gap": { "type": "string" },
+    "objection": { "type": "string" },
+    "severity": { "type": "number", "minimum": 0, "maximum": 1 },
+    "purchase_intent": { "type": "number", "minimum": 0, "maximum": 1 },
+    "profile": { "type": "string" },
+    "sales_stage": { "type": "string" },
+    "trust": { "type": "number", "minimum": 0, "maximum": 1 },
+    "engagement": { "type": "number", "minimum": 0, "maximum": 1 },
+    "satisfaction": { "type": "number", "minimum": 0, "maximum": 1 },
+    "turn_count": { "type": "integer", "minimum": 0 }
+  }
+}

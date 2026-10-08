@@ -1,0 +1,16 @@
+dataset:
+  version: v2
+  n_conversations: 1200
+  split_by: scenario_and_normalized_transcript
+  n_profiles: 3000
+  train_ratio: 0.7
+  val_ratio: 0.15
+  test_ratio: 0.15
+  source_policy:
+    public: separately_imported_with_provenance
+    synthetic: clearly_labeled
+    simulated: not_reported_as_real_outcomes
+quality:
+  duplicate_check: true
+  taxonomy_validation: true
+  leakage_check: scenario_and_normalized_transcript

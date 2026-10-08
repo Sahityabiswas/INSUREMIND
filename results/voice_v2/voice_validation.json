@@ -1,0 +1,1638 @@
+{
+  "protocol": "Synthetic system-voice WAVs; no microphone/speaker playback. Timings exclude recording and ASR model loading.",
+  "noise": "Deterministic additive white noise; not a substitute for accents, room noise or human speech.",
+  "robustness": {
+    "clean": {
+      "examples": 8,
+      "word_errors": 0,
+      "reference_words": 41,
+      "wer": 0.0,
+      "cer": 0.0,
+      "exact_match": 1.0,
+      "failed_transcriptions": 0,
+      "stop_recall": 1.0,
+      "stop_examples": 2,
+      "false_ready": 0
+    },
+    "noise_20db": {
+      "examples": 8,
+      "word_errors": 1,
+      "reference_words": 41,
+      "wer": 0.024390243902439025,
+      "cer": 0.00980392156862745,
+      "exact_match": 0.875,
+      "failed_transcriptions": 0,
+      "stop_recall": 1.0,
+      "stop_examples": 2,
+      "false_ready": 0
+    },
+    "noise_10db": {
+      "examples": 8,
+      "word_errors": 1,
+      "reference_words": 41,
+      "wer": 0.024390243902439025,
+      "cer": 0.00980392156862745,
+      "exact_match": 0.875,
+      "failed_transcriptions": 0,
+      "stop_recall": 1.0,
+      "stop_examples": 2,
+      "false_ready": 0
+    }
+  },
+  "recognitions": [
+    {
+      "text": "I need health insurance for my family.",
+      "transcript": {
+        "text": "i need health insurance for my family",
+        "normalized_text": "i need health insurance for my family",
+        "confidence": 1.0,
+        "audio_seconds": 2.845,
+        "asr_seconds": 0.8210803999972995,
+        "model": "vosk-model-small-en-us-0.15"
+      },
+      "condition": "clean",
+      "stop_expected": false,
+      "stop_detected": false,
+      "ready_expected": false,
+      "ready_detected": false
+    },
+    {
+      "text": "Around two hundred fifty thousand.",
+      "transcript": {
+        "text": "around two hundred fifty thousand",
+        "normalized_text": "around 250000",
+        "confidence": 1.0,
+        "audio_seconds": 2.865,
+        "asr_seconds": 0.8334023000061279,
+        "model": "vosk-model-small-en-us-0.15"
+      },
+      "condition": "clean",
+      "stop_expected": false,
+      "stop_detected": false,
+      "ready_expected": false,
+      "ready_detected": false
+    },
+    {
+      "text": "What will be my payment?",
+      "transcript": {
+        "text": "what will be my payment",
+        "normalized_text": "what will be my payment",
+        "confidence": 0.8836304,
+        "audio_seconds": 1.965,
+        "asr_seconds": 0.6959952999968664,
+        "model": "vosk-model-small-en-us-0.15"
+      },
+      "condition": "clean",
+      "stop_expected": false,
+      "stop_detected": false,
+      "ready_expected": false,
+      "ready_detected": false
+    },
+    {
+      "text": "I am ready to proceed.",
+      "transcript": {
+        "text": "i am ready to proceed",
+        "normalized_text": "i am ready to proceed",
+        "confidence": 0.919786,
+        "audio_seconds": 2.1,
+        "asr_seconds": 0.6992547999980161,
+        "model": "vosk-model-small-en-us-0.15"
+      },
+      "condition": "clean",
+      "stop_expected": false,
+      "stop_detected": false,
+      "ready_expected": true,
+      "ready_detected": true
+    },
+    {
+      "text": "I am not ready to proceed.",
+      "transcript": {
+        "text": "i am not ready to proceed",
+        "normalized_text": "i am not ready to proceed",
+        "confidence": 0.9277023333333334,
+        "audio_seconds": 2.335,
+        "asr_seconds": 0.7980526999963331,
+        "model": "vosk-model-small-en-us-0.15"
+      },
+      "condition": "clean",
+      "stop_expected": false,
+      "stop_detected": false,
+      "ready_expected": false,
+      "ready_detected": false
+    },
+    {
+      "text": "Please stop.",
+      "transcript": {
+        "text": "please stop",
+        "normalized_text": "please stop",
+        "confidence": 1.0,
+        "audio_seconds": 1.625,
+        "asr_seconds": 0.5773983000035514,
+        "model": "vosk-model-small-en-us-0.15"
+      },
+      "condition": "clean",
+      "stop_expected": true,
+      "stop_detected": true,
+      "ready_expected": false,
+      "ready_detected": false
+    },
+    {
+      "text": "I am not interested.",
+      "transcript": {
+        "text": "i am not interested",
+        "normalized_text": "i am not interested",
+        "confidence": 0.932644,
+        "audio_seconds": 1.945,
+        "asr_seconds": 0.7491956000012578,
+        "model": "vosk-model-small-en-us-0.15"
+      },
+      "condition": "clean",
+      "stop_expected": true,
+      "stop_detected": true,
+      "ready_expected": false,
+      "ready_detected": false
+    },
+    {
+      "text": "That is too expensive for my budget.",
+      "transcript": {
+        "text": "that is too expensive for my budget",
+        "normalized_text": "that is too expensive for my budget",
+        "confidence": 1.0,
+        "audio_seconds": 2.695,
+        "asr_seconds": 0.9001715999984299,
+        "model": "vosk-model-small-en-us-0.15"
+      },
+      "condition": "clean",
+      "stop_expected": false,
+      "stop_detected": false,
+      "ready_expected": false,
+      "ready_detected": false
+    },
+    {
+      "text": "I need health insurance for my family.",
+      "transcript": {
+        "text": "i need health insurance for my family",
+        "normalized_text": "i need health insurance for my family",
+        "confidence": 1.0,
+        "audio_seconds": 2.845,
+        "asr_seconds": 0.9202370999992127,
+        "model": "vosk-model-small-en-us-0.15"
+      },
+      "condition": "noise_20db",
+      "stop_expected": false,
+      "stop_detected": false,
+      "ready_expected": false,
+      "ready_detected": false
+    },
+    {
+      "text": "Around two hundred fifty thousand.",
+      "transcript": {
+        "text": "around two hundred fifty thousand",
+        "normalized_text": "around 250000",
+        "confidence": 1.0,
+        "audio_seconds": 2.865,
+        "asr_seconds": 1.3340869000021485,
+        "model": "vosk-model-small-en-us-0.15"
+      },
+      "condition": "noise_20db",
+      "stop_expected": false,
+      "stop_detected": false,
+      "ready_expected": false,
+      "ready_detected": false
+    },
+    {
+      "text": "What will be my payment?",
+      "transcript": {
+        "text": "when will be my payment",
+        "normalized_text": "when will be my payment",
+        "confidence": 0.8892538,
+        "audio_seconds": 1.965,
+        "asr_seconds": 1.193622899998445,
+        "model": "vosk-model-small-en-us-0.15"
+      },
+      "condition": "noise_20db",
+      "stop_expected": false,
+      "stop_detected": false,
+      "ready_expected": false,
+      "ready_detected": false
+    },
+    {
+      "text": "I am ready to proceed.",
+      "transcript": {
+        "text": "i am ready to proceed",
+        "normalized_text": "i am ready to proceed",
+        "confidence": 0.9263163999999999,
+        "audio_seconds": 2.1,
+        "asr_seconds": 1.550668300005782,
+        "model": "vosk-model-small-en-us-0.15"
+      },
+      "condition": "noise_20db",
+      "stop_expected": false,
+      "stop_detected": false,
+      "ready_expected": true,
+      "ready_detected": true
+    },
+    {
+      "text": "I am not ready to proceed.",
+      "transcript": {
+        "text": "i am not ready to proceed",
+        "normalized_text": "i am not ready to proceed",
+        "confidence": 0.9413516666666667,
+        "audio_seconds": 2.335,
+        "asr_seconds": 1.8263399999996182,
+        "model": "vosk-model-small-en-us-0.15"
+      },
+      "condition": "noise_20db",
+      "stop_expected": false,
+      "stop_detected": false,
+      "ready_expected": false,
+      "ready_detected": false
+    },
+    {
+      "text": "Please stop.",
+      "transcript": {
+        "text": "please stop",
+        "normalized_text": "please stop",
+        "confidence": 1.0,
+        "audio_seconds": 1.625,
+        "asr_seconds": 1.1833709000056842,
+        "model": "vosk-model-small-en-us-0.15"
+      },
+      "condition": "noise_20db",
+      "stop_expected": true,
+      "stop_detected": true,
+      "ready_expected": false,
+      "ready_detected": false
+    },
+    {
+      "text": "I am not interested.",
+      "transcript": {
+        "text": "i am not interested",
+        "normalized_text": "i am not interested",
+        "confidence": 1.0,
+        "audio_seconds": 1.945,
+        "asr_seconds": 1.145992899997509,
+        "model": "vosk-model-small-en-us-0.15"
+      },
+      "condition": "noise_20db",
+      "stop_expected": true,
+      "stop_detected": true,
+      "ready_expected": false,
+      "ready_detected": false
+    },
+    {
+      "text": "That is too expensive for my budget.",
+      "transcript": {
+        "text": "that is too expensive for my budget",
+        "normalized_text": "that is too expensive for my budget",
+        "confidence": 1.0,
+        "audio_seconds": 2.695,
+        "asr_seconds": 2.216996299997845,
+        "model": "vosk-model-small-en-us-0.15"
+      },
+      "condition": "noise_20db",
+      "stop_expected": false,
+      "stop_detected": false,
+      "ready_expected": false,
+      "ready_detected": false
+    },
+    {
+      "text": "I need health insurance for my family.",
+      "transcript": {
+        "text": "i need health insurance for my family",
+        "normalized_text": "i need health insurance for my family",
+        "confidence": 1.0,
+        "audio_seconds": 2.845,
+        "asr_seconds": 1.9498817999992752,
+        "model": "vosk-model-small-en-us-0.15"
+      },
+      "condition": "noise_10db",
+      "stop_expected": false,
+      "stop_detected": false,
+      "ready_expected": false,
+      "ready_detected": false
+    },
+    {
+      "text": "Around two hundred fifty thousand.",
+      "transcript": {
+        "text": "around two hundred fifty thousand",
+        "normalized_text": "around 250000",
+        "confidence": 1.0,
+        "audio_seconds": 2.865,
+        "asr_seconds": 2.3056625999961398,
+        "model": "vosk-model-small-en-us-0.15"
+      },
+      "condition": "noise_10db",
+      "stop_expected": false,
+      "stop_detected": false,
+      "ready_expected": false,
+      "ready_detected": false
+    },
+    {
+      "text": "What will be my payment?",
+      "transcript": {
+        "text": "when will be my payment",
+        "normalized_text": "when will be my payment",
+        "confidence": 0.8887029999999999,
+        "audio_seconds": 1.965,
+        "asr_seconds": 2.1664134000020567,
+        "model": "vosk-model-small-en-us-0.15"
+      },
+      "condition": "noise_10db",
+      "stop_expected": false,
+      "stop_detected": false,
+      "ready_expected": false,
+      "ready_detected": false
+    },
+    {
+      "text": "I am ready to proceed.",
+      "transcript": {
+        "text": "i am ready to proceed",
+        "normalized_text": "i am ready to proceed",
+        "confidence": 0.9446387999999999,
+        "audio_seconds": 2.1,
+        "asr_seconds": 1.5486938999965787,
+        "model": "vosk-model-small-en-us-0.15"
+      },
+      "condition": "noise_10db",
+      "stop_expected": false,
+      "stop_detected": false,
+      "ready_expected": true,
+      "ready_detected": true
+    },
+    {
+      "text": "I am not ready to proceed.",
+      "transcript": {
+        "text": "i am not ready to proceed",
+        "normalized_text": "i am not ready to proceed",
+        "confidence": 0.9085000000000001,
+        "audio_seconds": 2.335,
+        "asr_seconds": 1.6468478000024334,
+        "model": "vosk-model-small-en-us-0.15"
+      },
+      "condition": "noise_10db",
+      "stop_expected": false,
+      "stop_detected": false,
+      "ready_expected": false,
+      "ready_detected": false
+    },
+    {
+      "text": "Please stop.",
+      "transcript": {
+        "text": "please stop",
+        "normalized_text": "please stop",
+        "confidence": 0.9033015,
+        "audio_seconds": 1.625,
+        "asr_seconds": 1.4058128999968176,
+        "model": "vosk-model-small-en-us-0.15"
+      },
+      "condition": "noise_10db",
+      "stop_expected": true,
+      "stop_detected": true,
+      "ready_expected": false,
+      "ready_detected": false
+    },
+    {
+      "text": "I am not interested.",
+      "transcript": {
+        "text": "i am not interested",
+        "normalized_text": "i am not interested",
+        "confidence": 1.0,
+        "audio_seconds": 1.945,
+        "asr_seconds": 1.3898991999958525,
+        "model": "vosk-model-small-en-us-0.15"
+      },
+      "condition": "noise_10db",
+      "stop_expected": true,
+      "stop_detected": true,
+      "ready_expected": false,
+      "ready_detected": false
+    },
+    {
+      "text": "That is too expensive for my budget.",
+      "transcript": {
+        "text": "that is too expensive for my budget",
+        "normalized_text": "that is too expensive for my budget",
+        "confidence": 1.0,
+        "audio_seconds": 2.695,
+        "asr_seconds": 1.7529935999991721,
+        "model": "vosk-model-small-en-us-0.15"
+      },
+      "condition": "noise_10db",
+      "stop_expected": false,
+      "stop_detected": false,
+      "ready_expected": false,
+      "ready_detected": false
+    }
+  ],
+  "latency": [
+    {
+      "provider": "template",
+      "reference": "I need health insurance for my family.",
+      "accepted": true,
+      "transcript": {
+        "text": "i need health insurance for my family",
+        "normalized_text": "i need health insurance for my family",
+        "confidence": 1.0,
+        "audio_seconds": 2.845,
+        "asr_seconds": 1.6962956999996095,
+        "model": "vosk-model-small-en-us-0.15"
+      },
+      "response": {
+        "text": "How much coverage are you looking for, and do you already have an insurance policy?",
+        "facts": [],
+        "action": "ASK_CLARIFYING_QUESTION",
+        "strategy": "CLARIFYING_QUESTION",
+        "generation_route": "template_configured",
+        "llm_attempted": false,
+        "llm_seconds": 0.0,
+        "llm_metrics": {},
+        "source": "template",
+        "llm_error": null,
+        "llm_rejected": false,
+        "llm_error_detail": null,
+        "llm_rejection_reasons": [],
+        "llm_rejection_details": {},
+        "fallback_rephrased": false,
+        "validation": {
+          "ok": true,
+          "unsupported": [],
+          "repeated": false,
+          "role_violations": [],
+          "task_violations": []
+        },
+        "understanding": {
+          "intent": "PRODUCT_INQUIRY",
+          "intent_conf": null,
+          "emotion": "ANXIOUS",
+          "emotion_conf": 0.8634621852618297,
+          "emotion_probs": {
+            "ANGRY": 9.168260840411133e-10,
+            "ANXIOUS": 0.8634621852618297,
+            "CONCERNED": 0.1218870716863065,
+            "FRUSTRATED": 2.5565150707917525e-11,
+            "NEUTRAL": 0.014054812546237841,
+            "POSITIVE": 0.0005959287780075048,
+            "SATISFIED": 7.435169535943194e-15,
+            "SKEPTICAL": 7.852197196705572e-10
+          },
+          "objection": "NONE",
+          "objection_conf": null,
+          "stage": "PRODUCT_EDUCATION",
+          "sources": {
+            "intent": "explicit_cue",
+            "emotion": "nlp_model",
+            "objection": "explicit_cue"
+          }
+        },
+        "raw_understanding": {
+          "intent": "OBJECTION",
+          "intent_conf": 0.9995529180518183,
+          "emotion": "ANXIOUS",
+          "emotion_conf": 0.8634621852618297,
+          "emotion_probs": {
+            "ANGRY": 9.168260840411133e-10,
+            "ANXIOUS": 0.8634621852618297,
+            "CONCERNED": 0.1218870716863065,
+            "FRUSTRATED": 2.5565150707917525e-11,
+            "NEUTRAL": 0.014054812546237841,
+            "POSITIVE": 0.0005959287780075048,
+            "SATISFIED": 7.435169535943194e-15,
+            "SKEPTICAL": 7.852197196705572e-10
+          },
+          "objection": "NEED_FAMILY_APPROVAL",
+          "objection_conf": 0.5511483859964236,
+          "stage": "PRODUCT_EDUCATION"
+        },
+        "state": {
+          "intent": "PRODUCT_INQUIRY",
+          "emotion": "ANXIOUS",
+          "emotion_probs": {
+            "ANGRY": 9.168260840411133e-10,
+            "ANXIOUS": 0.8634621852618297,
+            "CONCERNED": 0.1218870716863065,
+            "FRUSTRATED": 2.5565150707917525e-11,
+            "NEUTRAL": 0.014054812546237841,
+            "POSITIVE": 0.0005959287780075048,
+            "SATISFIED": 7.435169535943194e-15,
+            "SKEPTICAL": 7.852197196705572e-10
+          },
+          "need": "FAMILY_HEALTH",
+          "budget": "unknown",
+          "existing_coverage": "unknown",
+          "coverage_gap": "unknown",
+          "objection": "NONE",
+          "severity": null,
+          "purchase_intent": 0.3,
+          "profile": "HESITANT",
+          "sales_stage": "GREETING",
+          "trust": 0.5,
+          "engagement": 0.5,
+          "satisfaction": 0.5,
+          "previous_strategy": "NEED_DISCOVERY",
+          "previous_action": "DISCOVER_NEEDS",
+          "previous_reaction": "none",
+          "turn_count": 0,
+          "age": 35,
+          "conversation_summary": {
+            "turns": 0,
+            "last_reaction": "none"
+          },
+          "amount_context": {
+            "value": null,
+            "kind": "unknown",
+            "period": "unknown"
+          },
+          "dialogue_task": "initial_discovery",
+          "state_source": "NLP estimates; trust and purchase intent are unobserved defaults"
+        },
+        "closed": false,
+        "policy_action": "ASK_CLARIFYING_QUESTION",
+        "decision_source": "ppo",
+        "decision_reason": "initial_discovery_mask"
+      },
+      "spoken_text": "How much coverage are you looking for, and do you already have an insurance policy?",
+      "audio_path": "D:\\insurence seller\\insurance_sales_agent\\.runtime\\speech\\validation\\reply-template-0.wav",
+      "tts_error": null,
+      "closed": false,
+      "timing": {
+        "asr_and_response_seconds": 1.7119638999938616,
+        "tts_seconds": 1.1046857000037562,
+        "total_seconds": 2.816651599998295
+      }
+    },
+    {
+      "provider": "template",
+      "reference": "Around two hundred fifty thousand.",
+      "accepted": true,
+      "transcript": {
+        "text": "around two hundred fifty thousand",
+        "normalized_text": "around 250000",
+        "confidence": 1.0,
+        "audio_seconds": 2.865,
+        "asr_seconds": 1.7443016999968677,
+        "model": "vosk-model-small-en-us-0.15"
+      },
+      "response": {
+        "text": "Does that amount mean the coverage you want, or your premium budget? If it is a premium budget, is it monthly or yearly?",
+        "facts": [],
+        "action": "ASK_CLARIFYING_QUESTION",
+        "strategy": "CLARIFYING_QUESTION",
+        "generation_route": "template_configured",
+        "llm_attempted": false,
+        "llm_seconds": 0.0,
+        "llm_metrics": {},
+        "source": "template",
+        "llm_error": null,
+        "llm_rejected": false,
+        "llm_error_detail": null,
+        "llm_rejection_reasons": [],
+        "llm_rejection_details": {},
+        "fallback_rephrased": false,
+        "validation": {
+          "ok": true,
+          "unsupported": [],
+          "repeated": false,
+          "role_violations": [],
+          "task_violations": []
+        },
+        "understanding": {
+          "intent": "PURCHASE_INTEREST",
+          "intent_conf": 0.2836940836940837,
+          "emotion": "POSITIVE",
+          "emotion_conf": 0.243001443001443,
+          "emotion_probs": {
+            "ANGRY": 0.02337662337662339,
+            "ANXIOUS": 0.10779220779220779,
+            "CONCERNED": 0.22453102453102455,
+            "FRUSTRATED": 0.03217893217893218,
+            "NEUTRAL": 0.09985569985569985,
+            "POSITIVE": 0.243001443001443,
+            "SATISFIED": 0.14141414141414144,
+            "SKEPTICAL": 0.12784992784992785
+          },
+          "objection": "NONE",
+          "objection_conf": 0.4285714285714286,
+          "stage": "GREETING",
+          "sources": {
+            "intent": "nlp_model",
+            "emotion": "nlp_model",
+            "objection": "nlp_model"
+          }
+        },
+        "raw_understanding": {
+          "intent": "PURCHASE_INTEREST",
+          "intent_conf": 0.2836940836940837,
+          "emotion": "POSITIVE",
+          "emotion_conf": 0.243001443001443,
+          "emotion_probs": {
+            "ANGRY": 0.02337662337662339,
+            "ANXIOUS": 0.10779220779220779,
+            "CONCERNED": 0.22453102453102455,
+            "FRUSTRATED": 0.03217893217893218,
+            "NEUTRAL": 0.09985569985569985,
+            "POSITIVE": 0.243001443001443,
+            "SATISFIED": 0.14141414141414144,
+            "SKEPTICAL": 0.12784992784992785
+          },
+          "objection": "NONE",
+          "objection_conf": 0.4285714285714286,
+          "stage": "GREETING"
+        },
+        "state": {
+          "intent": "PURCHASE_INTEREST",
+          "emotion": "POSITIVE",
+          "emotion_probs": {
+            "ANGRY": 0.02337662337662339,
+            "ANXIOUS": 0.10779220779220779,
+            "CONCERNED": 0.22453102453102455,
+            "FRUSTRATED": 0.03217893217893218,
+            "NEUTRAL": 0.09985569985569985,
+            "POSITIVE": 0.243001443001443,
+            "SATISFIED": 0.14141414141414144,
+            "SKEPTICAL": 0.12784992784992785
+          },
+          "need": "FAMILY_HEALTH",
+          "budget": "unknown",
+          "existing_coverage": "unknown",
+          "coverage_gap": "unknown",
+          "objection": "NONE",
+          "severity": 0.4285714285714286,
+          "purchase_intent": 0.3,
+          "profile": "HESITANT",
+          "sales_stage": "EVALUATION",
+          "trust": 0.5,
+          "engagement": 0.5,
+          "satisfaction": 0.5,
+          "previous_strategy": "CLARIFYING_QUESTION",
+          "previous_action": "ASK_CLARIFYING_QUESTION",
+          "previous_reaction": "none",
+          "turn_count": 1,
+          "age": 35,
+          "conversation_summary": {
+            "turns": 1,
+            "last_reaction": "ANXIOUS"
+          },
+          "amount_context": {
+            "value": 250000,
+            "kind": "unknown",
+            "period": "unknown"
+          },
+          "dialogue_task": "clarify_amount",
+          "state_source": "NLP estimates; trust and purchase intent are unobserved defaults"
+        },
+        "closed": false,
+        "policy_action": "PERSONALIZE",
+        "decision_source": "conversation_guard",
+        "decision_reason": "ambiguous_amount"
+      },
+      "spoken_text": "Does that amount mean the coverage you want, or your premium budget? If it is a premium budget, is it monthly or yearly?",
+      "audio_path": "D:\\insurence seller\\insurance_sales_agent\\.runtime\\speech\\validation\\reply-template-1.wav",
+      "tts_error": null,
+      "closed": false,
+      "timing": {
+        "asr_and_response_seconds": 1.7614863999988302,
+        "tts_seconds": 1.2268530000001192,
+        "total_seconds": 2.9883405000000494
+      }
+    },
+    {
+      "provider": "template",
+      "reference": "What will be my payment?",
+      "accepted": true,
+      "transcript": {
+        "text": "what will be my payment",
+        "normalized_text": "what will be my payment",
+        "confidence": 0.8821768000000001,
+        "audio_seconds": 1.965,
+        "asr_seconds": 1.0298726000037277,
+        "model": "vosk-model-small-en-us-0.15"
+      },
+      "response": {
+        "text": "I cannot calculate your payment from this demo. The synthetic catalogue has premium bands, not rupee prices or a billing schedule. A verified insurer quote is needed for the actual premium.",
+        "facts": [
+          {
+            "product_id": "HLTH-5L",
+            "product_type": "FAMILY_HEALTH",
+            "coverage": "hospitalization 5L",
+            "premium": "low",
+            "sum_insured": "5L",
+            "eligibility": "age 18-65",
+            "age_range": [
+              18,
+              65
+            ],
+            "waiting_period": "30 days",
+            "deductible": "none",
+            "exclusions": [
+              "cosmetic",
+              "pre-existing<2y"
+            ],
+            "benefits": [
+              "cashless"
+            ],
+            "limits": "5L/year",
+            "conditions": "standard",
+            "source": "synthetic",
+            "version": "v1"
+          },
+          {
+            "product_id": "HLTH-10L",
+            "product_type": "FAMILY_HEALTH",
+            "coverage": "hospitalization 10L",
+            "premium": "mid",
+            "sum_insured": "10L",
+            "eligibility": "age 18-65",
+            "age_range": [
+              18,
+              65
+            ],
+            "waiting_period": "30 days",
+            "deductible": "none",
+            "exclusions": [
+              "cosmetic"
+            ],
+            "benefits": [
+              "cashless",
+              "top-up"
+            ],
+            "limits": "10L/year",
+            "conditions": "standard",
+            "source": "synthetic",
+            "version": "v1"
+          }
+        ],
+        "action": "AFFORDABILITY_FRAMING",
+        "strategy": "AFFORDABILITY_FRAMING",
+        "generation_route": "template_configured",
+        "llm_attempted": false,
+        "llm_seconds": 0.0,
+        "llm_metrics": {},
+        "source": "template",
+        "llm_error": null,
+        "llm_rejected": false,
+        "llm_error_detail": null,
+        "llm_rejection_reasons": [],
+        "llm_rejection_details": {},
+        "fallback_rephrased": false,
+        "validation": {
+          "ok": true,
+          "unsupported": [],
+          "repeated": false,
+          "role_violations": [],
+          "task_violations": []
+        },
+        "understanding": {
+          "intent": "PRICE_INQUIRY",
+          "intent_conf": null,
+          "emotion": "CONCERNED",
+          "emotion_conf": 0.9999761317045421,
+          "emotion_probs": {
+            "ANGRY": 3.513414596347551e-08,
+            "ANXIOUS": 1.0590163436855287e-05,
+            "CONCERNED": 0.9999761317045421,
+            "FRUSTRATED": 6.685362083906472e-09,
+            "NEUTRAL": 1.2032918290759294e-05,
+            "POSITIVE": 1.0324533549155395e-06,
+            "SATISFIED": 1.7471767625472458e-10,
+            "SKEPTICAL": 1.7076614963625673e-07
+          },
+          "objection": "NONE",
+          "objection_conf": null,
+          "stage": "DISCOVERY",
+          "sources": {
+            "intent": "explicit_cue",
+            "emotion": "nlp_model",
+            "objection": "explicit_cue"
+          }
+        },
+        "raw_understanding": {
+          "intent": "PRICE_INQUIRY",
+          "intent_conf": 0.9997813631517697,
+          "emotion": "CONCERNED",
+          "emotion_conf": 0.9999761317045421,
+          "emotion_probs": {
+            "ANGRY": 3.513414596347551e-08,
+            "ANXIOUS": 1.0590163436855287e-05,
+            "CONCERNED": 0.9999761317045421,
+            "FRUSTRATED": 6.685362083906472e-09,
+            "NEUTRAL": 1.2032918290759294e-05,
+            "POSITIVE": 1.0324533549155395e-06,
+            "SATISFIED": 1.7471767625472458e-10,
+            "SKEPTICAL": 1.7076614963625673e-07
+          },
+          "objection": "PRICE_TOO_HIGH",
+          "objection_conf": 0.999938795997079,
+          "stage": "DISCOVERY"
+        },
+        "state": {
+          "intent": "PRICE_INQUIRY",
+          "emotion": "CONCERNED",
+          "emotion_probs": {
+            "ANGRY": 3.513414596347551e-08,
+            "ANXIOUS": 1.0590163436855287e-05,
+            "CONCERNED": 0.9999761317045421,
+            "FRUSTRATED": 6.685362083906472e-09,
+            "NEUTRAL": 1.2032918290759294e-05,
+            "POSITIVE": 1.0324533549155395e-06,
+            "SATISFIED": 1.7471767625472458e-10,
+            "SKEPTICAL": 1.7076614963625673e-07
+          },
+          "need": "FAMILY_HEALTH",
+          "budget": "unknown",
+          "existing_coverage": "unknown",
+          "coverage_gap": "unknown",
+          "objection": "NONE",
+          "severity": null,
+          "purchase_intent": 0.3,
+          "profile": "HESITANT",
+          "sales_stage": "EVALUATION",
+          "trust": 0.5,
+          "engagement": 0.5,
+          "satisfaction": 0.5,
+          "previous_strategy": "CLARIFYING_QUESTION",
+          "previous_action": "ASK_CLARIFYING_QUESTION",
+          "previous_reaction": "none",
+          "turn_count": 2,
+          "age": 35,
+          "conversation_summary": {
+            "turns": 2,
+            "last_reaction": "POSITIVE"
+          },
+          "amount_context": {
+            "value": 250000,
+            "kind": "unknown",
+            "period": "unknown"
+          },
+          "dialogue_task": "explain_payment",
+          "state_source": "NLP estimates; trust and purchase intent are unobserved defaults"
+        },
+        "closed": false,
+        "policy_action": "AFFORDABILITY_FRAMING",
+        "decision_source": "conversation_guard",
+        "decision_reason": "no_verified_premium_quote"
+      },
+      "spoken_text": "I cannot calculate your payment from this demo. The synthetic catalogue has premium bands, not rupee prices or a billing schedule. A verified insurer quote is needed for the actual premium.",
+      "audio_path": "D:\\insurence seller\\insurance_sales_agent\\.runtime\\speech\\validation\\reply-template-2.wav",
+      "tts_error": null,
+      "closed": false,
+      "timing": {
+        "asr_and_response_seconds": 1.0387263000011444,
+        "tts_seconds": 0.7516052999999374,
+        "total_seconds": 1.7903321999983746
+      }
+    },
+    {
+      "provider": "template",
+      "reference": "Please stop.",
+      "accepted": true,
+      "transcript": {
+        "text": "please stop",
+        "normalized_text": "please stop",
+        "confidence": 1.0,
+        "audio_seconds": 1.625,
+        "asr_seconds": 0.8462880999941262,
+        "model": "vosk-model-small-en-us-0.15"
+      },
+      "response": {
+        "text": "Understood. I'll end the conversation here. Thank you for your time.",
+        "facts": [],
+        "action": "RESPECT_REJECTION",
+        "strategy": "RESPECT_REJECTION",
+        "generation_route": "template_configured",
+        "llm_attempted": false,
+        "llm_seconds": 0.0,
+        "llm_metrics": {},
+        "source": "template",
+        "llm_error": null,
+        "llm_rejected": false,
+        "llm_error_detail": null,
+        "llm_rejection_reasons": [],
+        "llm_rejection_details": {},
+        "fallback_rephrased": false,
+        "validation": {
+          "ok": true,
+          "unsupported": [],
+          "repeated": false,
+          "role_violations": [],
+          "task_violations": []
+        },
+        "understanding": {
+          "intent": "REJECTION",
+          "intent_conf": 1.0,
+          "emotion": "ANGRY",
+          "emotion_conf": 0.8434647366943672,
+          "emotion_probs": {
+            "ANGRY": 0.8434647366943672,
+            "ANXIOUS": 8.100027800505559e-06,
+            "CONCERNED": 1.4822116096259229e-06,
+            "FRUSTRATED": 0.15651579981340447,
+            "NEUTRAL": 8.574384984209482e-06,
+            "POSITIVE": 1.1969255907384126e-06,
+            "SATISFIED": 3.634981978754001e-08,
+            "SKEPTICAL": 7.359242348472969e-08
+          },
+          "objection": "NOT_READY",
+          "objection_conf": 1.0,
+          "stage": "REJECTION",
+          "sources": {
+            "intent": "nlp_model",
+            "emotion": "nlp_model",
+            "objection": "nlp_model"
+          }
+        },
+        "raw_understanding": {
+          "intent": "REJECTION",
+          "intent_conf": 1.0,
+          "emotion": "ANGRY",
+          "emotion_conf": 0.8434647366943672,
+          "emotion_probs": {
+            "ANGRY": 0.8434647366943672,
+            "ANXIOUS": 8.100027800505559e-06,
+            "CONCERNED": 1.4822116096259229e-06,
+            "FRUSTRATED": 0.15651579981340447,
+            "NEUTRAL": 8.574384984209482e-06,
+            "POSITIVE": 1.1969255907384126e-06,
+            "SATISFIED": 3.634981978754001e-08,
+            "SKEPTICAL": 7.359242348472969e-08
+          },
+          "objection": "NOT_READY",
+          "objection_conf": 1.0,
+          "stage": "REJECTION"
+        },
+        "state": {
+          "intent": "REJECTION",
+          "emotion": "ANGRY",
+          "emotion_probs": {
+            "ANGRY": 0.8434647366943672,
+            "ANXIOUS": 8.100027800505559e-06,
+            "CONCERNED": 1.4822116096259229e-06,
+            "FRUSTRATED": 0.15651579981340447,
+            "NEUTRAL": 8.574384984209482e-06,
+            "POSITIVE": 1.1969255907384126e-06,
+            "SATISFIED": 3.634981978754001e-08,
+            "SKEPTICAL": 7.359242348472969e-08
+          },
+          "need": "FAMILY_HEALTH",
+          "budget": "unknown",
+          "existing_coverage": "unknown",
+          "coverage_gap": "unknown",
+          "objection": "NOT_READY",
+          "severity": 1.0,
+          "purchase_intent": 0.3,
+          "profile": "HESITANT",
+          "sales_stage": "REJECTION",
+          "trust": 0.5,
+          "engagement": 0.5,
+          "satisfaction": 0.5,
+          "previous_strategy": "AFFORDABILITY_FRAMING",
+          "previous_action": "AFFORDABILITY_FRAMING",
+          "previous_reaction": "none",
+          "turn_count": 3,
+          "age": 35,
+          "conversation_summary": {
+            "turns": 3,
+            "last_reaction": "CONCERNED"
+          },
+          "amount_context": {
+            "value": 250000,
+            "kind": "unknown",
+            "period": "unknown"
+          },
+          "dialogue_task": null,
+          "state_source": "NLP estimates; trust and purchase intent are unobserved defaults"
+        },
+        "closed": true,
+        "policy_action": "RESPECT_REJECTION",
+        "decision_source": "ppo",
+        "decision_reason": null
+      },
+      "spoken_text": "Understood. I'll end the conversation here. Thank you for your time.",
+      "audio_path": "D:\\insurence seller\\insurance_sales_agent\\.runtime\\speech\\validation\\reply-template-5.wav",
+      "tts_error": null,
+      "closed": true,
+      "timing": {
+        "asr_and_response_seconds": 0.8521896000020206,
+        "tts_seconds": 0.8422634000016842,
+        "total_seconds": 1.694453700001759
+      }
+    },
+    {
+      "provider": "hybrid",
+      "reference": "I need health insurance for my family.",
+      "accepted": true,
+      "transcript": {
+        "text": "i need health insurance for my family",
+        "normalized_text": "i need health insurance for my family",
+        "confidence": 1.0,
+        "audio_seconds": 2.845,
+        "asr_seconds": 1.1019207999997889,
+        "model": "vosk-model-small-en-us-0.15"
+      },
+      "response": {
+        "text": "How much coverage are you looking for, and do you already have an insurance policy?",
+        "facts": [],
+        "action": "ASK_CLARIFYING_QUESTION",
+        "strategy": "CLARIFYING_QUESTION",
+        "generation_route": "deterministic_task",
+        "llm_attempted": false,
+        "llm_seconds": 0.0,
+        "llm_metrics": {},
+        "source": "template",
+        "llm_error": null,
+        "llm_rejected": false,
+        "llm_error_detail": null,
+        "llm_rejection_reasons": [],
+        "llm_rejection_details": {},
+        "fallback_rephrased": false,
+        "validation": {
+          "ok": true,
+          "unsupported": [],
+          "repeated": false,
+          "role_violations": [],
+          "task_violations": []
+        },
+        "understanding": {
+          "intent": "PRODUCT_INQUIRY",
+          "intent_conf": null,
+          "emotion": "ANXIOUS",
+          "emotion_conf": 0.8634621852618297,
+          "emotion_probs": {
+            "ANGRY": 9.168260840411133e-10,
+            "ANXIOUS": 0.8634621852618297,
+            "CONCERNED": 0.1218870716863065,
+            "FRUSTRATED": 2.5565150707917525e-11,
+            "NEUTRAL": 0.014054812546237841,
+            "POSITIVE": 0.0005959287780075048,
+            "SATISFIED": 7.435169535943194e-15,
+            "SKEPTICAL": 7.852197196705572e-10
+          },
+          "objection": "NONE",
+          "objection_conf": null,
+          "stage": "PRODUCT_EDUCATION",
+          "sources": {
+            "intent": "explicit_cue",
+            "emotion": "nlp_model",
+            "objection": "explicit_cue"
+          }
+        },
+        "raw_understanding": {
+          "intent": "OBJECTION",
+          "intent_conf": 0.9995529180518183,
+          "emotion": "ANXIOUS",
+          "emotion_conf": 0.8634621852618297,
+          "emotion_probs": {
+            "ANGRY": 9.168260840411133e-10,
+            "ANXIOUS": 0.8634621852618297,
+            "CONCERNED": 0.1218870716863065,
+            "FRUSTRATED": 2.5565150707917525e-11,
+            "NEUTRAL": 0.014054812546237841,
+            "POSITIVE": 0.0005959287780075048,
+            "SATISFIED": 7.435169535943194e-15,
+            "SKEPTICAL": 7.852197196705572e-10
+          },
+          "objection": "NEED_FAMILY_APPROVAL",
+          "objection_conf": 0.5511483859964236,
+          "stage": "PRODUCT_EDUCATION"
+        },
+        "state": {
+          "intent": "PRODUCT_INQUIRY",
+          "emotion": "ANXIOUS",
+          "emotion_probs": {
+            "ANGRY": 9.168260840411133e-10,
+            "ANXIOUS": 0.8634621852618297,
+            "CONCERNED": 0.1218870716863065,
+            "FRUSTRATED": 2.5565150707917525e-11,
+            "NEUTRAL": 0.014054812546237841,
+            "POSITIVE": 0.0005959287780075048,
+            "SATISFIED": 7.435169535943194e-15,
+            "SKEPTICAL": 7.852197196705572e-10
+          },
+          "need": "FAMILY_HEALTH",
+          "budget": "unknown",
+          "existing_coverage": "unknown",
+          "coverage_gap": "unknown",
+          "objection": "NONE",
+          "severity": null,
+          "purchase_intent": 0.3,
+          "profile": "HESITANT",
+          "sales_stage": "GREETING",
+          "trust": 0.5,
+          "engagement": 0.5,
+          "satisfaction": 0.5,
+          "previous_strategy": "NEED_DISCOVERY",
+          "previous_action": "DISCOVER_NEEDS",
+          "previous_reaction": "none",
+          "turn_count": 0,
+          "age": 35,
+          "conversation_summary": {
+            "turns": 0,
+            "last_reaction": "none"
+          },
+          "amount_context": {
+            "value": null,
+            "kind": "unknown",
+            "period": "unknown"
+          },
+          "dialogue_task": "initial_discovery",
+          "state_source": "NLP estimates; trust and purchase intent are unobserved defaults"
+        },
+        "closed": false,
+        "policy_action": "ASK_CLARIFYING_QUESTION",
+        "decision_source": "ppo",
+        "decision_reason": "initial_discovery_mask"
+      },
+      "spoken_text": "How much coverage are you looking for, and do you already have an insurance policy?",
+      "audio_path": "D:\\insurence seller\\insurance_sales_agent\\.runtime\\speech\\validation\\reply-hybrid-0.wav",
+      "tts_error": null,
+      "closed": false,
+      "timing": {
+        "asr_and_response_seconds": 1.1123126999955275,
+        "tts_seconds": 0.6844281000012415,
+        "total_seconds": 1.7967414000013378
+      }
+    },
+    {
+      "provider": "hybrid",
+      "reference": "Around two hundred fifty thousand.",
+      "accepted": true,
+      "transcript": {
+        "text": "around two hundred fifty thousand",
+        "normalized_text": "around 250000",
+        "confidence": 1.0,
+        "audio_seconds": 2.865,
+        "asr_seconds": 1.0475320999976248,
+        "model": "vosk-model-small-en-us-0.15"
+      },
+      "response": {
+        "text": "Does that amount mean the coverage you want, or your premium budget? If it is a premium budget, is it monthly or yearly?",
+        "facts": [],
+        "action": "ASK_CLARIFYING_QUESTION",
+        "strategy": "CLARIFYING_QUESTION",
+        "generation_route": "deterministic_task",
+        "llm_attempted": false,
+        "llm_seconds": 0.0,
+        "llm_metrics": {},
+        "source": "template",
+        "llm_error": null,
+        "llm_rejected": false,
+        "llm_error_detail": null,
+        "llm_rejection_reasons": [],
+        "llm_rejection_details": {},
+        "fallback_rephrased": false,
+        "validation": {
+          "ok": true,
+          "unsupported": [],
+          "repeated": false,
+          "role_violations": [],
+          "task_violations": []
+        },
+        "understanding": {
+          "intent": "PURCHASE_INTEREST",
+          "intent_conf": 0.2836940836940837,
+          "emotion": "POSITIVE",
+          "emotion_conf": 0.243001443001443,
+          "emotion_probs": {
+            "ANGRY": 0.02337662337662339,
+            "ANXIOUS": 0.10779220779220779,
+            "CONCERNED": 0.22453102453102455,
+            "FRUSTRATED": 0.03217893217893218,
+            "NEUTRAL": 0.09985569985569985,
+            "POSITIVE": 0.243001443001443,
+            "SATISFIED": 0.14141414141414144,
+            "SKEPTICAL": 0.12784992784992785
+          },
+          "objection": "NONE",
+          "objection_conf": 0.4285714285714286,
+          "stage": "GREETING",
+          "sources": {
+            "intent": "nlp_model",
+            "emotion": "nlp_model",
+            "objection": "nlp_model"
+          }
+        },
+        "raw_understanding": {
+          "intent": "PURCHASE_INTEREST",
+          "intent_conf": 0.2836940836940837,
+          "emotion": "POSITIVE",
+          "emotion_conf": 0.243001443001443,
+          "emotion_probs": {
+            "ANGRY": 0.02337662337662339,
+            "ANXIOUS": 0.10779220779220779,
+            "CONCERNED": 0.22453102453102455,
+            "FRUSTRATED": 0.03217893217893218,
+            "NEUTRAL": 0.09985569985569985,
+            "POSITIVE": 0.243001443001443,
+            "SATISFIED": 0.14141414141414144,
+            "SKEPTICAL": 0.12784992784992785
+          },
+          "objection": "NONE",
+          "objection_conf": 0.4285714285714286,
+          "stage": "GREETING"
+        },
+        "state": {
+          "intent": "PURCHASE_INTEREST",
+          "emotion": "POSITIVE",
+          "emotion_probs": {
+            "ANGRY": 0.02337662337662339,
+            "ANXIOUS": 0.10779220779220779,
+            "CONCERNED": 0.22453102453102455,
+            "FRUSTRATED": 0.03217893217893218,
+            "NEUTRAL": 0.09985569985569985,
+            "POSITIVE": 0.243001443001443,
+            "SATISFIED": 0.14141414141414144,
+            "SKEPTICAL": 0.12784992784992785
+          },
+          "need": "FAMILY_HEALTH",
+          "budget": "unknown",
+          "existing_coverage": "unknown",
+          "coverage_gap": "unknown",
+          "objection": "NONE",
+          "severity": 0.4285714285714286,
+          "purchase_intent": 0.3,
+          "profile": "HESITANT",
+          "sales_stage": "EVALUATION",
+          "trust": 0.5,
+          "engagement": 0.5,
+          "satisfaction": 0.5,
+          "previous_strategy": "CLARIFYING_QUESTION",
+          "previous_action": "ASK_CLARIFYING_QUESTION",
+          "previous_reaction": "none",
+          "turn_count": 1,
+          "age": 35,
+          "conversation_summary": {
+            "turns": 1,
+            "last_reaction": "ANXIOUS"
+          },
+          "amount_context": {
+            "value": 250000,
+            "kind": "unknown",
+            "period": "unknown"
+          },
+          "dialogue_task": "clarify_amount",
+          "state_source": "NLP estimates; trust and purchase intent are unobserved defaults"
+        },
+        "closed": false,
+        "policy_action": "PERSONALIZE",
+        "decision_source": "conversation_guard",
+        "decision_reason": "ambiguous_amount"
+      },
+      "spoken_text": "Does that amount mean the coverage you want, or your premium budget? If it is a premium budget, is it monthly or yearly?",
+      "audio_path": "D:\\insurence seller\\insurance_sales_agent\\.runtime\\speech\\validation\\reply-hybrid-1.wav",
+      "tts_error": null,
+      "closed": false,
+      "timing": {
+        "asr_and_response_seconds": 1.0563785999984248,
+        "tts_seconds": 0.7241877999986173,
+        "total_seconds": 1.7805668000000878
+      }
+    },
+    {
+      "provider": "hybrid",
+      "reference": "What will be my payment?",
+      "accepted": true,
+      "transcript": {
+        "text": "what will be my payment",
+        "normalized_text": "what will be my payment",
+        "confidence": 0.8914234000000001,
+        "audio_seconds": 1.965,
+        "asr_seconds": 0.9891090000019176,
+        "model": "vosk-model-small-en-us-0.15"
+      },
+      "response": {
+        "text": "I cannot calculate your payment from this demo. The synthetic catalogue has premium bands, not rupee prices or a billing schedule. A verified insurer quote is needed for the actual premium.",
+        "facts": [
+          {
+            "product_id": "HLTH-5L",
+            "product_type": "FAMILY_HEALTH",
+            "coverage": "hospitalization 5L",
+            "premium": "low",
+            "sum_insured": "5L",
+            "eligibility": "age 18-65",
+            "age_range": [
+              18,
+              65
+            ],
+            "waiting_period": "30 days",
+            "deductible": "none",
+            "exclusions": [
+              "cosmetic",
+              "pre-existing<2y"
+            ],
+            "benefits": [
+              "cashless"
+            ],
+            "limits": "5L/year",
+            "conditions": "standard",
+            "source": "synthetic",
+            "version": "v1"
+          },
+          {
+            "product_id": "HLTH-10L",
+            "product_type": "FAMILY_HEALTH",
+            "coverage": "hospitalization 10L",
+            "premium": "mid",
+            "sum_insured": "10L",
+            "eligibility": "age 18-65",
+            "age_range": [
+              18,
+              65
+            ],
+            "waiting_period": "30 days",
+            "deductible": "none",
+            "exclusions": [
+              "cosmetic"
+            ],
+            "benefits": [
+              "cashless",
+              "top-up"
+            ],
+            "limits": "10L/year",
+            "conditions": "standard",
+            "source": "synthetic",
+            "version": "v1"
+          }
+        ],
+        "action": "AFFORDABILITY_FRAMING",
+        "strategy": "AFFORDABILITY_FRAMING",
+        "generation_route": "deterministic_task",
+        "llm_attempted": false,
+        "llm_seconds": 0.0,
+        "llm_metrics": {},
+        "source": "template",
+        "llm_error": null,
+        "llm_rejected": false,
+        "llm_error_detail": null,
+        "llm_rejection_reasons": [],
+        "llm_rejection_details": {},
+        "fallback_rephrased": false,
+        "validation": {
+          "ok": true,
+          "unsupported": [],
+          "repeated": false,
+          "role_violations": [],
+          "task_violations": []
+        },
+        "understanding": {
+          "intent": "PRICE_INQUIRY",
+          "intent_conf": null,
+          "emotion": "CONCERNED",
+          "emotion_conf": 0.9999761317045421,
+          "emotion_probs": {
+            "ANGRY": 3.513414596347551e-08,
+            "ANXIOUS": 1.0590163436855287e-05,
+            "CONCERNED": 0.9999761317045421,
+            "FRUSTRATED": 6.685362083906472e-09,
+            "NEUTRAL": 1.2032918290759294e-05,
+            "POSITIVE": 1.0324533549155395e-06,
+            "SATISFIED": 1.7471767625472458e-10,
+            "SKEPTICAL": 1.7076614963625673e-07
+          },
+          "objection": "NONE",
+          "objection_conf": null,
+          "stage": "DISCOVERY",
+          "sources": {
+            "intent": "explicit_cue",
+            "emotion": "nlp_model",
+            "objection": "explicit_cue"
+          }
+        },
+        "raw_understanding": {
+          "intent": "PRICE_INQUIRY",
+          "intent_conf": 0.9997813631517697,
+          "emotion": "CONCERNED",
+          "emotion_conf": 0.9999761317045421,
+          "emotion_probs": {
+            "ANGRY": 3.513414596347551e-08,
+            "ANXIOUS": 1.0590163436855287e-05,
+            "CONCERNED": 0.9999761317045421,
+            "FRUSTRATED": 6.685362083906472e-09,
+            "NEUTRAL": 1.2032918290759294e-05,
+            "POSITIVE": 1.0324533549155395e-06,
+            "SATISFIED": 1.7471767625472458e-10,
+            "SKEPTICAL": 1.7076614963625673e-07
+          },
+          "objection": "PRICE_TOO_HIGH",
+          "objection_conf": 0.999938795997079,
+          "stage": "DISCOVERY"
+        },
+        "state": {
+          "intent": "PRICE_INQUIRY",
+          "emotion": "CONCERNED",
+          "emotion_probs": {
+            "ANGRY": 3.513414596347551e-08,
+            "ANXIOUS": 1.0590163436855287e-05,
+            "CONCERNED": 0.9999761317045421,
+            "FRUSTRATED": 6.685362083906472e-09,
+            "NEUTRAL": 1.2032918290759294e-05,
+            "POSITIVE": 1.0324533549155395e-06,
+            "SATISFIED": 1.7471767625472458e-10,
+            "SKEPTICAL": 1.7076614963625673e-07
+          },
+          "need": "FAMILY_HEALTH",
+          "budget": "unknown",
+          "existing_coverage": "unknown",
+          "coverage_gap": "unknown",
+          "objection": "NONE",
+          "severity": null,
+          "purchase_intent": 0.3,
+          "profile": "HESITANT",
+          "sales_stage": "EVALUATION",
+          "trust": 0.5,
+          "engagement": 0.5,
+          "satisfaction": 0.5,
+          "previous_strategy": "CLARIFYING_QUESTION",
+          "previous_action": "ASK_CLARIFYING_QUESTION",
+          "previous_reaction": "none",
+          "turn_count": 2,
+          "age": 35,
+          "conversation_summary": {
+            "turns": 2,
+            "last_reaction": "POSITIVE"
+          },
+          "amount_context": {
+            "value": 250000,
+            "kind": "unknown",
+            "period": "unknown"
+          },
+          "dialogue_task": "explain_payment",
+          "state_source": "NLP estimates; trust and purchase intent are unobserved defaults"
+        },
+        "closed": false,
+        "policy_action": "AFFORDABILITY_FRAMING",
+        "decision_source": "conversation_guard",
+        "decision_reason": "no_verified_premium_quote"
+      },
+      "spoken_text": "I cannot calculate your payment from this demo. The synthetic catalogue has premium bands, not rupee prices or a billing schedule. A verified insurer quote is needed for the actual premium.",
+      "audio_path": "D:\\insurence seller\\insurance_sales_agent\\.runtime\\speech\\validation\\reply-hybrid-2.wav",
+      "tts_error": null,
+      "closed": false,
+      "timing": {
+        "asr_and_response_seconds": 0.9967544000028283,
+        "tts_seconds": 0.7726443999999901,
+        "total_seconds": 1.7693994000001112
+      }
+    },
+    {
+      "provider": "hybrid",
+      "reference": "Please stop.",
+      "accepted": true,
+      "transcript": {
+        "text": "please stop",
+        "normalized_text": "please stop",
+        "confidence": 1.0,
+        "audio_seconds": 1.625,
+        "asr_seconds": 0.844843500002753,
+        "model": "vosk-model-small-en-us-0.15"
+      },
+      "response": {
+        "text": "Understood. I'll end the conversation here. Thank you for your time.",
+        "facts": [],
+        "action": "RESPECT_REJECTION",
+        "strategy": "RESPECT_REJECTION",
+        "generation_route": "deterministic_task",
+        "llm_attempted": false,
+        "llm_seconds": 0.0,
+        "llm_metrics": {},
+        "source": "template",
+        "llm_error": null,
+        "llm_rejected": false,
+        "llm_error_detail": null,
+        "llm_rejection_reasons": [],
+        "llm_rejection_details": {},
+        "fallback_rephrased": false,
+        "validation": {
+          "ok": true,
+          "unsupported": [],
+          "repeated": false,
+          "role_violations": [],
+          "task_violations": []
+        },
+        "understanding": {
+          "intent": "REJECTION",
+          "intent_conf": 1.0,
+          "emotion": "ANGRY",
+          "emotion_conf": 0.8434647366943672,
+          "emotion_probs": {
+            "ANGRY": 0.8434647366943672,
+            "ANXIOUS": 8.100027800505559e-06,
+            "CONCERNED": 1.4822116096259229e-06,
+            "FRUSTRATED": 0.15651579981340447,
+            "NEUTRAL": 8.574384984209482e-06,
+            "POSITIVE": 1.1969255907384126e-06,
+            "SATISFIED": 3.634981978754001e-08,
+            "SKEPTICAL": 7.359242348472969e-08
+          },
+          "objection": "NOT_READY",
+          "objection_conf": 1.0,
+          "stage": "REJECTION",
+          "sources": {
+            "intent": "nlp_model",
+            "emotion": "nlp_model",
+            "objection": "nlp_model"
+          }
+        },
+        "raw_understanding": {
+          "intent": "REJECTION",
+          "intent_conf": 1.0,
+          "emotion": "ANGRY",
+          "emotion_conf": 0.8434647366943672,
+          "emotion_probs": {
+            "ANGRY": 0.8434647366943672,
+            "ANXIOUS": 8.100027800505559e-06,
+            "CONCERNED": 1.4822116096259229e-06,
+            "FRUSTRATED": 0.15651579981340447,
+            "NEUTRAL": 8.574384984209482e-06,
+            "POSITIVE": 1.1969255907384126e-06,
+            "SATISFIED": 3.634981978754001e-08,
+            "SKEPTICAL": 7.359242348472969e-08
+          },
+          "objection": "NOT_READY",
+          "objection_conf": 1.0,
+          "stage": "REJECTION"
+        },
+        "state": {
+          "intent": "REJECTION",
+          "emotion": "ANGRY",
+          "emotion_probs": {
+            "ANGRY": 0.8434647366943672,
+            "ANXIOUS": 8.100027800505559e-06,
+            "CONCERNED": 1.4822116096259229e-06,
+            "FRUSTRATED": 0.15651579981340447,
+            "NEUTRAL": 8.574384984209482e-06,
+            "POSITIVE": 1.1969255907384126e-06,
+            "SATISFIED": 3.634981978754001e-08,
+            "SKEPTICAL": 7.359242348472969e-08
+          },
+          "need": "FAMILY_HEALTH",
+          "budget": "unknown",
+          "existing_coverage": "unknown",
+          "coverage_gap": "unknown",
+          "objection": "NOT_READY",
+          "severity": 1.0,
+          "purchase_intent": 0.3,
+          "profile": "HESITANT",
+          "sales_stage": "REJECTION",
+          "trust": 0.5,
+          "engagement": 0.5,
+          "satisfaction": 0.5,
+          "previous_strategy": "AFFORDABILITY_FRAMING",
+          "previous_action": "AFFORDABILITY_FRAMING",
+          "previous_reaction": "none",
+          "turn_count": 3,
+          "age": 35,
+          "conversation_summary": {
+            "turns": 3,
+            "last_reaction": "CONCERNED"
+          },
+          "amount_context": {
+            "value": 250000,
+            "kind": "unknown",
+            "period": "unknown"
+          },
+          "dialogue_task": null,
+          "state_source": "NLP estimates; trust and purchase intent are unobserved defaults"
+        },
+        "closed": true,
+        "policy_action": "RESPECT_REJECTION",
+        "decision_source": "ppo",
+        "decision_reason": null
+      },
+      "spoken_text": "Understood. I'll end the conversation here. Thank you for your time.",
+      "audio_path": "D:\\insurence seller\\insurance_sales_agent\\.runtime\\speech\\validation\\reply-hybrid-5.wav",
+      "tts_error": null,
+      "closed": true,
+      "timing": {
+        "asr_and_response_seconds": 0.8505502999978489,
+        "tts_seconds": 0.7022068000005675,
+        "total_seconds": 1.5527577999964706
+      }
+    }
+  ],
+  "open_ended_generator_only": {
+    "text": "I understand your concern. Which point would you like us to clarify first?",
+    "facts": [],
+    "action": "HANDLE_OBJECTION",
+    "strategy": "OBJECTION_HANDLING",
+    "generation_route": "llm_fallback",
+    "llm_attempted": true,
+    "llm_seconds": 22.12097360000189,
+    "llm_metrics": {},
+    "source": "template",
+    "llm_error": "TimeoutError",
+    "llm_rejected": false,
+    "llm_error_detail": "timed out",
+    "llm_rejection_reasons": [],
+    "llm_rejection_details": {},
+    "fallback_rephrased": false,
+    "validation": {
+      "ok": true,
+      "unsupported": [],
+      "repeated": false,
+      "role_violations": [],
+      "task_violations": []
+    },
+    "wall_seconds": 22.12998649999645
+  },
+  "scripted_audio_checks_passed": true
+}

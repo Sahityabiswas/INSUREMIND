@@ -1,0 +1,6 @@
+[
+  {
+    "experiment": "direct_llm",
+    "reason": "INSURANCE_LLM_MODEL is not configured"
+  }
+]

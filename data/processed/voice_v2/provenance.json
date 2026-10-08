@@ -1,0 +1,17 @@
+{
+  "source": "local synthetic text -> Windows TTS -> Vosk",
+  "speech_weights_updated": false,
+  "rates": {
+    "train": 0,
+    "val": -1,
+    "test": 1
+  },
+  "rows": 237,
+  "manifest_sha256": "3675afcb909b83269cc43c5290bc8985bfef6b4530377a9e9e33fdf062f6504c",
+  "limitations": [
+    "One synthetic speaker; not a human-speech benchmark",
+    "NLP examples retain the original conversation split; utterance templates can repeat",
+    "Simulator phrases repeat across splits with different speech rates",
+    "No personal microphone recordings are included automatically"
+  ]
+}

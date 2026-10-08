@@ -1,0 +1,23 @@
+asr:
+  model_path: .runtime/speech/vosk-model-small-en-us-0.15
+  min_confidence: 0.55
+  max_audio_seconds: 30
+tts:
+  backend: windows_sapi
+  voice: Microsoft Zira Desktop
+  rate: 0
+training:
+  environment_version: voice_v2_observable_dialogue
+  observable_dialogue: true
+  reuse_manifest: data/processed/voice/manifest.jsonl
+  seeds: [42, 43, 44]
+  total_timesteps: 20000
+  evaluation_episodes: 100
+  nlp_examples_per_split: 80
+  # Held-out synthesis rates, not independent human speakers.
+  speech_rates:
+    train: 0
+    val: -1
+    test: 1
+  output_dir: results/voice_v2
+  dataset_dir: data/processed/voice_v2

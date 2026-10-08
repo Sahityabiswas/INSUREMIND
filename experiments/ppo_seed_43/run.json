@@ -1,0 +1,164 @@
+{
+  "mean_train_reward": 4.0597947761194035,
+  "training_steps": 20000,
+  "random_seed": 43,
+  "hyperparameters": {
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "clip_range": 0.2,
+    "batch_size": 256,
+    "n_steps": 1024,
+    "n_epochs": 4,
+    "entropy_coef": 0.01,
+    "max_grad_norm": 0.5,
+    "lr": 0.0003
+  },
+  "reward_weights": {
+    "need_discovery": 0.2,
+    "useful_clarification": 0.1,
+    "objection_resolution": 0.3,
+    "engagement_improved": 0.3,
+    "trust_improved": 0.3,
+    "suitable_product": 0.5,
+    "qualified_lead": 1.0,
+    "suitable_purchase": 5.0,
+    "repetition": -0.3,
+    "premature_closing": -0.5,
+    "pressure": -1.0,
+    "unsupported_claim": -2.0,
+    "unsuitable_recommendation": -3.0,
+    "frustration": -1.0
+  },
+  "environment_options": {
+    "max_turns": 20
+  },
+  "model_version": "linear_ppo_v2_adam",
+  "dataset_version": "v2",
+  "environment_version": "v2",
+  "strategy_taxonomy_version": "v1.1",
+  "product_database_version": "v1",
+  "evaluation_split": "held-out simulated seeds",
+  "warm_start": true,
+  "history": [
+    {
+      "steps": 1024,
+      "episodes": 115,
+      "mean_reward": 3.6609999999999996,
+      "value_loss": 8.28161697443971
+    },
+    {
+      "steps": 2048,
+      "episodes": 237,
+      "mean_reward": 3.075,
+      "value_loss": 7.720502802351714
+    },
+    {
+      "steps": 3072,
+      "episodes": 348,
+      "mean_reward": 3.7829999999999995,
+      "value_loss": 9.238340919496595
+    },
+    {
+      "steps": 4096,
+      "episodes": 463,
+      "mean_reward": 4.109999999999999,
+      "value_loss": 10.097121655664491
+    },
+    {
+      "steps": 5120,
+      "episodes": 585,
+      "mean_reward": 3.6140000000000003,
+      "value_loss": 8.652221951789473
+    },
+    {
+      "steps": 6144,
+      "episodes": 710,
+      "mean_reward": 4.207999999999999,
+      "value_loss": 9.139718603305239
+    },
+    {
+      "steps": 7168,
+      "episodes": 819,
+      "mean_reward": 4.204999999999999,
+      "value_loss": 6.822178268672003
+    },
+    {
+      "steps": 8192,
+      "episodes": 928,
+      "mean_reward": 3.9349999999999996,
+      "value_loss": 7.86568631035012
+    },
+    {
+      "steps": 9216,
+      "episodes": 1039,
+      "mean_reward": 3.887,
+      "value_loss": 8.143040820328235
+    },
+    {
+      "steps": 10240,
+      "episodes": 1149,
+      "mean_reward": 4.073,
+      "value_loss": 7.252418329770591
+    },
+    {
+      "steps": 11264,
+      "episodes": 1259,
+      "mean_reward": 4.021,
+      "value_loss": 6.826142933617257
+    },
+    {
+      "steps": 12288,
+      "episodes": 1361,
+      "mean_reward": 4.693,
+      "value_loss": 8.923979271702322
+    },
+    {
+      "steps": 13312,
+      "episodes": 1470,
+      "mean_reward": 4.082999999999999,
+      "value_loss": 7.913611444436679
+    },
+    {
+      "steps": 14336,
+      "episodes": 1575,
+      "mean_reward": 4.073,
+      "value_loss": 6.984321640528094
+    },
+    {
+      "steps": 15360,
+      "episodes": 1679,
+      "mean_reward": 4.781,
+      "value_loss": 8.33486708883628
+    },
+    {
+      "steps": 16384,
+      "episodes": 1782,
+      "mean_reward": 4.590000000000001,
+      "value_loss": 8.07833306930089
+    },
+    {
+      "steps": 17408,
+      "episodes": 1886,
+      "mean_reward": 4.454,
+      "value_loss": 7.612494059905304
+    },
+    {
+      "steps": 18432,
+      "episodes": 1987,
+      "mean_reward": 4.218,
+      "value_loss": 6.062499186432108
+    },
+    {
+      "steps": 19456,
+      "episodes": 2086,
+      "mean_reward": 4.05,
+      "value_loss": 5.520129747579588
+    },
+    {
+      "steps": 20000,
+      "episodes": 2144,
+      "mean_reward": 4.142,
+      "value_loss": 5.490135144325175
+    }
+  ]
+}

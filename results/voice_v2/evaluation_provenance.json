@@ -1,0 +1,58 @@
+{
+  "config": {
+    "asr": {
+      "model_path": ".runtime/speech/vosk-model-small-en-us-0.15",
+      "min_confidence": 0.55,
+      "max_audio_seconds": 30
+    },
+    "tts": {
+      "backend": "windows_sapi",
+      "voice": "Microsoft Zira Desktop",
+      "rate": 0
+    },
+    "training": {
+      "environment_version": "voice_v2_observable_dialogue",
+      "observable_dialogue": true,
+      "reuse_manifest": "data/processed/voice/manifest.jsonl",
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "total_timesteps": 20000,
+      "evaluation_episodes": 100,
+      "nlp_examples_per_split": 80,
+      "speech_rates": {
+        "train": 0,
+        "val": -1,
+        "test": 1
+      },
+      "output_dir": "results/voice_v2",
+      "dataset_dir": "data/processed/voice_v2"
+    }
+  },
+  "base_reward": {
+    "need_discovery": 0.2,
+    "useful_clarification": 0.1,
+    "objection_resolution": 0.3,
+    "engagement_improved": 0.3,
+    "trust_improved": 0.3,
+    "suitable_product": 0.5,
+    "qualified_lead": 1.0,
+    "suitable_purchase": 5.0,
+    "repetition": -0.3,
+    "premature_closing": -0.5,
+    "pressure": -1.0,
+    "unsupported_claim": -2.0,
+    "unsuitable_recommendation": -3.0,
+    "frustration": -1.0
+  },
+  "manifest_sha256": "3675afcb909b83269cc43c5290bc8985bfef6b4530377a9e9e33fdf062f6504c",
+  "evaluated_checkpoints": {
+    "results\\voice_v2\\checkpoints\\ppo_voice_seed_42.npz": "6dae3caea184c49c555500b06a85ebfca1d41e90b3dca49bbe16f50fa786e258",
+    "results\\voice_v2\\checkpoints\\ppo_voice_seed_43.npz": "35d568391c366c60bc40aee29e1cc3b420e875cfdda03c15af67376cdf58809a",
+    "results\\voice_v2\\checkpoints\\ppo_voice_seed_44.npz": "9213d95e22154ad65428612de720636ab8786a6d8f9266907d01955aff8388be",
+    "results\\checkpoints\\ppo.npz": "e2528891a3a4fb62dd54708322668f58e54c4b9dc8dac5b42c71816b254d7b75",
+    "results\\voice\\checkpoints\\ppo_voice.npz": "39f6ad09493e006b62467f97b017e82fe2afa044b3107d55b4c9c95f8d35d583"
+  }
+}

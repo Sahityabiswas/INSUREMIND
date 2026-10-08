@@ -1,0 +1,29 @@
+{
+  "train": {
+    "examples": 79,
+    "word_errors": 26,
+    "reference_words": 578,
+    "wer": 0.04498269896193772,
+    "cer": 0.008939974457215836,
+    "exact_match": 0.7974683544303798,
+    "failed_transcriptions": 0
+  },
+  "val": {
+    "examples": 79,
+    "word_errors": 24,
+    "reference_words": 578,
+    "wer": 0.04152249134948097,
+    "cer": 0.0070242656449553,
+    "exact_match": 0.8227848101265823,
+    "failed_transcriptions": 0
+  },
+  "test": {
+    "examples": 79,
+    "word_errors": 27,
+    "reference_words": 578,
+    "wer": 0.04671280276816609,
+    "cer": 0.009897828863346106,
+    "exact_match": 0.7848101265822784,
+    "failed_transcriptions": 0
+  }
+}

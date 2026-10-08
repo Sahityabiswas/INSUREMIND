@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#157454">
+  <title>Insurance Sales Agent | Research Workspace</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/vendor/lucide.min.js" defer></script>
+  <script src="/audio.js" defer></script>
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Insurance Sales Agent home">
+      <span class="brand-mark"><i data-lucide="shield-check"></i></span>
+      <span>Insurance Sales Agent<span class="brand-caption">RESEARCH WORKSPACE</span></span>
+    </a>
+    <nav class="navigation" aria-label="Workspace views">
+      <button class="nav-button active" data-view="conversation" aria-current="page"><i data-lucide="messages-square"></i><span>Conversation</span></button>
+      <button class="nav-button" data-view="catalogue"><i data-lucide="layers"></i><span>Catalogue</span></button>
+      <button class="nav-button" data-view="results"><i data-lucide="chart-no-axes-combined"></i><span>Results</span></button>
+    </nav>
+    <div class="top-actions">
+      <span id="model-status" class="connection checking" role="status"><span class="status-dot"></span><span>Checking model</span></span>
+      <button id="export" class="icon-button" aria-label="Export conversation" data-tooltip="Export conversation" disabled><i data-lucide="download"></i></button>
+      <button id="new-session" class="button secondary"><i data-lucide="rotate-ccw"></i><span>New session</span></button>
+    </div>
+  </header>
+
+  <div class="workspace-bar">
+    <div><span class="workspace-label">Agent workspace</span><span class="separator">/</span><span id="session-label">New session</span></div>
+    <span class="research-label"><i data-lucide="flask-conical"></i>Synthetic products. No policy sales.</span>
+  </div>
+
+  <div class="mobile-panels" aria-label="Conversation panels">
+    <button data-panel="buyer"><i data-lucide="user-round"></i>Buyer</button>
+    <button data-panel="chat" class="active"><i data-lucide="messages-square"></i>Chat</button>
+    <button data-panel="inspector"><i data-lucide="workflow"></i>Decisions</button>
+  </div>
+
+  <div class="workspace" id="workspace" data-view="conversation" data-panel="chat">
+    <aside class="buyer-panel" aria-label="Buyer configuration">
+      <div class="panel-heading"><h2>Buyer profile</h2><span class="tiny-label">SIMULATED</span></div>
+      <div class="buyer-identity"><span class="buyer-avatar"><i data-lucide="user-round"></i></span><div><strong id="buyer-title">Family-oriented buyer</strong><span id="buyer-subtitle">Age 35 / Low budget</span></div></div>
+      <form id="profile-form">
+        <div class="field-pair">
+          <label>Age<input id="age" type="number" min="18" max="100" value="35" required></label>
+          <label>Budget<select id="budget"><option value="low">Low</option><option value="mid">Medium</option><option value="high">High</option><option value="unknown">Unknown</option></select></label>
+        </div>
+        <label>Buyer type<select id="profile"><option value="FAMILY_ORIENTED">Family-oriented</option><option value="PRICE_SENSITIVE">Price-sensitive</option><option value="SKEPTICAL">Skeptical</option><option value="RISK_AVERSE">Risk-averse</option><option value="INFORMATION_SEEKING">Information-seeking</option><option value="LOYAL_TO_EXISTING_INSURER">Already insured</option><option value="HESITANT">Hesitant</option><option value="READY_TO_BUY">Ready to buy</option></select></label>
+        <fieldset><legend>Trained pipeline</legend><div class="segmented"><button type="button" data-pipeline="text" aria-pressed="false"><i data-lucide="text"></i>Text</button><button type="button" data-pipeline="voice" class="selected" aria-pressed="true"><i data-lucide="audio-lines"></i>Voice</button></div></fieldset>
+        <fieldset><legend>Decision policy</legend><div class="segmented" id="policy-control"><button type="button" data-policy="ppo" class="selected" aria-pressed="true"><i data-lucide="brain-circuit"></i>PPO</button><button type="button" data-policy="rule" aria-pressed="false"><i data-lucide="list-checks"></i>Rules</button></div></fieldset>
+        <fieldset><legend>Response engine</legend><div class="segmented" id="generator-control"><button type="button" data-generator="hybrid" class="selected" aria-pressed="true" title="Deterministic task replies; local LLM for open-ended wording">Hybrid</button><button type="button" data-generator="ollama" aria-pressed="false" title="Local LLM wording">LLM</button><button type="button" data-generator="template" aria-pressed="false">Templates</button></div></fieldset>
+        <button class="button apply-profile" id="apply-profile" type="submit" disabled><i data-lucide="check"></i>Apply profile</button>
+      </form>
+      <section class="scenario-section">
+        <div class="section-heading"><h3>Scenarios</h3><span class="tiny-label">04</span></div>
+        <button class="scenario selected" data-scenario="family"><i data-lucide="users-round"></i><span><strong>Family health</strong><small>35 years / Low budget</small></span><i data-lucide="chevron-right"></i></button>
+        <button class="scenario" data-scenario="coverage"><i data-lucide="shield"></i><span><strong>Already insured</strong><small>42 years / Medium budget</small></span><i data-lucide="chevron-right"></i></button>
+        <button class="scenario" data-scenario="price"><i data-lucide="wallet"></i><span><strong>Price concern</strong><small>29 years / Low budget</small></span><i data-lucide="chevron-right"></i></button>
+        <button class="scenario" data-scenario="rejection"><i data-lucide="hand"></i><span><strong>Respectful exit</strong><small>Explicit rejection</small></span><i data-lucide="chevron-right"></i></button>
+      </section>
+      <div class="checkpoint-note"><i data-lucide="database"></i><div><strong id="checkpoint-name">Voice-trained PPO</strong><span id="checkpoint-path">Checking artifacts</span><span>94 state features / 16 actions</span></div></div>
+    </aside>
+
+    <main class="main-panel">
+      <section id="conversation-view" class="view conversation-view" aria-label="Conversation">
+        <div class="conversation-heading"><div><span class="eyebrow" id="pipeline-label">VOICE-TRAINED AGENT</span><h1>Conversation</h1></div><div class="conversation-meta"><span id="engine-label" class="tag">PPO + Hybrid</span><span id="turn-count">0 turns</span></div></div>
+        <div class="stage-strip" aria-label="Conversation stage"><span data-stage="greeting" class="current"><span>1</span>Greeting</span><i data-lucide="chevron-right"></i><span data-stage="discovery"><span>2</span>Discovery</span><i data-lucide="chevron-right"></i><span data-stage="evaluation"><span>3</span>Review</span><i data-lucide="chevron-right"></i><span data-stage="commitment"><span>4</span>Interest</span><i data-lucide="chevron-right"></i><span data-stage="closed"><span>5</span>Closed</span></div>
+        <div class="chat-log" id="chat-log" role="log" aria-label="Chat messages" aria-live="polite">
+          <div class="empty-chat" id="empty-chat"><span class="empty-symbol"><i data-lucide="messages-square"></i></span><h2>New conversation</h2><p id="empty-profile">Family-oriented buyer / Age 35</p><div class="starter-messages"><button data-message="I need health insurance for my family.">I need health insurance for my family.<i data-lucide="arrow-up-right"></i></button><button data-message="What does the policy cover?">What does the policy cover?<i data-lucide="arrow-up-right"></i></button></div></div>
+        </div>
+        <div class="error-banner" id="error-banner" role="alert" hidden><i data-lucide="circle-alert"></i><span id="error-text"></span><button id="retry-message" class="text-button" hidden>Retry</button><button id="dismiss-error" class="icon-button" aria-label="Dismiss error"><i data-lucide="x"></i></button></div>
+        <div class="conversation-closed" id="conversation-closed" hidden><i data-lucide="check-check"></i><span>Conversation ended. Buyer rejection respected.</span><button id="restart" class="text-button">New session</button></div>
+        <div class="composer-area">
+          <div class="voice-toolbar">
+            <span id="speech-status" role="status">Checking speech</span>
+            <label class="checkbox-label"><input id="review-transcript" type="checkbox" checked>Review speech</label>
+            <label class="checkbox-label"><input id="auto-speak" type="checkbox">Spoken replies</label>
+            <button id="stop-playback" class="icon-button" type="button" aria-label="Stop playback" data-tooltip="Stop playback" hidden><i data-lucide="volume-x"></i></button>
+          </div>
+          <div id="recording-strip" class="recording-strip" hidden><span class="recording-dot"></span><span id="recording-status">Microphone permission</span><meter id="mic-level" min="0" max="1" value="0" aria-label="Microphone level"></meter><button id="cancel-recording" class="icon-button" type="button" aria-label="Discard recording" data-tooltip="Discard recording"><i data-lucide="x"></i></button></div>
+          <div id="voice-feedback" class="voice-feedback" role="status" hidden></div>
+          <div id="transcript-review" class="transcript-review" hidden><i data-lucide="file-pen-line"></i><span id="transcript-review-label">Transcript awaiting confirmation</span><button id="discard-transcript" class="icon-button" type="button" aria-label="Discard transcript" data-tooltip="Discard transcript"><i data-lucide="x"></i></button></div>
+          <div class="quick-replies" id="quick-replies"><button data-message="I already have a 5 lakh policy.">Already insured</button><button data-message="The premium is too expensive.">Price concern</button><button data-message="What are the exclusions?">Exclusions</button><button data-message="No, I am not interested. Please stop.">Not interested</button></div>
+          <form class="composer" id="message-form"><label class="sr-only" for="message">Buyer message</label><textarea id="message" rows="2" maxlength="2000" placeholder="Write the buyer's message..." required></textarea><div class="composer-toolbar"><span class="composer-role"><i data-lucide="user-round"></i>Buyer<span id="character-count">0 / 2000</span></span><div class="composer-actions"><input id="audio-file" type="file" accept=".wav,audio/wav" hidden><button id="upload-audio" class="icon-button" type="button" aria-label="Upload buyer WAV" data-tooltip="Upload 16 kHz mono PCM WAV"><i data-lucide="file-audio"></i></button><button id="record" class="icon-button" type="button" aria-label="Record buyer voice" data-tooltip="Record buyer voice"><i data-lucide="mic"></i></button><button id="send" class="send-button" type="submit" aria-label="Send buyer message" data-tooltip="Send message" disabled><i data-lucide="arrow-up"></i></button></div></div></form>
+          <div class="composer-status"><span id="response-status"><span class="status-dot"></span>Ready</span><span>Research only / Not insurance advice</span></div>
+        </div>
+      </section>
+
+      <section id="catalogue-view" class="view data-view" hidden>
+        <div class="data-heading"><div><span class="eyebrow">SYNTHETIC RECORDS</span><h1>Product catalogue</h1></div><span class="tag" id="product-count">8 products</span></div>
+        <div class="catalogue-filters"><label>Coverage need<select id="catalogue-need"><option value="GENERAL_FINANCIAL_PROTECTION">All protection needs</option><option value="FAMILY_HEALTH">Family health</option><option value="INDIVIDUAL_HEALTH">Individual health</option><option value="LIFE_PROTECTION">Life protection</option><option value="RETIREMENT">Retirement</option><option value="ACCIDENT_PROTECTION">Accident protection</option><option value="CRITICAL_ILLNESS">Critical illness</option><option value="CHILD_PROTECTION">Child protection</option><option value="INCOME_PROTECTION">Income protection</option></select></label><label class="checkbox-label"><input id="eligible-only" type="checkbox">Profile matches only</label></div>
+        <div class="catalogue-summary" id="catalogue-summary"></div><div id="product-grid" class="product-grid"></div>
+        <p class="data-disclaimer">Synthetic catalogue for research. Premiums are budget bands, not real quotes.</p>
+      </section>
+
+      <section id="results-view" class="view data-view" hidden>
+        <div class="data-heading"><div><span class="eyebrow">RECORDED EXPERIMENT</span><h1>Evaluation results</h1></div><span class="tag">Simulated customers</span></div>
+        <label class="results-selector">Experiment<select id="results-pipeline"><option value="voice">Voice-trained / current configuration</option><option value="text">Original text experiment</option></select></label>
+        <p id="results-source" class="results-source"></p>
+        <p id="results-error" class="voice-feedback" role="status" hidden></p>
+        <div class="benchmark-summary" id="benchmark-summary"></div>
+        <div class="table-wrap"><table><caption id="results-caption">Held-out simulator results / Seed means</caption><thead><tr id="results-columns"></tr></thead><tbody id="results-table"></tbody></table></div>
+        <div id="voice-metrics" class="voice-metrics"></div>
+        <div class="results-chart" id="text-chart" hidden><div class="section-heading"><h2>Text training reward</h2><span class="tiny-label">PPO / SEED 42</span></div><img src="/assets/reward-curve.png" alt="Recorded text PPO training reward curve from the original experiment" width="800" height="400"></div>
+        <p class="data-disclaimer" id="results-disclaimer"></p>
+      </section>
+    </main>
+
+    <aside class="inspector-panel" aria-label="Agent decision inspector">
+      <div class="panel-heading"><h2>Decision trace</h2><span id="trace-turn" class="tiny-label">NO TURNS</span></div>
+      <div class="decision-state" id="decision-state"><span class="decision-icon"><i data-lucide="workflow"></i></span><span class="eyebrow">SELECTED ACTION</span><h3 id="action-name">Awaiting buyer</h3><span id="strategy-name">No strategy selected</span></div>
+      <section class="trace-section"><div class="section-heading"><h3>Understanding</h3><span class="tiny-label">NLP + EXPLICIT CUES</span></div><div id="understanding"><div class="trace-row"><span>Intent</span><strong>Not observed</strong></div><div class="trace-row"><span>Emotion</span><strong>Not observed</strong></div><div class="trace-row"><span>Objection</span><strong>Not observed</strong></div></div></section>
+      <section class="trace-section"><h3>Buyer state</h3><dl id="buyer-state"><div><dt>Need</dt><dd>Unknown</dd></div><div><dt>Budget</dt><dd>Low</dd></div><div><dt>Existing cover</dt><dd>Unknown</dd></div><div><dt>Stage</dt><dd>Greeting</dd></div></dl></section>
+      <section class="trace-section"><h3>Runtime trace</h3><dl id="runtime-trace"></dl></section>
+      <section class="trace-section" id="workflow-section" hidden><h3>Question flow</h3><ol id="workflow-fields" class="workflow-fields"></ol><span id="workflow-phase" class="tiny-label"></span></section>
+      <section class="trace-section"><div class="section-heading"><h3>Response checks</h3><i data-lucide="shield-check"></i></div><div id="validation" class="validation-empty">No response yet</div><div id="fact-list"></div></section>
+      <section class="trace-section training-preview"><div class="section-heading"><h3>Recorded experiment</h3><span class="tiny-label" id="experiment-label">VOICE</span></div><button id="show-results" class="text-button">Evaluation results<i data-lucide="arrow-up-right"></i></button></section>
+    </aside>
+  </div>
+  <div id="toast" class="toast" role="status" hidden></div>
+  <dialog id="reset-dialog"><div class="dialog-icon"><i data-lucide="rotate-ccw"></i></div><h2>Start a new session?</h2><p>The current conversation will be replaced. Export it first to keep a record.</p><div class="dialog-actions"><button id="cancel-reset" class="button secondary">Cancel</button><button id="confirm-reset" class="button primary">New session</button></div></dialog>
+</body>
+</html>
