@@ -8,8 +8,8 @@ The product catalogue is still synthetic. The project does not issue policies, c
 quotes, collect payments, or make telephone calls.
 
 The existing text dataset, PPO checkpoint and benchmark results are preserved. Voice artifacts are stored
-under `results/voice_v2/`; generated speech is under `data/processed/voice_v2/`. Original v1 artifacts in
-`results/voice/` and `data/processed/voice/` are preserved. The ASR model is on the project
+under `results/voice_v3_transformer/`; generated speech is under `data/processed/voice_v3_transformer/`.
+Original v1/v2 voice and text artifacts are preserved. The ASR model is on the project
 drive under `.runtime/speech/`. No additional Llama model is downloaded by voice setup.
 
 ## Architecture
@@ -18,8 +18,9 @@ drive under `.runtime/speech/`. No additional Llama model is downloaded by voice
 Microphone (explicit bounded recording) or local PCM WAV
   -> audio-format and silence checks
   -> pretrained Vosk speech recognizer
+  -> parallel waveform branch: pretrained wav2vec2 acoustic-emotion estimates
   -> transcript, word confidence and spoken-number normalization
-  -> retry if unclear, or continue with recognized text
+  -> direct reply by default; optional browser review/correction; retry if unclear
   -> shared ConversationSession: NLP, entities, memory, eligibility and action mask
   -> speech-trained PPO action + explicit conversation constraints
   -> existing local Llama or template response generator
@@ -38,13 +39,18 @@ clarification instead. If synthesis fails, the text response remains available w
 | --- | --- | --- |
 | Speech recognition | Vosk `vosk-model-small-en-us-0.15` | No; pretrained weights |
 | Spoken numbers | `text2num`, preserving the original transcript | No |
-| Intent/emotion/objection/stage | Existing Naive Bayes architecture, adapted with speech transcripts | Yes |
+| Intent and objections | Fine-tuned MiniLM, softmax intent + sigmoid multi-label objections | Yes, `train_understanding.py` |
+| Text emotion | RoBERTa GoEmotions with heuristic eight-category mapping | Mapping evaluated, encoder not fine-tuned |
+| Acoustic emotion | wav2vec2 SUPERB ER on actual waveform, four original labels | Pretrained only; no human-domain validation |
+| Entities | spaCy phrase rules + exact regex values; visible regex-only fallback on this host | No statistical NER training |
 | Sales action policy | Existing 94-feature, 16-action NumPy PPO | Yes, separate voice checkpoints |
 | Response wording | Existing Llama 3.2 3B through Ollama, or templates | No Llama fine-tuning |
 | Speech synthesis | Installed Microsoft Zira Desktop through Windows SAPI | No; pretrained system voice |
 
-The emotion component analyzes words. It does not infer emotion from pitch, tone, rhythm or other audio
-features. This first voice version supports English and a Windows TTS backend.
+Text emotion and acoustic emotion are separate, uncertain estimates. Acoustic inference can affect
+non-pressuring wording style only; it cannot supply consent, financial eligibility or PPO state. This
+version supports English and Windows TTS. See [understanding details](understanding.md) for models,
+label mapping, hashes, data quality, metrics and runtime limitations.
 
 Sources: [official Vosk models](https://alphacephei.com/vosk/models),
 [Vosk waveform example](https://github.com/alphacep/vosk-api/blob/master/python/example/test_simple.py),
@@ -56,29 +62,32 @@ Sources: [official Vosk models](https://alphacephei.com/vosk/models),
 ```powershell
 Set-Location 'D:\insurence seller\insurance_sales_agent'
 & '..\term_project\Scripts\python.exe' -m pip install -r requirements-voice.txt
+& '..\term_project\Scripts\python.exe' -m pip install -r requirements-understanding.txt
 & '..\term_project\Scripts\python.exe' setup_voice.py --download-model
+& '..\term_project\Scripts\python.exe' setup_understanding.py
 ```
 
 `setup_voice.py` downloads from the official Vosk model site, validates archive paths, and records the
 source URL, license and downloaded archive SHA-256. It does not download a model during ordinary inference.
 The hash is locally recorded provenance, not verification against a publisher-signed checksum.
 
-Windows must have an English desktop speech voice installed. `configs/voice.yaml` selects its name and
+Windows must have an English desktop speech voice installed. `configs/voice_transformer.yaml` selects its name and
 rate. A missing voice is an error, not a silent substitution with another speech engine. Installations on
 other operating systems need another TTS adapter; the text pipeline remains usable without audio packages.
 
 ## Training Workflow
 
 ```powershell
-& '..\term_project\Scripts\python.exe' -u train_voice.py
+& '..\term_project\Scripts\python.exe' -u train_understanding.py
+& '..\term_project\Scripts\python.exe' -u train_voice.py --config configs/voice_transformer.yaml
 ```
 
 1. Select unique customer utterances within each existing conversation split, up to the configured cap.
 2. Generate local speech for those utterances using an installed system voice.
 3. Generate the finite set of customer-simulator utterances at train/validation/test speech rates.
 4. Transcribe the real generated WAV files with Vosk. Save hypotheses, confidence, timings and hashes.
-5. Fit new insurance NLP models using original training text plus transcribed training speech. Do not use
-   validation or test labels for fitting.
+5. Load the separately fine-tuned MiniLM + mapped RoBERTa bundle. The explicit historical NB configuration
+   still fits original training text plus transcribed training speech. Validation/test data do not fit weights.
 6. Create a speech-conditioned environment. Recognized text goes through the same state preparation used
    by live conversations. Trust, engagement, satisfaction and intent scores use live defaults rather than
    exposing hidden simulator values to the policy.
@@ -104,7 +113,7 @@ unchanged. That difference is recorded in the report.
 ### Reuse and Smoke Runs
 
 ```powershell
-# Reuse and validate already generated audio; retrain only voice artifacts.
+# For an unfinished/new configured experiment; completed outputs are protected.
 & '..\term_project\Scripts\python.exe' -u train_voice.py --reuse-data
 
 # Only prepare/transcribe speech and calculate ASR metrics.
@@ -116,7 +125,9 @@ unchanged. That difference is recorded in the report.
 
 The default training seeds are 42, 43 and 44, with 100 held-out episodes per seed and policy. The deployed
 voice checkpoint is the first configured seed, not the seed that scored best on the test set. Configuration
-changes are made in `configs/voice.yaml`. PPO optimization and reward parameters come from `configs/base.yaml`.
+changes are made in `configs/voice_transformer.yaml`. `configs/voice.yaml` is the historical NB configuration.
+PPO optimization and reward parameters come from `configs/base.yaml`. Choose new output/dataset directories
+in a copied config to retrain without overwriting a completed run.
 
 ## Run a Conversation
 
@@ -156,23 +167,32 @@ Open `http://127.0.0.1:8765`. Voice-trained + Hybrid uses the same configured NL
 `voice.py`, via `src/voice_runtime.py`. The text-trained pipeline remains selectable. Changing the
 pipeline, buyer profile, policy or generator starts a new session after confirmation.
 
-- The microphone button requests browser permission and starts explicit recording. Stop sends it;
-  discard cancels. Capture ends at a ten-second maximum. Browser recording uses a bounded manual
+- The microphone button requests browser permission and starts explicit recording. Stop sends accepted
+  speech directly to the agent and gets an answer without another Send click. Enable **Review speech**
+  for an optional transcript preview; correct it and confirm Send. Preview does not advance the
+  conversation; discard cancels. Capture ends at a ten-second maximum. Browser recording uses a bounded manual
   window, not the CLI's streaming Vosk endpoint detector.
 - Web Audio's resampler converts captured audio to 16 kHz mono PCM WAV. `/audio` passes it through
   the existing `VoiceSession` and local Vosk. No browser cloud ASR is used.
 - The WAV upload control accepts the same format, at most 30 seconds. Malformed uploads are rejected
   before ASR or conversation state changes. Low-confidence/silent input does not advance a turn.
 - Typed and spoken inputs share the same session memory. Successful voice turns record the original
-  and normalized transcript, ASR confidence and timings. A recognized stop closes the conversation.
-- Spoken replies are opt-in. `/speech` synthesizes only an existing checked response through Windows
-  SAPI; the caller cannot submit arbitrary synthesis text. Playback failures leave the text intact.
+  and normalized transcript, ASR confidence, acoustic estimates and timings. Corrections keep the original
+  transcript and waveform estimate. A recognized stop closes the conversation once the turn is submitted.
+- Spoken replies default to on for voice turns (including confirmed voice previews); typed turns stay
+  silent. The checkbox turns automatic playback off, while each reply's speaker button supports manual
+  playback. `/speech` synthesizes only an existing checked response through Windows SAPI; the caller
+  cannot submit arbitrary synthesis text. Playback failures leave the text intact and expose a retry
+  through the speaker button. Browser autoplay restrictions can require that extra click.
+- Voice turns show waveform **Vocal emotion** prominently, including uncertain, unavailable and
+  skipped-stop states. Four-label scores are expandable; **Transcript emotion** remains separate.
+  **Spoken intent** uses recognized words, not vocal tone. No text estimate is relabeled as vocal emotion.
 - Microphone tracks close on stop, cancel, failure, page hide and navigation. Temporary WAVs are
   removed after each API call. Session transcripts remain in memory until expiry/restart; exporting
   JSON is an explicit action. Raw audio is not retained or automatically used for training.
 - Request IDs and input fingerprints prevent a retried upload from creating a second buyer turn.
   Per-session locks and a bounded speech worker reject overlapping work with an explicit busy error.
-- The Results view separates text and voice experiments, shows saved provenance, seed spread, ASR
+- The Results view separates transformer language, text-policy and voice-policy experiments, shows saved provenance, seed spread, ASR
   word errors, violations and missed stops, and does not imply a real-world conversion rate.
 
 `tests/test_ui_voice.py` covers the shared API contract and failure paths; `tests/demo_browser.cjs`
@@ -207,16 +227,26 @@ files and do not play it aloud.
 
 ## Evaluation and Evidence
 
-`results/voice_v2/report.md` summarizes the current completed run. `speech_metrics.json` records corpus-level
+`results/voice_v3_transformer/report.md` summarizes the current completed run. `speech_metrics.json` records corpus-level
 word error rate (total word edits / total reference words), character error rate, exact matches and failed
 transcriptions. WER can exceed 100% when there are many insertions. Punctuation and case are normalized;
 this is not semantic equivalence or validation of extracted money amounts.
 
-`nlp_metrics.json` compares original and adapted NLP predictions on held-out recognized text. Empty
+Historical v1/v2 `nlp_metrics.json` compares original and adapted NB predictions. Current language metrics
+are in `results/understanding_v1/evaluation.json`, with different synthetic splits and multi-label tests. Empty
 hypotheses remain evaluation failures rather than being silently excluded. `evaluation.json` and
 `episodes.csv` contain separate simulator results; they do not replace the earlier text benchmark.
 
-### Current v2 Run: 8 October 2026
+### Current v3 Run: 9 October 2026 (Local Time)
+
+- Fine-tuned MiniLM and mapped RoBERTa replace live NB classification; the prior NB pipeline is selectable.
+- Three 20K-step PPO seeds and 1,200 evaluation conversations, reusing 237 synthetic speech recordings.
+- New PPO reward 5.0857, simulated conversion 6.33%; prior voice checkpoint 5.1107 and 8.00%.
+  Both report zero violation turns in this environment. Retraining superiority is not established.
+- Waveform emotion inference is implemented but does not participate in PPO training or these metrics.
+- Old benchmarks below are historical, not evaluation of the current runtime.
+
+### Historical v2 Run: 8 October 2026
 
 - 237 synthetic speech files, 79 per speech-rate split; test WER 4.67%.
 - Three PPO seeds with 20,000 training steps each. Evaluation includes 1,200 conversations across
@@ -232,7 +262,7 @@ hypotheses remain evaluation failures rather than being silently excluded. `eval
   timings. Four hybrid dialogue turns took about 1.55-1.80 seconds, all deterministic templates.
   The separate open-ended Llama attempt timed out and fell back after 22.13 seconds. Do not describe
   the deterministic timings as an LLM speed improvement. Timings exclude recording and playback.
-- Re-evaluate saved policies without retraining with `train_voice.py --evaluate-only`.
+- Re-evaluating v2 specifically requires `train_voice.py --config configs/voice.yaml --evaluate-only`.
 - `microphone_check.py` is the remaining opt-in human test, not part of unattended automation.
 
 ### Historical v1 Run: 8 October 2026

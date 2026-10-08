@@ -266,5 +266,13 @@ dialog p{font-size:12px;line-height:1.8;color:#89988e;margin:12px 0 23px}
 .voice-metrics dl{max-width:520px}
 .voice-metrics dd{color:#365b70}
 #runtime-trace dd{color:#4c6d83}
+.model-detail{display:block;font-size:10px;line-height:1.6;color:#6a7884;margin:8px 0 12px;overflow-wrap:anywhere}
+#acoustic-section summary,#acoustic-trace dd,#vocal-emotion strong{color:#326885}
+#vocal-emotion .confidence-fill{background:#4381a2}
+#acoustic-trace{font-variant-numeric:tabular-nums}
+.trace-details>summary{cursor:pointer;font-size:11px;color:#536a5b;font-weight:600;line-height:1.5}
+.trace-details[open]>summary{margin-bottom:12px}
+.trace-details>summary:focus-visible{outline:2px solid var(--green);outline-offset:4px}
+.trace-row>span{overflow-wrap:anywhere}
 .stage-strip{flex-wrap:wrap}
 @media(max-width:650px){.voice-toolbar{gap:6px;font-size:9px}.voice-toolbar>.checkbox-label{font-size:9px}.composer-actions{gap:1px}.composer-role{font-size:9px}#character-count{margin-left:4px;font-size:8px}.stage-strip>span{font-size:8px}.stage-strip{padding-left:16px;padding-right:16px}.recording-strip{font-size:10px}.conversation-meta .tag{white-space:normal;text-align:right}.benchmark-stat strong{font-size:19px}}

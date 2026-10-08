@@ -12,8 +12,9 @@ def main():
     parser.add_argument("--budget", choices=["unknown", "low", "mid", "high"], default="unknown")
     parser.add_argument("--message", help="Print one structured response and exit")
     parser.add_argument("--debug", action="store_true")
+    parser.add_argument("--nlp-backend", choices=["transformer", "nb"])
     args = parser.parse_args()
-    session = ConversationSession(args.policy, args.generator, age=args.age, budget=args.budget)
+    session = ConversationSession(args.policy, args.generator, age=args.age, budget=args.budget, nlp_backend=args.nlp_backend)
     if args.message:
         print(json.dumps(session.reply(args.message), indent=2))
         return

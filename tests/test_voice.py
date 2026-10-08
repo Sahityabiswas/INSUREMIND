@@ -96,7 +96,7 @@ def test_silence_retry_and_tts_failure(tmp_path):
 def test_failed_fact_check_is_not_spoken(tmp_path):
     class Unsafe:
         closed = False
-        def reply(self, text):
+        def reply(self, text, acoustic=None):
             return {"text": "guaranteed claim", "validation": {"ok": False}}
     tts = FakeTTS()
     voice = VoiceSession(Unsafe(), FakeASR(), tts)

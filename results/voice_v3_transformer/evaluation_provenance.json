@@ -1,0 +1,84 @@
+{
+  "config": {
+    "asr": {
+      "model_path": ".runtime/speech/vosk-model-small-en-us-0.15",
+      "min_confidence": 0.55,
+      "max_audio_seconds": 30
+    },
+    "tts": {
+      "backend": "windows_sapi",
+      "voice": "Microsoft Zira Desktop",
+      "rate": 0
+    },
+    "training": {
+      "environment_version": "voice_v3_transformer_explicit_stop",
+      "observable_dialogue": true,
+      "nlp_backend": "transformer",
+      "nlp_model_dir": "results/understanding_v1",
+      "reuse_manifest": "data/processed/voice_v2/manifest.jsonl",
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "total_timesteps": 20000,
+      "evaluation_episodes": 100,
+      "nlp_examples_per_split": 80,
+      "speech_rates": {
+        "train": 0,
+        "val": -1,
+        "test": 1
+      },
+      "output_dir": "results/voice_v3_transformer",
+      "dataset_dir": "data/processed/voice_v3_transformer"
+    }
+  },
+  "base_reward": {
+    "need_discovery": 0.2,
+    "useful_clarification": 0.1,
+    "objection_resolution": 0.3,
+    "engagement_improved": 0.3,
+    "trust_improved": 0.3,
+    "suitable_product": 0.5,
+    "qualified_lead": 1.0,
+    "suitable_purchase": 5.0,
+    "repetition": -0.3,
+    "premature_closing": -0.5,
+    "pressure": -1.0,
+    "unsupported_claim": -2.0,
+    "unsuitable_recommendation": -3.0,
+    "frustration": -1.0
+  },
+  "nlp_bundle_sha256": "b374e49098aa34d02dd2a0bd0e67841e31f9342156b4af910927fc021e6acf5d",
+  "source_sha256": {
+    "train_voice.py": "77c607a1ea8bf89dac70eb8d5c793806f61d6586109b80e038d6a9ce04c60b9d",
+    "src\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src\\acoustic_emotion.py": "71653f52e2dd82e1a00f44dd95894a320257213607e8db69b0f07de0f7585620",
+    "src\\agents.py": "88f88c9f1c7701981572f09a67869cb3cdf82bd0bbe349b06df05e2f89765b4f",
+    "src\\common.py": "8174fb3c089f75cd2d801d4204bd8320ed90f9cebfcf1fd69cb660e10502c13a",
+    "src\\conversation.py": "9300e7475718b15406ca7830dde60eb5595355228456b4365129c19b73b60e39",
+    "src\\data_pipeline.py": "038625442492cc87f365875119b0e4c192dcf82c07c7ebc2725c27aae4b5fe36",
+    "src\\dialogue_flow.py": "cf58b9c44522725ad22a8c38875082b14789f3747163e57357530fed3a68bd35",
+    "src\\entities.py": "51dc5511d8a47e915fdf388f2195fd417166b3383ad1baee9961a2a5a4542b5f",
+    "src\\evaluate.py": "2d6f5dfa5b04dcdd03e0028b6e8aeeea177ade29fc97725496f12989e1a55ba5",
+    "src\\external_data.py": "4b48f446744fd44f351f17db6eb6205f5d500de0faaa63e55c8c63698aeef6f7",
+    "src\\generation.py": "97fd670b0049452c01df3a2a5c9be1cf2b428daba36f4c815e76eee547758a25",
+    "src\\nlp.py": "f5e91f69b156513112db4963793dbfbdedd5bf35d8bb233ce3784d5a8674c129",
+    "src\\ppo_numpy.py": "28c34f14a7a62957fd2dfcaeacc885461e44d2991bf8b1f541db4825f780a63d",
+    "src\\sim_env.py": "38beb7c723ffff147d64c47009e326998bf304131fa9334e9e65a321f816b391",
+    "src\\speech.py": "7617f14928f317a471885750134a9babe5f9252832cf7cc8c49fcf3d7fba7d16",
+    "src\\state_products.py": "39f6d07c758d12ed557a9794e2336957a3983151fb2905d75de2412a220c3942",
+    "src\\transformer_model.py": "a6054a39b9fe7912d2cb88daa93099faaf66e0a63a5cc2a5e909d1267e3ee1df",
+    "src\\understanding.py": "bbdd17a9d8852d3e1d02559f63e64ebdd2e098f8f28081172ade17348408c7cb",
+    "src\\voice_runtime.py": "57c20c1e4dfa6d6edcc524d9ded41822a7efb587253117ba250a60fdb3837d39",
+    "src\\voice_training.py": "fa74e18f1c9f70846c82a88d3d5c14f9664816317aa86a55e0aa4ead03c1051c"
+  },
+  "manifest_sha256": "3675afcb909b83269cc43c5290bc8985bfef6b4530377a9e9e33fdf062f6504c",
+  "evaluated_checkpoints": {
+    "results\\voice_v3_transformer\\checkpoints\\ppo_voice_seed_42.npz": "453edfb212b2abd48c835b17f8d8160990d5e16d680ab3918de1b467ffcca456",
+    "results\\voice_v3_transformer\\checkpoints\\ppo_voice_seed_43.npz": "2070ff86fcd484efe01db529b7e8b4bf87a71784281dae77649f1ec43b10441a",
+    "results\\voice_v3_transformer\\checkpoints\\ppo_voice_seed_44.npz": "2592ce1c278020d576b98972a853e095bba5b3cd0f338b2c1ef6fddf9e077ff6",
+    "results\\checkpoints\\ppo.npz": "e2528891a3a4fb62dd54708322668f58e54c4b9dc8dac5b42c71816b254d7b75",
+    "results\\voice\\checkpoints\\ppo_voice.npz": "39f6ad09493e006b62467f97b017e82fe2afa044b3107d55b4c9c95f8d35d583"
+  }
+}

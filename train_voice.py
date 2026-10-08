@@ -20,7 +20,7 @@ from src.voice_training import (SpeechInsuranceEnv, TranscriptChannel, evaluate_
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--config", default=str(ROOT / "configs/voice.yaml"))
+    parser.add_argument("--config", default=str(ROOT / "configs/voice_transformer.yaml"))
     parser.add_argument("--base-config", default=str(ROOT / "configs/base.yaml"))
     parser.add_argument("--reuse-data", action="store_true", help="Use the existing transcribed manifest")
     parser.add_argument("--prepare-only", action="store_true")
@@ -31,6 +31,8 @@ def main():
     settings = dict(cfg["training"])
     observable = settings.get("observable_dialogue", False)
     output, dataset = ROOT / settings["output_dir"], ROOT / settings["dataset_dir"]
+    if not args.evaluate_only and not args.quick and (output / "run.json").is_file():
+        parser.error("Completed experiment exists. Set new output_dir and dataset_dir in a copied config to preserve it.")
     if args.quick:
         output = output.with_name(output.name + "_smoke")
         dataset = dataset.with_name(dataset.name + "_smoke")
@@ -55,6 +57,10 @@ def main():
         print(json.dumps(speech, indent=2))
         return
     if args.evaluate_only:
+        predictor = load_predictor(output / "nlp_models.json")
+    elif settings.get("nlp_backend") == "transformer":
+        write_json(output / "nlp_models.json", {"version": 2, "backend": "transformer",
+                   "model_dir": settings["nlp_model_dir"]})
         predictor = load_predictor(output / "nlp_models.json")
     else:
         predictor, _ = train_nlp(rows, output)
@@ -124,11 +130,13 @@ def main():
         "manifest_sha256": file_sha256(dataset / "manifest.jsonl"),
         "text_checkpoint_sha256": file_sha256(baseline_path) if baseline else None,
         "asr_tts_weights_updated": False, "selected_checkpoint": "first configured seed, not test-selected",
-        "nlp_training": "Original text training split plus its transcribed synthetic speech subset",
+        "nlp_training": "Pre-fine-tuned MiniLM and mapped RoBERTa" if settings.get("nlp_backend") == "transformer" else "Original text training split plus its transcribed synthetic speech subset",
         "ppo_training": "ASR-derived live observation state, simulator reward and transitions"}
     if not args.evaluate_only:
         write_json(output / "run.json", run_metadata)
     write_json(output / "evaluation_provenance.json", {"config": cfg, "base_reward": base["reward"],
+        "nlp_bundle_sha256": file_sha256(output / "nlp_models.json"),
+        "source_sha256": {str(p.relative_to(ROOT)): file_sha256(p) for p in [Path(__file__), *sorted((ROOT / "src").glob("*.py"))]},
         "manifest_sha256": file_sha256(dataset / "manifest.jsonl"),
         "evaluated_checkpoints": {str(p.relative_to(ROOT)): file_sha256(p) for p in
             [*(output / "checkpoints").glob("ppo_voice_seed_*.npz"), *([baseline_path] if baseline else []), *([prior_path] if prior else [])]}})
@@ -152,17 +160,18 @@ def main():
                      f"{metrics['conversion']['mean']:.2%} | {metrics['violations']['mean']:.4f} |")
     lines += ["", "## Limits", "",
               "- Synthetic system-voice audio, not recordings from real buyers. One speaker; held-out speech rates only.",
-              "- NLP uses original conversation splits. Repeated synthetic utterance templates remain a limitation.",
+              "- NLP uses a separate distinct-sentence synthetic fine-tuning corpus; speech simulator templates repeat." if settings.get("nlp_backend") == "transformer" else "- NLP uses original conversation splits. Repeated synthetic utterance templates remain a limitation.",
               "- Simulator utterances repeat across speech splits; this tests channel variation, not unseen language.",
               "- The policy receives live-style defaults for hidden trust/intent and ASR-derived entities, not hidden simulator state.",
               "- Profile and age are supplied enrollment fields; the simulator retains hidden state to compute reward.",
               "- Low-confidence simulator retries advance one turn; live audio retries leave buyer memory unchanged.",
-              "- No acoustic-emotion model, speech-model fine-tuning, or Llama fine-tuning was performed.",
+              "- Acoustic emotion is advisory in live inference, not a PPO feature or trained in this experiment.",
+              "- No speech-model or Llama fine-tuning was performed.",
               "- Microphone interaction, accent/noise robustness and human sales outcomes require separate testing.",
               "- The original text experiment and its checkpoints are unchanged.", "",
               "- Observable-dialogue mode verbalizes existing simulated objections/readiness. Compare policies within this version;",
               "  do not attribute differences from the original voice report solely to retraining.", "",
-              "Detailed NLP results: `nlp_metrics.json`. Per-episode results: `episodes.csv`."]
+              ("Detailed NLP results: `../understanding_v1/evaluation.json`." if settings.get("nlp_backend") == "transformer" else "Detailed NLP results: `nlp_metrics.json`.") + " Per-episode results: `episodes.csv`."]
     (output / "report.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
     print("Completed:", output / "report.md", flush=True)
 

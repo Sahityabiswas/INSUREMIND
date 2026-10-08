@@ -1,0 +1,326 @@
+{
+  "per_seed": [
+    {
+      "agent": "voice_ppo",
+      "seed": 42,
+      "reward": 4.443999999999999,
+      "turns": 11.4,
+      "conversion": 0.05,
+      "satisfaction": 0.5978000000000001,
+      "violations": 0.0,
+      "asr_retries": 0.0,
+      "missed_stop_turns": 0.02,
+      "interest_turns": 0.06,
+      "commitment_attempts": 0.06,
+      "masked_action_repairs": 0.0
+    },
+    {
+      "agent": "rule",
+      "seed": 42,
+      "reward": 3.45,
+      "turns": 11.36,
+      "conversion": 0.08,
+      "satisfaction": 0.6236000000000002,
+      "violations": 0.74,
+      "asr_retries": 0.0,
+      "missed_stop_turns": 0.03,
+      "interest_turns": 0.1,
+      "commitment_attempts": 0.1,
+      "masked_action_repairs": 0.07
+    },
+    {
+      "agent": "text_trained_ppo",
+      "seed": 42,
+      "reward": 3.585999999999999,
+      "turns": 11.37,
+      "conversion": 0.07,
+      "satisfaction": 0.5986000000000002,
+      "violations": 0.74,
+      "asr_retries": 0.0,
+      "missed_stop_turns": 0.03,
+      "interest_turns": 0.08,
+      "commitment_attempts": 0.08,
+      "masked_action_repairs": 0.0
+    },
+    {
+      "agent": "prior_voice_ppo",
+      "seed": 42,
+      "reward": 4.373,
+      "turns": 11.36,
+      "conversion": 0.06,
+      "satisfaction": 0.5992000000000001,
+      "violations": 0.0,
+      "asr_retries": 0.0,
+      "missed_stop_turns": 0.02,
+      "interest_turns": 0.07,
+      "commitment_attempts": 0.07,
+      "masked_action_repairs": 0.0
+    },
+    {
+      "agent": "voice_ppo",
+      "seed": 43,
+      "reward": 5.314,
+      "turns": 11.73,
+      "conversion": 0.08,
+      "satisfaction": 0.6310000000000001,
+      "violations": 0.0,
+      "asr_retries": 0.0,
+      "missed_stop_turns": 0.02,
+      "interest_turns": 0.08,
+      "commitment_attempts": 0.08,
+      "masked_action_repairs": 0.0
+    },
+    {
+      "agent": "rule",
+      "seed": 43,
+      "reward": 3.45,
+      "turns": 11.73,
+      "conversion": 0.09,
+      "satisfaction": 0.6607,
+      "violations": 1.3,
+      "asr_retries": 0.0,
+      "missed_stop_turns": 0.03,
+      "interest_turns": 0.13,
+      "commitment_attempts": 0.13,
+      "masked_action_repairs": 0.13
+    },
+    {
+      "agent": "text_trained_ppo",
+      "seed": 43,
+      "reward": 3.8209999999999997,
+      "turns": 11.68,
+      "conversion": 0.09,
+      "satisfaction": 0.6289000000000001,
+      "violations": 1.3,
+      "asr_retries": 0.0,
+      "missed_stop_turns": 0.02,
+      "interest_turns": 0.09,
+      "commitment_attempts": 0.09,
+      "masked_action_repairs": 0.0
+    },
+    {
+      "agent": "prior_voice_ppo",
+      "seed": 43,
+      "reward": 5.295999999999999,
+      "turns": 11.68,
+      "conversion": 0.09,
+      "satisfaction": 0.6289,
+      "violations": 0.0,
+      "asr_retries": 0.0,
+      "missed_stop_turns": 0.02,
+      "interest_turns": 0.09,
+      "commitment_attempts": 0.09,
+      "masked_action_repairs": 0.0
+    },
+    {
+      "agent": "voice_ppo",
+      "seed": 44,
+      "reward": 5.498999999999999,
+      "turns": 11.79,
+      "conversion": 0.06,
+      "satisfaction": 0.6762000000000001,
+      "violations": 0.0,
+      "asr_retries": 0.0,
+      "missed_stop_turns": 0.0,
+      "interest_turns": 0.08,
+      "commitment_attempts": 0.07,
+      "masked_action_repairs": 0.0
+    },
+    {
+      "agent": "rule",
+      "seed": 44,
+      "reward": 4.417999999999999,
+      "turns": 11.69,
+      "conversion": 0.1,
+      "satisfaction": 0.6896000000000001,
+      "violations": 0.87,
+      "asr_retries": 0.0,
+      "missed_stop_turns": 0.01,
+      "interest_turns": 0.11,
+      "commitment_attempts": 0.11,
+      "masked_action_repairs": 0.09
+    },
+    {
+      "agent": "text_trained_ppo",
+      "seed": 44,
+      "reward": 4.685999999999998,
+      "turns": 11.74,
+      "conversion": 0.09,
+      "satisfaction": 0.6794000000000001,
+      "violations": 0.87,
+      "asr_retries": 0.0,
+      "missed_stop_turns": 0.0,
+      "interest_turns": 0.11,
+      "commitment_attempts": 0.1,
+      "masked_action_repairs": 0.0
+    },
+    {
+      "agent": "prior_voice_ppo",
+      "seed": 44,
+      "reward": 5.6629999999999985,
+      "turns": 11.75,
+      "conversion": 0.09,
+      "satisfaction": 0.6776000000000001,
+      "violations": 0.0,
+      "asr_retries": 0.0,
+      "missed_stop_turns": 0.01,
+      "interest_turns": 0.11,
+      "commitment_attempts": 0.1,
+      "masked_action_repairs": 0.0
+    }
+  ],
+  "aggregate": {
+    "voice_ppo": {
+      "reward": {
+        "mean": 5.085666666666666,
+        "seed_sd": 0.5633456606146297
+      },
+      "conversion": {
+        "mean": 0.06333333333333334,
+        "seed_sd": 0.015275252316519466
+      },
+      "satisfaction": {
+        "mean": 0.6350000000000001,
+        "seed_sd": 0.039352763562423426
+      },
+      "violations": {
+        "mean": 0.0,
+        "seed_sd": 0.0
+      },
+      "asr_retries": {
+        "mean": 0.0,
+        "seed_sd": 0.0
+      },
+      "missed_stop_turns": {
+        "mean": 0.013333333333333334,
+        "seed_sd": 0.011547005383792516
+      },
+      "interest_turns": {
+        "mean": 0.07333333333333335,
+        "seed_sd": 0.011547005383792518
+      },
+      "commitment_attempts": {
+        "mean": 0.07,
+        "seed_sd": 0.010000000000000002
+      },
+      "masked_action_repairs": {
+        "mean": 0.0,
+        "seed_sd": 0.0
+      }
+    },
+    "rule": {
+      "reward": {
+        "mean": 3.7726666666666664,
+        "seed_sd": 0.5588750605755572
+      },
+      "conversion": {
+        "mean": 0.09000000000000001,
+        "seed_sd": 0.010000000000000002
+      },
+      "satisfaction": {
+        "mean": 0.6579666666666667,
+        "seed_sd": 0.03308479006028799
+      },
+      "violations": {
+        "mean": 0.9700000000000001,
+        "seed_sd": 0.2930870177950569
+      },
+      "asr_retries": {
+        "mean": 0.0,
+        "seed_sd": 0.0
+      },
+      "missed_stop_turns": {
+        "mean": 0.02333333333333333,
+        "seed_sd": 0.011547005383792514
+      },
+      "interest_turns": {
+        "mean": 0.11333333333333334,
+        "seed_sd": 0.015275252316519466
+      },
+      "commitment_attempts": {
+        "mean": 0.11333333333333334,
+        "seed_sd": 0.015275252316519466
+      },
+      "masked_action_repairs": {
+        "mean": 0.09666666666666668,
+        "seed_sd": 0.030550504633038933
+      }
+    },
+    "text_trained_ppo": {
+      "reward": {
+        "mean": 4.030999999999999,
+        "seed_sd": 0.5792883565203079
+      },
+      "conversion": {
+        "mean": 0.08333333333333333,
+        "seed_sd": 0.011547005383792509
+      },
+      "satisfaction": {
+        "mean": 0.6356333333333336,
+        "seed_sd": 0.04081866403170648
+      },
+      "violations": {
+        "mean": 0.9700000000000001,
+        "seed_sd": 0.2930870177950569
+      },
+      "asr_retries": {
+        "mean": 0.0,
+        "seed_sd": 0.0
+      },
+      "missed_stop_turns": {
+        "mean": 0.016666666666666666,
+        "seed_sd": 0.015275252316519466
+      },
+      "interest_turns": {
+        "mean": 0.09333333333333332,
+        "seed_sd": 0.015275252316519466
+      },
+      "commitment_attempts": {
+        "mean": 0.09000000000000001,
+        "seed_sd": 0.010000000000000002
+      },
+      "masked_action_repairs": {
+        "mean": 0.0,
+        "seed_sd": 0.0
+      }
+    },
+    "prior_voice_ppo": {
+      "reward": {
+        "mean": 5.110666666666666,
+        "seed_sd": 0.6646700936053406
+      },
+      "conversion": {
+        "mean": 0.08,
+        "seed_sd": 0.017320508075688773
+      },
+      "satisfaction": {
+        "mean": 0.6352333333333333,
+        "seed_sd": 0.03958185611278651
+      },
+      "violations": {
+        "mean": 0.0,
+        "seed_sd": 0.0
+      },
+      "asr_retries": {
+        "mean": 0.0,
+        "seed_sd": 0.0
+      },
+      "missed_stop_turns": {
+        "mean": 0.016666666666666666,
+        "seed_sd": 0.005773502691896258
+      },
+      "interest_turns": {
+        "mean": 0.09000000000000001,
+        "seed_sd": 0.019999999999999997
+      },
+      "commitment_attempts": {
+        "mean": 0.08666666666666667,
+        "seed_sd": 0.015275252316519465
+      },
+      "masked_action_repairs": {
+        "mean": 0.0,
+        "seed_sd": 0.0
+      }
+    }
+  }
+}

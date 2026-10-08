@@ -201,10 +201,12 @@ def play_audio(path, device=None):
 
 def recognize_audio(asr, path, min_confidence=0.55):
     from .nlp import stop_requested
+    from .acoustic_emotion import analyze_audio
     try:
         transcript = asr.transcribe(path)
         accepted = transcript.confidence >= min_confidence or stop_requested(transcript.normalized_text)
         return {"accepted": accepted, "transcript": asdict(transcript),
+                "acoustic_emotion": {"status": "skipped_stop", "source": "audio_waveform"} if stop_requested(transcript.normalized_text) else analyze_audio(path),
                 "spoken_text": None if accepted else "I could not hear that clearly. Please repeat or use the text interface."}
     except NoSpeechError:
         return {"accepted": False, "transcript": None,
@@ -228,7 +230,8 @@ class VoiceSession:
         accepted, transcript = recognized["accepted"], recognized["transcript"]
         response, text = None, recognized["spoken_text"]
         if accepted:
-            response = self.conversation.reply(transcript["normalized_text"])
+            acoustic = recognized.get("acoustic_emotion")
+            response = self.conversation.reply(transcript["normalized_text"], acoustic=acoustic)
             text = response["text"] if response["validation"]["ok"] else "I cannot verify that response. Please use the text interface for clarification."
         generation_seconds = time.perf_counter() - start
         tts_start = time.perf_counter()
@@ -239,6 +242,7 @@ class VoiceSession:
         except (SpeechError, OSError) as exc:
             tts_error = str(exc)
         return {"accepted": accepted, "transcript": transcript,
+                "acoustic_emotion": recognized.get("acoustic_emotion"),
                 "response": response, "spoken_text": text, "audio_path": audio,
                 "tts_error": tts_error, "closed": self.conversation.closed,
                 "timing": {"asr_and_response_seconds": generation_seconds,

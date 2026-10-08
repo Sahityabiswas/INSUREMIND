@@ -25,6 +25,7 @@ from src.conversation import ConversationSession
 from src.generation import OllamaClient
 from src.state_products import PRODUCTS, eligible
 from src.voice_runtime import voice_artifacts, voice_conversation
+from src.understanding import selected_backend, status as understanding_status
 
 ROOT = Path(__file__).resolve().parent
 WEB = ROOT / "web"
@@ -47,12 +48,12 @@ def validate_settings(data):
     settings = {"age": data.get("age", 35), "budget": data.get("budget", "low"),
                 "profile": data.get("profile", "FAMILY_ORIENTED"),
                 "policy": data.get("policy", "ppo"), "generator": data.get("generator", "hybrid"),
-                "pipeline": data.get("pipeline", "text")}
+                "pipeline": data.get("pipeline", "text"), "nlp_backend": data.get("nlp_backend", selected_backend())}
     if type(settings["age"]) is not int or not 18 <= settings["age"] <= 100:
         raise APIError(400, "Buyer age must be a whole number between 18 and 100.")
     options = {"budget": ("low", "mid", "high", "unknown"), "profile": PROFILES,
                "policy": ("ppo", "rule"), "generator": ("ollama", "template", "hybrid"),
-               "pipeline": ("text", "voice")}
+               "pipeline": ("text", "voice"), "nlp_backend": ("transformer", "nb")}
     for key, values in options.items():
         if settings[key] not in values:
             raise APIError(400, f"Invalid {key}.")
@@ -128,9 +129,10 @@ class SessionStore:
                 if not draft.get("review") or not draft.get("transcript"):
                     raise APIError(400, "That transcript is unavailable in this session. Please record again.")
                 voice = {"transcript": draft["transcript"], "reviewed": True,
+                         "acoustic_emotion": draft.get("acoustic_emotion"),
                          "corrected": text.strip() != draft["transcript"]["normalized_text"]}
             started = time.monotonic()
-            result = record.engine.reply(text.strip())
+            result = record.engine.reply(text.strip(), acoustic=voice.get("acoustic_emotion") if voice else None)
             entry = self.append_entry(record, text.strip(), result, request_id, started, voice)
             self.remember(record, request_id, fingerprint, entry)
             return entry
@@ -212,6 +214,7 @@ class SessionStore:
                     entry = self.append_entry(record, result["transcript"]["normalized_text"], result["response"],
                                               request_id, started,
                                               {"transcript": result["transcript"], "timing": result["timing"],
+                                               "acoustic_emotion": result.get("acoustic_emotion"),
                                                "spoken_text": result["spoken_text"]})
                 result["entry"] = entry
                 self.remember(record, request_id, fingerprint, result)
@@ -247,12 +250,15 @@ class SessionStore:
 
 def runtime_status():
     config, output, checkpoint, nlp_path = voice_artifacts()
+    checkpoints = {backend: voice_artifacts(backend=backend)[2].relative_to(ROOT).as_posix() for backend in ("nb", "transformer")}
     asr_ready = (ROOT / config["asr"]["model_path"] / "am/final.mdl").is_file()
     dependencies = all(importlib.util.find_spec(name) is not None for name in ("vosk", "text_to_num"))
     return {"ppo_ready": (ROOT / "results/checkpoints/ppo.npz").is_file(),
+            "understanding": understanding_status(),
             "voice": {"ppo_ready": checkpoint.is_file(), "nlp_ready": nlp_path.is_file(),
                       "asr_ready": asr_ready and dependencies, "tts_available": os.name == "nt",
                       "checkpoint": checkpoint.relative_to(ROOT).as_posix(),
+                      "checkpoints": checkpoints,
                       "results_dir": output.relative_to(ROOT).as_posix(),
                       "environment": config["training"]["environment_version"],
                       "max_audio_seconds": config["asr"]["max_audio_seconds"],
@@ -260,6 +266,13 @@ def runtime_status():
 
 
 def recorded_results(pipeline):
+    if pipeline == "understanding":
+        from src.understanding import config
+        path = ROOT / config()["model_dir"] / "evaluation.json"
+        if not path.is_file():
+            raise APIError(404, "No transformer evaluation found. Run python train_understanding.py first.")
+        return {"pipeline": pipeline, "source": path.relative_to(ROOT).as_posix(),
+                "evaluation": json.loads(path.read_text(encoding="utf-8"))}
     if pipeline == "text":
         path = ROOT / "results/metrics/rl_comparison.csv"
         if not path.is_file():

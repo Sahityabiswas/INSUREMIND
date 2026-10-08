@@ -1,0 +1,10 @@
+backend: transformer
+model_dir: results/understanding_v1
+threads: 2
+max_tokens: 128
+acoustic:
+  enabled: true
+  max_seconds: 10
+  min_seconds: 0.5
+  confidence_threshold: 0.65
+  margin_threshold: 0.15

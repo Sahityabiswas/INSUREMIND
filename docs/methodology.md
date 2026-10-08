@@ -5,7 +5,12 @@ The PPO policy never emits text, and the optional Ollama verbalizer cannot chang
 
 ## Data and NLP
 
-The default experiment is offline and uses a custom synthetic dataset. Generated intent/emotion labels,
+The live default now uses fine-tuned MiniLM for intent/multi-label objections, mapped RoBERTa for text
+emotion, exact entity rules, and an independent pretrained acoustic model. See [understanding methodology](understanding.md)
+for training, the 42-unique-sentence legacy audit, distinct-sentence evaluation and the v3 policy run.
+The following describes the original text experiment and its preserved baselines.
+
+The original experiment is offline and uses a custom synthetic dataset. Generated intent/emotion labels,
 reaction labels, purchase intent, and outcomes are explicitly marked synthetic rather than human observations.
 Scenario variants and identical normalized transcripts share a split. Repeated template wording remains a
 limitation, so high synthetic intent accuracy is not evidence of real-world accuracy.
@@ -27,8 +32,9 @@ Updates use shuffled minibatches, Adam, entropy regularization and gradient clip
 Supervised action weights initialize PPO unless an experiment disables initialization. Each configured seed
 produces its own trained checkpoint. The NumPy backend supports constrained Windows environments; it is
 a reference implementation, not a substitute for comparison against a maintained RL library. The supplied
-Windows environment blocks `torch_python.dll` with Application Control error 4551, preventing the installed
-Stable Baselines3 from loading; NumPy and matplotlib load successfully.
+Windows environment originally blocked Torch; CPU PyTorch now works and trained MiniLM. Native
+scikit-learn/spaCy dependency restrictions remain documented in the understanding guide. PPO remains the
+NumPy reference implementation; a Stable Baselines3 comparison has not been performed.
 
 The product engine returns only products meeting need, age and budget constraints. Unmatched needs return
 no recommendation. Masks prevent product actions before discovery, premature commitment, and continuation

@@ -10,13 +10,14 @@ from src.speech import ROOT, SpeechError, VoskASR, VoiceSession, WindowsTTS, pla
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--config", default=str(ROOT / "configs/voice.yaml"))
+    parser.add_argument("--config", help="Optional voice experiment config; defaults to the chosen NLP backend")
     parser.add_argument("--wav", type=Path, help="Process an existing 16 kHz mono PCM WAV instead of the microphone")
     parser.add_argument("--output", type=Path, help="Persist response audio; otherwise temporary files are removed")
     parser.add_argument("--generator", choices=["template", "ollama", "hybrid"], default="template")
     parser.add_argument("--policy", choices=["ppo", "rule"], default="ppo")
     parser.add_argument("--checkpoint", type=Path, help="Explicit alternative PPO checkpoint")
     parser.add_argument("--nlp-model", type=Path, help="Explicit alternative voice NLP bundle")
+    parser.add_argument("--nlp-backend", choices=["transformer", "nb"])
     parser.add_argument("--age", type=int)
     parser.add_argument("--budget", choices=["unknown", "low", "mid", "high"], default="unknown")
     parser.add_argument("--seconds", type=float, default=8)
@@ -33,11 +34,11 @@ def main():
         return
     if not 1 <= args.seconds <= 30:
         parser.error("--seconds must be between 1 and 30")
-    config, _, _, _ = voice_artifacts(args.config)
+    config, _, _, _ = voice_artifacts(args.config, args.nlp_backend)
     try:
         session = voice_conversation(config_path=args.config, checkpoint=args.checkpoint,
                                      nlp_model=args.nlp_model, policy=args.policy, generator=args.generator,
-                                     age=args.age, budget=args.budget)
+                                     age=args.age, budget=args.budget, nlp_backend=args.nlp_backend)
     except RuntimeError as exc:
         parser.error(str(exc))
     cfg = config["asr"]

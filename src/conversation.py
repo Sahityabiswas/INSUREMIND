@@ -15,7 +15,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 class ConversationSession:
     def __init__(self, policy="ppo", generator="template", profile="HESITANT", age=None, budget="unknown",
-                 checkpoint=None, predictor=None):
+                 checkpoint=None, predictor=None, nlp_backend=None):
         if policy not in ("ppo", "rule") or profile not in PROFILES:
             raise ValueError("Invalid policy or customer profile")
         self.policy_name = policy
@@ -26,7 +26,11 @@ class ConversationSession:
                 raise RuntimeError("Train the policy with python run_all.py before starting a PPO conversation")
             self.model = ppo_numpy.load(path, STATE_DIM, len(ACTIONS))
         self.rule = rule_policy()
-        self.predictor = predictor or nlp.predict
+        from .understanding import get_predictor, selected_backend
+        self.nlp_backend = nlp_backend or selected_backend()
+        if self.nlp_backend not in ("nb", "transformer"):
+            raise ValueError("Invalid NLP backend")
+        self.predictor = predictor or (get_predictor() if self.nlp_backend == "transformer" else lambda text: nlp.predict(text, backend="nb"))
         self.generator = ResponseGenerator(generator)
         self.memory = Memory()
         self.responses = []
@@ -34,12 +38,13 @@ class ConversationSession:
         self.need, self.budget, self.existing, self.age = None, budget, "unknown", age
         self.profile, self.previous_action, self.turn = profile, "DISCOVER_NEEDS", 0
         self.amount_context = {"value": None, "kind": "unknown", "period": "unknown"}
+        self.premium_budget = None
         self.discovery = DiscoveryFlow()
 
     def discovery_context(self):
         return {"need": self.need, "age": self.age, "existing": self.existing, "budget": self.budget}
 
-    def prepare_turn(self, text):
+    def prepare_turn(self, text, acoustic=None):
         """Build the same observable state for live inference and voice-policy training."""
         if self.closed:
             raise RuntimeError("This conversation is closed; start a new session")
@@ -66,6 +71,9 @@ class ConversationSession:
                 understanding.update(objection="NONE", objection_conf=None)
                 sources["objection"] = "explicit_cue"
         understanding["sources"] = sources
+        understanding["objections"] = list(raw_understanding.get("objections", []))
+        if understanding["objection"] != "NONE" and understanding["objection"] not in understanding["objections"]:
+            understanding["objections"].insert(0, understanding["objection"])
         if entities["needs"]:
             self.need = entities["needs"][0]
         for name in ("budget", "existing_coverage"):
@@ -74,6 +82,15 @@ class ConversationSession:
         if entities["age"] is not None:
             self.age = entities["age"]
         stop = entities["stop_requested"]
+        if not stop:
+            for kind in ("coverage", "premium_budget"):
+                exact = [a for a in entities["amounts"] if a["kind"] == kind]
+                if len(exact) == 1 and entities["existing_coverage"] == "unknown":
+                    self.amount_context = {key: exact[0][key] for key in ("value", "kind", "period")}
+                    if kind == "coverage":
+                        self.discovery.coverage = exact[0]["value"]
+                    else:
+                        self.premium_budget = dict(exact[0])
         answered = False
         if not stop:
             context, answered = self.discovery.observe(text, cues, self.discovery_context())
@@ -112,6 +129,12 @@ class ConversationSession:
                      coverage_target=self.discovery.coverage,
                      workflow=self.discovery.snapshot(self.discovery_context(), task),
                      state_source="NLP estimates; trust and purchase intent are unobserved defaults")
+        state["extracted_entities"] = entities
+        state["premium_budget"] = self.premium_budget
+        state["objections"] = understanding["objections"]
+        # Audio can affect wording style only. It cannot supply consent, policy state or purchase readiness.
+        state["acoustic_emotion"] = acoustic
+        state["communication_style"] = "patient, brief and non-pressuring" if acoustic and acoustic.get("status") == "estimated" and acoustic.get("label") in ("ANGRY", "SAD") else "neutral and non-pressuring"
         available = self.age is not None and bool(recommend(state["need"], self.budget, self.age, self.discovery.coverage))
         mask = action_mask(stage, self.turn, bool(self.need), stop_requested=stop, available_products=available)
         # Commitment requires an observable, affirmative buyer signal, not a hidden intent score.
@@ -168,5 +191,5 @@ class ConversationSession:
                 "closed_reason": "buyer_stop" if self.closed else None,
                 "decision_source": decision_source, "decision_reason": decision_reason}
 
-    def reply(self, text):
-        return self.complete_turn(self.prepare_turn(text))
+    def reply(self, text, acoustic=None):
+        return self.complete_turn(self.prepare_turn(text, acoustic))

@@ -1,0 +1,126 @@
+{
+  "mean_train_reward": 4.454304245283019,
+  "history": [
+    {
+      "steps": 1024,
+      "episodes": 85,
+      "mean_reward": 4.6764705882352935,
+      "value_loss": 10.836355205374876
+    },
+    {
+      "steps": 2048,
+      "episodes": 171,
+      "mean_reward": 4.0249999999999995,
+      "value_loss": 10.75812840612243
+    },
+    {
+      "steps": 3072,
+      "episodes": 260,
+      "mean_reward": 3.8899999999999992,
+      "value_loss": 9.335251926136785
+    },
+    {
+      "steps": 4096,
+      "episodes": 347,
+      "mean_reward": 3.8709999999999996,
+      "value_loss": 11.421154044095118
+    },
+    {
+      "steps": 5120,
+      "episodes": 433,
+      "mean_reward": 4.308000000000001,
+      "value_loss": 9.87772530339965
+    },
+    {
+      "steps": 6144,
+      "episodes": 522,
+      "mean_reward": 4.364,
+      "value_loss": 9.85970799539639
+    },
+    {
+      "steps": 7168,
+      "episodes": 611,
+      "mean_reward": 4.271,
+      "value_loss": 10.651877555577588
+    },
+    {
+      "steps": 8192,
+      "episodes": 698,
+      "mean_reward": 4.724,
+      "value_loss": 12.297534758051764
+    },
+    {
+      "steps": 9216,
+      "episodes": 784,
+      "mean_reward": 4.691,
+      "value_loss": 10.36257455772952
+    },
+    {
+      "steps": 10240,
+      "episodes": 869,
+      "mean_reward": 4.295,
+      "value_loss": 9.1115499882067
+    },
+    {
+      "steps": 11264,
+      "episodes": 956,
+      "mean_reward": 4.354999999999999,
+      "value_loss": 11.086373393603488
+    },
+    {
+      "steps": 12288,
+      "episodes": 1041,
+      "mean_reward": 4.201999999999999,
+      "value_loss": 7.969906667446801
+    },
+    {
+      "steps": 13312,
+      "episodes": 1126,
+      "mean_reward": 4.411,
+      "value_loss": 9.895740566428998
+    },
+    {
+      "steps": 14336,
+      "episodes": 1215,
+      "mean_reward": 4.366999999999999,
+      "value_loss": 11.367410488551968
+    },
+    {
+      "steps": 15360,
+      "episodes": 1303,
+      "mean_reward": 4.434,
+      "value_loss": 10.749341910969061
+    },
+    {
+      "steps": 16384,
+      "episodes": 1390,
+      "mean_reward": 4.4430000000000005,
+      "value_loss": 9.99747751154546
+    },
+    {
+      "steps": 17408,
+      "episodes": 1478,
+      "mean_reward": 4.3580000000000005,
+      "value_loss": 9.505565120738982
+    },
+    {
+      "steps": 18432,
+      "episodes": 1564,
+      "mean_reward": 4.588,
+      "value_loss": 8.539010473755003
+    },
+    {
+      "steps": 19456,
+      "episodes": 1650,
+      "mean_reward": 5.343000000000001,
+      "value_loss": 9.47055809125126
+    },
+    {
+      "steps": 20000,
+      "episodes": 1696,
+      "mean_reward": 5.3889999999999985,
+      "value_loss": 9.30666994779763
+    }
+  ],
+  "training_seconds": 13.340688199998112
+}

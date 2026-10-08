@@ -1,0 +1,5 @@
+{
+  "version": 2,
+  "backend": "transformer",
+  "model_dir": "results/understanding_v1"
+}

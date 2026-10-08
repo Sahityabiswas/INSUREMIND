@@ -151,6 +151,10 @@ def speech_metrics(rows):
 
 def load_predictor(path):
     data = json.loads(Path(path).read_text(encoding="utf-8"))
+    if data.get("backend") == "transformer":
+        from .understanding import get_predictor, ROOT
+        predictor = get_predictor(ROOT / data["model_dir"])
+        return lru_cache(maxsize=4096)(predictor)
     if data.get("version") != 1 or set(data["models"]) != set(TASKS):
         raise ValueError("Incompatible voice NLP bundle")
     models = {}
@@ -185,7 +189,7 @@ def train_nlp(rows, output):
         if not examples:
             raise ValueError(f"No held-out NLP examples in {split}")
         metrics[split] = {}
-        for name, predictor in (("text_nlp", nlp.predict), ("speech_adapted_nlp", adapted)):
+        for name, predictor in (("text_nlp", lambda text: nlp.predict(text, backend="nb")), ("speech_adapted_nlp", adapted)):
             guesses = [predictor(row["transcript"]["normalized_text"]) for row in examples]
             metrics[split][name] = {task: nlp._scores([r["labels"][col] for r in examples],
                 [guess[task] for guess in guesses], models[task]["classes"]) for task, col in TASKS.items()}

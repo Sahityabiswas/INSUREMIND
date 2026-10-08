@@ -137,10 +137,10 @@ def test_api_speech_assets_and_recorded_results(demo_url):
     status = request(demo_url + "/api/status")
     assert status["voice"]["nlp_ready"] and status["voice"]["ppo_ready"]
     data = request(demo_url + "/api/results?pipeline=voice")
-    _, output, _, _ = voice_artifacts()
+    config, output, _, _ = voice_artifacts()
     original = json.loads((output / "evaluation.json").read_text())
     assert data["aggregate"] == original["aggregate"]
-    assert data["training"]["environment_version"] == "voice_v2_observable_dialogue"
+    assert data["training"]["environment_version"] == config["training"]["environment_version"]
     for path in ("/audio.js", "/audio-worklet.js"):
         with urlopen(demo_url + path) as response:
             assert response.read() and "blob:" in response.headers["Content-Security-Policy"]

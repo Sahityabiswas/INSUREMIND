@@ -1,6 +1,4 @@
-"""Phase 3: intent / emotion / objection / stage classifiers + regex need/entity extractor.
-Pure stdlib+numpy multinomial Naive Bayes (sklearn/scipy DLLs blocked on this host).
-Same API: train_all() -> metrics dict, predict(text) -> dict."""
+"""Understanding API with a transformer default and an explicit historical NB baseline."""
 import os, json, re, math
 from collections import Counter, defaultdict
 from decimal import Decimal
@@ -122,8 +120,11 @@ def _load():
             m.ci = {c: i for i, c in enumerate(m.classes)}
             MODELS[k] = m
 
-def predict(text, ctx="", models=None):
+def predict(text, ctx="", models=None, backend=None):
     if models is None:
+        from .understanding import get_predictor, selected_backend
+        if (backend or selected_backend()) == "transformer":
+            return get_predictor()(text, ctx)
         _load()
         models = MODELS
     def _p(name, fallback):
@@ -141,7 +142,9 @@ def predict(text, ctx="", models=None):
     if stop_requested(text):
         intent, ic, obj, oc, stage = "REJECTION", 1.0, "NOT_READY", 1.0, "REJECTION"
     return {"intent": intent, "intent_conf": ic, "emotion": emotion, "emotion_conf": ec,
-            "emotion_probs": eprobs, "objection": obj, "objection_conf": oc, "stage": stage}
+            "emotion_probs": eprobs, "objection": obj, "objection_conf": oc, "stage": stage,
+            "objections": [] if obj == "NONE" else [obj],
+            "classifier": {"backend": "nb", "model": "Naive Bayes baseline", "multilabel": False}}
 
 def stop_requested(text):
     return bool(re.search(r"\b(?:please stop|stop contacting|stop calling|not interested|leave me alone|don't call|do not call|end (?:this|the) conversation)\b", text, re.I)
@@ -149,8 +152,10 @@ def stop_requested(text):
 
 
 def extract_needs(text):
+    from .entities import extract
+    exact = extract(text)
     t = text.lower()
-    needs = [v for k, v in NEED_KEYS.items() if k in t]
+    needs = exact["needs"]
     objs = [v for k, v in OBJ_KEYS.items() if k in t]
     budget = next((b for b in ("low", "mid", "high") if f"{b} budget" in t), "unknown")
     if budget == "unknown" and any(w in t for w in ["cheap", "expensive", "can't afford", "too high"]):
@@ -165,10 +170,11 @@ def extract_needs(text):
     existing = "unknown"
     if "already have" in t or "current policy" in t or "existing policy" in t:
         existing = f"partial-{amount.group(1)}L" if amount else "insured-unspecified"
-    age_match = re.search(r"(?:age(?:d)?\s*|i am\s+|i'm\s+)(\d{1,2})\b", t)
     return {"needs": list(dict.fromkeys(needs)), "objection_hint": objs[0] if objs else "NONE",
             "budget": budget, "existing_coverage": existing,
-            "age": int(age_match.group(1)) if age_match else None,
+            "age": exact["age"], "amounts": exact["amounts"], "entities": exact["entities"],
+            "extractor": exact["extractor"],
+            "extractor_error": exact["extractor_error"],
             "stop_requested": stop_requested(text)}
 
 

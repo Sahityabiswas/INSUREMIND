@@ -14,11 +14,13 @@ dependencies = [
   "gymnasium>=0.29",
   "pyyaml>=6.0",
   "matplotlib>=3.8",
+  "spacy>=3.8,<4",
 ]
 
 [project.optional-dependencies]
 dev = ["pytest>=7"]
 voice = ["vosk==0.3.45", "sounddevice>=0.5,<0.6", "text2num>=3,<4"]
+understanding = ["torch>=2.6,<3", "transformers==4.44.2", "safetensors>=0.4,<1", "onnxruntime>=1.20,<2", "huggingface-hub>=0.34,<1"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

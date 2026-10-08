@@ -35,7 +35,7 @@ function clock(value) { return new Date(value).toLocaleTimeString([], {hour: "2-
 async function api(path, data) {
   const response = await fetch(path, {method: data ? "POST" : "GET",
     headers: data ? {"Content-Type": "application/json"} : {}, body: data ? JSON.stringify(data) : undefined,
-    signal: AbortSignal.timeout(path.endsWith("/messages") ? 90000 : 15000)});
+    signal: AbortSignal.timeout(path.endsWith("/messages") || path === "/api/sessions" ? 120000 : 15000)});
   const result = await response.json();
   if (!response.ok) throw new Error(result.error || `Request failed (${response.status}).`);
   return result;
@@ -60,7 +60,7 @@ function hideError() { $("#error-banner").hidden = true; }
 
 function settings() {
   return {age: Number($("#age").value), budget: $("#budget").value, profile: $("#profile").value,
-    policy: state.policy, generator: state.generator, pipeline: state.pipeline};
+    policy: state.policy, generator: state.generator, pipeline: state.pipeline, nlp_backend: $("#nlp-backend").value};
 }
 function setSettings(values) {
   $("#age").value = values.age;
@@ -69,6 +69,7 @@ function setSettings(values) {
   state.policy = values.policy;
   state.generator = values.generator;
   state.pipeline = values.pipeline || "text";
+  $("#nlp-backend").value = values.nlp_backend || "nb";
   updateSettings();
 }
 function updateSettings() {
@@ -89,8 +90,11 @@ function updateSettings() {
   $("#pipeline-label").textContent = active.pipeline === "voice" ? "VOICE-TRAINED AGENT" : "TEXT-TRAINED AGENT";
   $("#checkpoint-name").textContent = `${active.pipeline === "voice" ? "Voice-trained" : "Text-trained"} ${active.policy === "ppo" ? "PPO" : "rule baseline"}`;
   $("#checkpoint-path").textContent = active.policy === "rule" ? "Rule policy / shared conversation guards" :
-    active.pipeline === "voice" ? state.status?.voice.checkpoint || "Checking artifacts" : "results/checkpoints/ppo.npz";
+    active.pipeline === "voice" ? state.status?.voice.checkpoints?.[active.nlp_backend] || state.status?.voice.checkpoint || "Checking artifacts" : "results/checkpoints/ppo.npz";
   $("#experiment-label").textContent = active.pipeline.toUpperCase();
+  const nlpReady = state.status?.understanding?.transformer_ready;
+  $("#nlp-status").textContent = current.nlp_backend === "nb" ? "Historical single-label baseline" :
+    nlpReady ? "Fine-tuned MiniLM / mapped RoBERTa" : "Transformer artifacts unavailable";
   controls();
 }
 function controls() {
@@ -264,8 +268,8 @@ function traceRow(label, value, confidence) {
   row.append(element("span", "", label), detail);
   return row;
 }
-function statePair(label, value) {
-  const pair = element("div"); pair.append(element("dt", "", label), element("dd", "", human(value))); return pair;
+function statePair(label, value, literal = false) {
+  const pair = element("div"); pair.append(element("dt", "", label), element("dd", "", literal ? String(value) : human(value))); return pair;
 }
 function validationLine(text, valid) {
   const line = element("div", `validation-line ${valid ? "" : "warning"}`);
@@ -280,6 +284,11 @@ function renderInspector(entry) {
   $("#validation").replaceChildren();
   $("#fact-list").replaceChildren();
   $("#runtime-trace").replaceChildren();
+  $("#acoustic-trace").replaceChildren();
+  $("#acoustic-section").hidden = !entry?.voice;
+  $("#text-emotion-trace").replaceChildren();
+  $("#text-emotion-section").hidden = !entry?.voice;
+  $("#understanding-source").textContent = entry?.voice ? "VOICE + WORDS" : entry ? "TEXT" : "NO INPUT";
   $("#workflow-fields").replaceChildren();
   $("#workflow-section").hidden = !entry?.response.state.workflow?.active;
   if (!entry) {
@@ -311,12 +320,49 @@ function renderInspector(entry) {
       statePair("ASR time", `${entry.voice.transcript.asr_seconds.toFixed(2)} s`),
       statePair("Audio duration", `${entry.voice.transcript.audio_seconds.toFixed(1)} s`));
     if (entry.voice?.reviewed) $("#runtime-trace").append(statePair("Transcript", entry.voice.corrected ? "User corrected" : "User confirmed"));
-    if (entry.voice?.corrected) $("#runtime-trace").append(statePair("ASR original", entry.voice.transcript.normalized_text));
-    $("#understanding").append(traceRow("Intent", nlp.intent, nlp.intent_conf), traceRow("Emotion", nlp.emotion, nlp.emotion_conf),
-      traceRow("Objection", nlp.objection, nlp.objection_conf));
+    if (entry.voice?.corrected) $("#runtime-trace").append(statePair("ASR original", entry.voice.transcript.normalized_text, true));
+    if (entry.voice) {
+      const audio = entry.voice.acoustic_emotion;
+      const waveform = audio?.source === "audio_waveform";
+      const estimated = waveform && audio.status === "estimated" && Boolean(audio.label);
+      const status = waveform ? audio.status : "not_analyzed";
+      const label = estimated ? `${audio.label} (estimate)` : {
+        uncertain: "Uncertain", insufficient_audio: "Insufficient audio", skipped_stop: "Skipped for stop request",
+        unavailable: "Unavailable", disabled: "Disabled", not_analyzed: "Not analyzed",
+      }[status] || "Not analyzed";
+      const vocal = traceRow("Vocal emotion", label, estimated ? audio.confidence : undefined);
+      vocal.id = "vocal-emotion";
+      $("#understanding").append(vocal, element("p", "model-detail", waveform && audio.model ?
+        `${audio.model} / waveform / uncalibrated` : "No vocal emotion estimate"));
+      const intent = traceRow("Spoken intent", nlp.intent, nlp.intent_conf);
+      intent.title = "Intent from recognized words, not vocal tone.";
+      $("#understanding").append(intent);
+      $("#text-emotion-trace").append(traceRow("Text emotion", nlp.emotion, nlp.emotion_conf));
+      $("#acoustic-trace").append(statePair("Status", status), statePair("Source", waveform ? "Audio waveform" : "Not available"));
+      if (waveform && audio.probabilities) {
+        $("#acoustic-trace").append(statePair("Top candidate", audio.label));
+        for (const [name, value] of Object.entries(audio.probabilities)) $("#acoustic-trace").append(statePair(human(name), percent(value, 1)));
+        $("#acoustic-trace").append(statePair("Model", audio.model, true), statePair("Audio analyzed", `${audio.analyzed_seconds.toFixed(1)} s`),
+          statePair("Policy input", "No / wording style only"));
+      }
+      if (audio?.error) $("#acoustic-trace").append(statePair("Error", audio.error, true));
+    } else {
+      $("#understanding").append(traceRow("Intent", nlp.intent, nlp.intent_conf), traceRow("Text emotion", nlp.emotion, nlp.emotion_conf));
+    }
+    $("#understanding").append(traceRow("Objection", nlp.objection, nlp.objection_conf));
+    if (nlp.classifier) $("#runtime-trace").append(statePair("Classifier", nlp.classifier.model, true),
+      statePair("Objection head", nlp.classifier.multilabel ? "Multi-label sigmoid" : "Single-label baseline"));
+    if (buyer.extracted_entities) $("#runtime-trace").append(statePair("Entity extractor", buyer.extracted_entities.extractor, true));
+    if (nlp.classifier?.multilabel) {
+      $("#understanding").append(traceRow("All objections", nlp.objections?.length ? nlp.objections.join(" / ") : "NONE"));
+    }
+    if (nlp.text_emotion) $(entry.voice ? "#text-emotion-trace" : "#understanding").append(element("p", "model-detail",
+      `RoBERTa / mapped scores / ${nlp.text_emotion.uncertain ? "uncertain" : "uncalibrated"}`));
     $("#buyer-state").append(statePair("Need", buyer.need), statePair("Budget", buyer.budget),
       statePair("Existing cover", buyer.existing_coverage), statePair("Stage", buyer.sales_stage));
     if (buyer.amount_context?.value != null) $("#buyer-state").append(statePair("Buyer amount", `${buyer.amount_context.value} (${human(buyer.amount_context.kind)})`));
+    for (const amount of buyer.extracted_entities?.amounts || []) $("#buyer-state").append(
+      statePair(human(amount.kind), `${amount.value.toLocaleString()} / ${human(amount.period)} / ${amount.currency}`));
     $("#validation").append(validationLine(response.validation.ok ? "Basic response checks passed" : "Response check warning", response.validation.ok));
     const fallback = sourceName(response).includes("fallback");
     $("#validation").append(validationLine(`Source: ${sourceName(response)}`, !fallback));
@@ -369,7 +415,7 @@ async function sendMessage(retry = null) {
     $("#message").value = "";
     $("#character-count").textContent = "0 / 2000";
     renderMessages(); renderInspector(entry);
-    if ($("#auto-speak").checked) void playResponse(entry);
+    if (entry.voice && $("#auto-speak").checked) void playResponse(entry);
   } catch (error) {
     state.failed = state.pending;
     state.pending = null;
@@ -422,8 +468,9 @@ function recordingUI() {
   $("#recording-strip").hidden = !state.recording;
   const active = Boolean(state.recording);
   $("#record").classList.toggle("recording", active);
-  $("#record").setAttribute("aria-label", active ? "Stop recording and send" : "Record buyer voice");
-  $("#record").dataset.tooltip = active ? "Stop recording and send" : "Record buyer voice";
+  const label = active ? $("#review-transcript").checked ? "Stop recording and review" : "Stop recording and send" : "Record buyer voice";
+  $("#record").setAttribute("aria-label", label);
+  $("#record").dataset.tooltip = label;
   $("#record").replaceChildren(icon(active ? "square" : "mic"));
   icons(); controls();
 }
@@ -563,6 +610,29 @@ async function loadResults() {
     $("#results-error").textContent = errorMessage(error); $("#results-error").hidden = false; return;
   }
   if (token !== resultsRequest) return;
+  if (pipeline === "understanding") {
+    const report = data.evaluation;
+    $("#results-source").textContent = data.source;
+    $("#results-caption").textContent = "Distinct synthetic sentences / no exact train-test overlap";
+    ["Task", "Accuracy / exact match", "Macro F1", "Examples"].forEach((label) => $("#results-columns").append(element("th", "", label)));
+    const rows = [["MiniLM intent", report.intent.accuracy, report.intent.macro_f1, report.intent.test_examples],
+      ["Multi-label objections", report.objections.exact_match, report.objections.macro_f1, report.objections.examples],
+      ["RoBERTa mapped emotion", report.text_emotion_mapping.accuracy, report.text_emotion_mapping.macro_f1, report.text_emotion_mapping.test_examples]];
+    for (const [label, accuracy, f1, count] of rows) {
+      const tr = element("tr");
+      for (const value of [label, percent(accuracy, 1), f1.toFixed(3), count]) tr.append(element("td", "", value));
+      $("#results-table").append(tr);
+    }
+    $("#voice-metrics").append(element("h2", "", "Data audit"));
+    const audit = element("dl");
+    audit.append(statePair("Training sentences", report.data_audit.new_split_sizes.train),
+      statePair("Validation sentences", report.data_audit.new_split_sizes.val),
+      statePair("Legacy rows / unique sentences", `${report.data_audit.legacy_train_rows} / ${report.data_audit.legacy_unique_texts}`),
+      statePair("Acoustic accuracy", "Not evaluated on labeled human audio"));
+    $("#voice-metrics").append(audit);
+    $("#results-disclaimer").textContent = report.limitations.join(". ") + ".";
+    return;
+  }
   const voice = pipeline === "voice", ppo = voice ? data.aggregate.voice_ppo : data.metrics.find((row) => row.agent === "ppo");
   $("#results-source").textContent = `${data.source}${voice ? ` / ${data.training.environment_version}` : ""}`;
   const stats = voice ? [["Voice PPO reward", ppo.reward.mean.toFixed(3), `Seed SD ${ppo.reward.seed_sd.toFixed(3)}`],
@@ -597,7 +667,8 @@ async function loadResults() {
     $("#voice-metrics").append(list);
   }
   $("#results-disclaimer").textContent = voice ?
-    "Recorded before the explicit-stop and guided-intake fixes. These are historical checkpoint results, not evaluation of the current runtime. Synthetic system-voice recordings and simulated customers only. Voice v2 changes the observable dialogue: comparison with the original text experiment cannot isolate retraining benefits. The prior voice checkpoint matches the new checkpoint's conversion in this environment. LLM wording is not evaluated by these scores. Violations and missed stop turns remain nonzero." :
+    data.training.nlp_backend === "transformer" ? "Voice v3 uses MiniLM, mapped RoBERTa and explicit-stop guards. The new PPO checkpoint does not outperform the prior voice checkpoint on reward or simulated conversion in this run. One synthetic speaker and repeated simulator language only. Acoustic emotion and LLM wording are not evaluated by these policy scores. Comparisons across environment versions cannot isolate NLP improvement." :
+    "Historical NB voice experiment, before explicit-stop and guided-intake fixes. Synthetic system-voice recordings and simulated customers only. These scores do not evaluate the transformer runtime or LLM wording." :
     "Historical synthetic text experiment, before the current explicit-stop and guided-intake fixes. PPO has higher mean reward but lower conversion than the rule baseline. These scores do not measure the current runtime, voice pipeline or LLM wording.";
 }
 async function refreshStatus() {
@@ -608,6 +679,7 @@ async function refreshStatus() {
     $("#model-status").replaceChildren(element("span", "status-dot"), element("span", "", ready ? "Local model ready" : state.status.ollama.online ? "Model missing" : "Local model offline"));
     $("#model-status").title = state.status.ollama.model;
     if (!state.session) {
+      $("#nlp-backend").value = state.status.understanding?.backend || "nb";
       if (!state.status.voice.nlp_ready) state.pipeline = "text";
       if (!(state.pipeline === "voice" ? state.status.voice.ppo_ready : state.status.ppo_ready)) state.policy = "rule";
     }

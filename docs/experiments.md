@@ -1,10 +1,16 @@
 # Experiments and Reproduction
 
+For the current MiniLM/RoBERTa/acoustic implementation and voice v3 training, use
+[the understanding guide](understanding.md). The commands below describe the historical text experiment;
+`run_all.py` overwrites its outputs, so archive them before explicitly reproducing it.
+
 Run from the project root with the supplied Python environment:
 
 ```powershell
 & '..\term_project\Scripts\python.exe' -m pytest tests -q
+$env:INSURANCE_NLP_BACKEND='nb'
 & '..\term_project\Scripts\python.exe' -u run_all.py
+Remove-Item Env:INSURANCE_NLP_BACKEND
 & '..\term_project\Scripts\python.exe' chat.py --debug --age 35
 ```
 

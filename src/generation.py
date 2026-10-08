@@ -217,7 +217,7 @@ class ResponseGenerator:
                     "Return JSON with exactly strategy and text; use the assigned strategy label unchanged.",
                     {"strategy": strategy, "verified_facts": prompt_facts, "customer_text": customer_text,
                      "task": TASK_GUIDANCE.get(state.get("dialogue_task"), "Answer the latest buyer message using the assigned strategy."),
-                     "context": {key: state[key] for key in ("need", "budget", "age", "existing_coverage", "amount_context") if key in state},
+                     "context": {key: state[key] for key in ("need", "budget", "age", "existing_coverage", "amount_context", "premium_budget", "objections", "communication_style") if key in state},
                      "dialogue": list(dialogue)[-3:]})
                 if not isinstance(result, dict):
                     raise ValueError("LLM response must be a JSON object")

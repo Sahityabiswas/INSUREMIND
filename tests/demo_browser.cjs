@@ -14,9 +14,11 @@ async function main() {
   const context = await browser.newContext({viewport: {width: 1440, height: 900}, acceptDownloads: true});
   const page = await context.newPage();
   const errors = [];
+  const speechRequests = [];
+  page.on("request", (request) => {if (request.url().endsWith("/speech")) speechRequests.push(request);});
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("console", (message) => {if (message.type() === "error") errors.push(message.text());});
-  page.setDefaultTimeout(12000);
+  page.setDefaultTimeout(30000);
 
   async function noOverflow() {
     const sizes = await page.evaluate(() => ({width: innerWidth, content: document.documentElement.scrollWidth}));
@@ -46,20 +48,39 @@ async function main() {
     if (await page.locator("#reset-dialog").isVisible()) await page.locator("#confirm-reset").click();
     await page.waitForFunction(() => !document.querySelector("#message").disabled);
   }
+  function nextSpeech(timeout) {
+    return page.waitForResponse((response) => response.url().endsWith("/speech"), {timeout}).catch((error) => error);
+  }
+  async function checkSpeech(responsePromise) {
+    const response = await responsePromise;
+    if (response instanceof Error) throw response;
+    assert.strictEqual(response.status(), 200);
+    assert(Number(response.headers()["content-length"]) > 44);
+    // Edge's DevTools transport omits some audio bodies; verify the decoded player.
+    await page.waitForFunction(() => playback && playback.readyState >= 2 && Number.isFinite(playback.duration) && playback.duration > 0);
+    await page.locator("#stop-playback").click();
+  }
 
   try {
     await page.goto(url);
-    await page.waitForFunction(() => !document.querySelector("#message").disabled);
+    await page.waitForFunction(() => !document.querySelector("#message").disabled, null, {timeout: 125000});
     assert(await page.locator("svg.lucide").count() > 15, "Icon assets must render");
+    assert(!(await page.locator("#review-transcript").isChecked()), "Voice must answer directly by default");
+    assert(await page.locator("#auto-speak").isChecked(), "Voice replies must be spoken by default");
     await screenshot("ui-desktop.png");
     console.log("PASS initial desktop UI and local assets");
 
     await page.locator("[data-generator='template']").click();
     await apply();
     const first = await send("I need health insurance for my family.");
+    assert.strictEqual(first.response.understanding.classifier.backend, "transformer");
+    assert((await page.locator("#runtime-trace").textContent()).includes("MiniLM"));
     assert.strictEqual(first.response.state.need, "FAMILY_HEALTH");
     assert.strictEqual(first.response.source, "template");
     assert(!first.response.closed);
+    assert.strictEqual(speechRequests.length, 0, "Typed turns must not start automatic playback");
+    assert((await page.locator("#understanding").textContent()).includes("Text emotion"));
+    assert(!(await page.locator("#acoustic-section").isVisible()));
     assert((await page.locator("#action-name").textContent()) !== "Awaiting buyer");
     await screenshot("ui-desktop-chat.png");
 
@@ -107,9 +128,15 @@ async function main() {
     await page.waitForFunction(() => document.querySelectorAll(".product").length === 8);
     await screenshot("ui-catalogue.png");
     await page.locator("[data-view='results'].nav-button").click();
+    await page.locator("#results-pipeline").selectOption("understanding");
+    await page.waitForFunction(() => document.querySelectorAll("#results-table tr").length === 3);
+    assert((await page.locator("#results-table").textContent()).includes("Multi-label objections"));
+    assert((await page.locator("#results-source").textContent()).includes("understanding_v1"));
+    await screenshot("ui-transformer-results.png");
+    await page.locator("#results-pipeline").selectOption("voice");
     await page.waitForFunction(() => document.querySelectorAll("#results-table tr").length === 4);
-    assert((await page.locator("#results-table").textContent()).includes("11.33%"));
-    assert((await page.locator("#results-source").textContent()).includes("voice_v2"));
+    assert((await page.locator("#results-table").textContent()).includes("6.33%"));
+    assert((await page.locator("#results-source").textContent()).includes("voice_v3_transformer"));
     assert((await page.locator("#voice-metrics").textContent()).includes("4.67%"));
     assert(!(await page.locator("#text-chart").isVisible()));
     await screenshot("ui-voice-results.png");
@@ -121,6 +148,17 @@ async function main() {
     console.log("PASS catalogue eligibility, empty match state, measured results and training image");
 
     await page.locator("[data-view='conversation'].nav-button").click();
+    await page.locator("#nlp-backend").selectOption("nb");
+    await apply();
+    assert.strictEqual((await send("I need family health insurance.")).response.understanding.classifier.backend, "nb");
+    await page.locator("#nlp-backend").selectOption("transformer");
+    await apply();
+    const compound = await send("The premium is too expensive and I don't trust this insurer.");
+    assert(compound.response.raw_understanding.objections.includes("PRICE_TOO_HIGH"));
+    assert(compound.response.raw_understanding.objections.includes("DO_NOT_TRUST_INSURER"));
+    assert((await page.locator("#understanding").textContent()).includes("All objections"));
+    await screenshot("ui-multilabel.png");
+    await reset();
     await page.locator("[data-generator='hybrid']").click();
     await apply();
     const routed = await send("I need health insurance for my family.");
@@ -153,7 +191,7 @@ async function main() {
 
     // Browser capture uses only the generated WAV supplied by Chromium's fake device.
     if (fs.existsSync(voiceWav)) {
-      await page.locator("#review-transcript").uncheck();
+      assert(!(await page.locator("#review-transcript").isChecked()));
       await page.evaluate(() => {
         window.__streams = [];
         window.__getUserMedia = navigator.mediaDevices.getUserMedia.bind(navigator.mediaDevices);
@@ -181,43 +219,96 @@ async function main() {
 
       await page.locator("#record").click();
       await page.waitForFunction(() => document.querySelector("#recording-status").textContent.startsWith("Recording 4"));
-      const capturedPromise = page.waitForResponse((response) => response.url().endsWith("/audio"), {timeout: 30000});
+      const capturedPromise = page.waitForResponse((response) => response.url().endsWith("/audio"), {timeout: 90000});
+      // Automatic speech follows both audio processing (90 s) and synthesis (65 s).
+      const automaticSpeech = nextSpeech(160000);
       await page.locator("#record").click();
       const captured = await capturedPromise;
       assert.strictEqual(captured.status(), 200);
       await page.waitForFunction(() => document.querySelector("#turn-count").textContent === "1 turn");
       const capturedEntry = await page.evaluate(() => state.session.history[0]);
       assert.strictEqual(capturedEntry.response.state.need, "FAMILY_HEALTH");
+      assert.strictEqual(capturedEntry.voice.acoustic_emotion.source, "audio_waveform");
+      assert(["estimated", "uncertain"].includes(capturedEntry.voice.acoustic_emotion.status));
+      assert(!(await page.locator("#transcript-review").isVisible()), "No Send confirmation for direct voice turns");
+      assert.strictEqual(await page.locator(".chat-message.agent").count(), 1);
+      assert((await page.locator("#understanding").textContent()).includes("Spoken intent"));
+      assert(!(await page.locator("#understanding").textContent()).includes("Text emotion"));
+      assert(await page.locator("#vocal-emotion").isVisible());
+      assert((await page.locator("#vocal-emotion").textContent()).includes(capturedEntry.voice.acoustic_emotion.status === "uncertain" ?
+        "Uncertain" : `${capturedEntry.voice.acoustic_emotion.label[0]}${capturedEntry.voice.acoustic_emotion.label.slice(1).toLowerCase()}`));
+      assert((await page.locator("#acoustic-trace").textContent()).includes("wav2vec2"));
+      assert(!(await page.locator("#text-emotion-trace").isVisible()));
       assert(await page.evaluate(() => window.__streams.every((stream) => stream.getTracks().every((track) => track.readyState === "ended"))));
+      await checkSpeech(automaticSpeech);
       await screenshot("ui-voice-conversation.png");
-      const speechPromise = page.waitForResponse((response) => response.url().endsWith("/speech"));
+      await page.locator("#acoustic-section summary").click();
+      assert(await page.locator("#acoustic-trace").isVisible());
+      await page.locator("#acoustic-section summary").click();
+      await page.locator("#text-emotion-section summary").click();
+      assert((await page.locator("#text-emotion-trace").textContent()).includes("RoBERTa"));
+      await page.locator("#text-emotion-section summary").click();
+
+      // Presentation-only fixtures must never replace a missing waveform estimate with text emotion.
+      for (const [audio, expected] of [
+        [{source: "audio_waveform", status: "estimated", label: "ANGRY", confidence: .9}, "Angry (Estimate)"],
+        [{source: "audio_waveform", status: "uncertain", label: "SAD", confidence: .4}, "Uncertain"],
+        [{source: "audio_waveform", status: "unavailable", error: "Model unavailable"}, "Unavailable"],
+        [{source: "audio_waveform", status: "insufficient_audio"}, "Insufficient Audio"],
+        [{source: "audio_waveform", status: "skipped_stop"}, "Skipped For Stop Request"],
+        [{source: "audio_waveform", status: "disabled"}, "Disabled"],
+        [{source: "text", status: "estimated", label: "HAPPY", confidence: .99}, "Not Analyzed"],
+        [null, "Not Analyzed"],
+      ]) {
+        await page.evaluate((acoustic) => {
+          const entry = structuredClone(state.session.history[0]);
+          entry.voice.acoustic_emotion = acoustic;
+          renderInspector(entry);
+        }, audio);
+        assert.strictEqual(await page.locator("#vocal-emotion strong").textContent(), expected);
+        if (expected !== "Angry (Estimate)") assert.strictEqual(await page.locator("#vocal-emotion .confidence").count(), 0);
+      }
+      await page.evaluate(() => renderInspector(state.session.history[0]));
+      await page.setViewportSize({width: 390, height: 844});
+      await page.locator(".mobile-panels [data-panel='inspector']").click();
+      await page.locator(".inspector-panel").evaluate((panel) => {panel.scrollTop = 0;});
+      await screenshot("ui-mobile-voice-inspector.png");
+      const vocalBox = await page.locator("#vocal-emotion").boundingBox();
+      assert(vocalBox && vocalBox.y >= 0 && vocalBox.y + vocalBox.height <= 844, "Vocal emotion must be above the fold");
+      await page.locator(".mobile-panels [data-panel='chat']").click();
+      await page.setViewportSize({width: 1440, height: 900});
+
+      await page.locator("#auto-speak").uncheck();
+      const speechPromise = nextSpeech(70000);
       await page.locator("[data-speak='1']").click();
-      const speech = await speechPromise;
-      assert.strictEqual(speech.status(), 200);
-      // Edge's DevTools transport omits some audio bodies; verify the actual decoded player.
-      assert(Number(speech.headers()["content-length"]) > 44);
-      await page.waitForFunction(() => playback && playback.readyState >= 2 && Number.isFinite(playback.duration) && playback.duration > 0);
-      await page.locator("#stop-playback").click();
+      await checkSpeech(speechPromise);
       await reset();
+      const speechCount = speechRequests.length;
       const uploadPromise = page.waitForResponse((response) => response.url().endsWith("/audio"));
       await page.locator("#audio-file").setInputFiles(voiceWav);
       assert.strictEqual((await uploadPromise).status(), 200);
       await page.waitForFunction(() => document.querySelector("#turn-count").textContent === "1 turn");
       assert(await page.evaluate(() => state.session.history[0].voice.transcript.confidence > .55));
       assert((await page.locator("#runtime-trace").textContent()).includes("ASR confidence"));
+      assert.strictEqual(speechRequests.length, speechCount, "Spoken replies can be disabled");
       await reset();
       await page.locator("#review-transcript").check();
+      await page.locator("#auto-speak").check();
       const reviewPromise = page.waitForResponse((response) => response.url().includes("/audio?review=1"));
       await page.locator("#audio-file").setInputFiles(voiceWav);
       assert.strictEqual((await reviewPromise).status(), 200);
       await page.locator("#transcript-review").waitFor();
       assert.strictEqual(await page.locator("#turn-count").textContent(), "0 turns");
       assert((await page.locator("#message").inputValue()).includes("insurance"));
+      assert.strictEqual(speechRequests.length, speechCount, "Preview must not generate or speak an answer");
       await screenshot("ui-transcript-review.png");
+      const reviewedSpeech = nextSpeech(90000);
       const reviewed = await send("I need health insurance for my family. Please ask one by one.");
       assert(reviewed.voice.corrected && reviewed.voice.reviewed);
+      assert.strictEqual(reviewed.voice.acoustic_emotion.source, "audio_waveform");
       assert((await page.locator(".message-source").allTextContents()).includes("Corrected voice transcript"));
       assert(!(await page.locator("#transcript-review").isVisible()));
+      await checkSpeech(reviewedSpeech);
       await reset();
       await page.evaluate(() => { navigator.mediaDevices.getUserMedia = async () => {throw new DOMException("Denied", "NotAllowedError");}; });
       await page.locator("#record").click();
@@ -226,7 +317,7 @@ async function main() {
       assert(!(await page.locator("#recording-strip").isVisible()));
       await page.locator("#dismiss-error").click();
       await page.evaluate(() => { navigator.mediaDevices.getUserMedia = window.__getUserMedia; });
-      console.log("PASS shared hybrid routing, synthetic microphone capture, cancellation, WAV upload, native TTS, permission failure");
+      console.log("PASS direct voice answers, automatic native TTS, separate vocal/text emotion, optional review, capture cleanup and permission failure");
     }
     await page.locator("[data-generator='template']").click();
     await apply();
@@ -258,7 +349,7 @@ async function main() {
     await screenshot("ui-small-mobile.png");
     await page.locator("[data-view='results'].nav-button").click();
     await page.locator("#results-pipeline").selectOption("voice");
-    await page.waitForFunction(() => document.querySelector("#results-source").textContent.includes("voice_v2"));
+    await page.waitForFunction(() => document.querySelector("#results-source").textContent.includes("voice_v3_transformer"));
     await screenshot("ui-mobile-results.png");
     await page.locator("[data-view='conversation'].nav-button").click();
     await page.setViewportSize({width: 1280, height: 720});
@@ -291,6 +382,14 @@ async function main() {
     }
     assert.deepStrictEqual(errors, [], "No browser JavaScript or asset errors");
     console.log("PASS browser console is clean");
+  } catch (error) {
+    console.error("UI failure state", await page.evaluate(() => ({
+      error: document.querySelector("#error-text").textContent,
+      feedback: document.querySelector("#voice-feedback").textContent,
+      turn: state.session?.history.at(-1), understanding: document.querySelector("#understanding").textContent,
+    })).catch(() => "Page unavailable"));
+    await page.screenshot({path: path.join(artifacts, "ui-test-failure.png")}).catch(() => {});
+    throw error;
   } finally {
     await context.close();
     await browser.close();

@@ -1,0 +1,754 @@
+{
+  "intent": {
+    "accuracy": 0.872,
+    "macro_f1": 0.802,
+    "weighted_f1": 0.864,
+    "test_examples": 39
+  },
+  "objections": {
+    "micro_f1": 0.8181818181818182,
+    "macro_f1": 0.8042424242424243,
+    "exact_match": 0.717948717948718,
+    "per_label": {
+      "PRICE_TOO_HIGH": {
+        "f1": 1.0,
+        "support": 4
+      },
+      "ALREADY_INSURED": {
+        "f1": 1.0,
+        "support": 3
+      },
+      "NO_NEED": {
+        "f1": 1.0,
+        "support": 2
+      },
+      "DO_NOT_TRUST_INSURER": {
+        "f1": 0.6666666666666666,
+        "support": 3
+      },
+      "NEED_MORE_INFORMATION": {
+        "f1": 0.4,
+        "support": 3
+      },
+      "COMPARING_OPTIONS": {
+        "f1": 0.4,
+        "support": 3
+      },
+      "BAD_PAST_EXPERIENCE": {
+        "f1": 1.0,
+        "support": 3
+      },
+      "COVERAGE_NOT_CLEAR": {
+        "f1": 1.0,
+        "support": 3
+      },
+      "NEED_FAMILY_APPROVAL": {
+        "f1": 0.6666666666666666,
+        "support": 3
+      },
+      "NOT_READY": {
+        "f1": 0.9090909090909091,
+        "support": 5
+      }
+    },
+    "examples": 39
+  },
+  "data_audit": {
+    "legacy_train_rows": 6888,
+    "legacy_unique_texts": 42,
+    "legacy_texts_with_conflicting_emotions": 32,
+    "legacy_split_text_overlap": 42,
+    "new_split_sizes": {
+      "train": 234,
+      "val": 37,
+      "test": 39
+    },
+    "new_exact_text_overlap": 0,
+    "labels": "Synthetic, not human-validated; legacy emotion labels excluded from fine-tuning"
+  },
+  "limitations": [
+    "Small agent-authored synthetic language test, not independent human validation",
+    "Multi-label thresholds selected on validation only; probabilities not calibrated",
+    "Emotion mapping is heuristic, RoBERTa encoder not fine-tuned on insurance data",
+    "No labeled emotional human audio is available for acoustic accuracy evaluation",
+    "This language evaluation does not measure PPO performance; see the separate policy experiment"
+  ],
+  "text_emotion_mapping": {
+    "accuracy": 0.781,
+    "macro_f1": 0.787,
+    "weighted_f1": 0.787,
+    "test_examples": 32,
+    "details": [
+      {
+        "text": "I am excited about protecting my family's future.",
+        "expected": "POSITIVE",
+        "predicted": "POSITIVE",
+        "score": 0.8813755917524481
+      },
+      {
+        "text": "This sounds wonderful, I am happy to hear it.",
+        "expected": "POSITIVE",
+        "predicted": "POSITIVE",
+        "score": 0.9121093506536948
+      },
+      {
+        "text": "I feel optimistic about finding a good policy.",
+        "expected": "POSITIVE",
+        "predicted": "POSITIVE",
+        "score": 0.7992694583183322
+      },
+      {
+        "text": "I love the idea of having this protection.",
+        "expected": "POSITIVE",
+        "predicted": "POSITIVE",
+        "score": 0.9459025713764997
+      },
+      {
+        "text": "Please tell me the annual premium.",
+        "expected": "NEUTRAL",
+        "predicted": "NEUTRAL",
+        "score": 0.8494647160603122
+      },
+      {
+        "text": "I am thirty five years old.",
+        "expected": "NEUTRAL",
+        "predicted": "NEUTRAL",
+        "score": 0.9440238890725554
+      },
+      {
+        "text": "There are four people in my family.",
+        "expected": "NEUTRAL",
+        "predicted": "NEUTRAL",
+        "score": 0.9216251739241227
+      },
+      {
+        "text": "My current policy expires in June.",
+        "expected": "NEUTRAL",
+        "predicted": "NEUTRAL",
+        "score": 0.9363780638217768
+      },
+      {
+        "text": "I am concerned about the exclusions.",
+        "expected": "CONCERNED",
+        "predicted": "CONCERNED",
+        "score": 0.8141199344830252
+      },
+      {
+        "text": "I worry that important treatments might not be covered.",
+        "expected": "CONCERNED",
+        "predicted": "ANXIOUS",
+        "score": 0.5592386694408781
+      },
+      {
+        "text": "The rising hospital costs concern me.",
+        "expected": "CONCERNED",
+        "predicted": "ANXIOUS",
+        "score": 0.4053626239112817
+      },
+      {
+        "text": "I am unsure whether this is enough protection.",
+        "expected": "CONCERNED",
+        "predicted": "CONCERNED",
+        "score": 0.8504240472146047
+      },
+      {
+        "text": "I doubt that your insurer will honor its promises.",
+        "expected": "SKEPTICAL",
+        "predicted": "CONCERNED",
+        "score": 0.6405792331096295
+      },
+      {
+        "text": "I don't believe these claims about your product.",
+        "expected": "SKEPTICAL",
+        "predicted": "SKEPTICAL",
+        "score": 0.670633867468821
+      },
+      {
+        "text": "This offer seems suspicious to me.",
+        "expected": "SKEPTICAL",
+        "predicted": "CONCERNED",
+        "score": 0.4387645961672055
+      },
+      {
+        "text": "I am skeptical that this plan really helps.",
+        "expected": "SKEPTICAL",
+        "predicted": "SKEPTICAL",
+        "score": 0.6616571544466107
+      },
+      {
+        "text": "I am tired of having to repeat my question.",
+        "expected": "FRUSTRATED",
+        "predicted": "FRUSTRATED",
+        "score": 0.5595143736253132
+      },
+      {
+        "text": "This confusing explanation is really frustrating.",
+        "expected": "FRUSTRATED",
+        "predicted": "CONCERNED",
+        "score": 0.6473826240188412
+      },
+      {
+        "text": "I am annoyed by all this paperwork.",
+        "expected": "FRUSTRATED",
+        "predicted": "FRUSTRATED",
+        "score": 0.647468211978878
+      },
+      {
+        "text": "It is disappointing that no one can explain the exclusions.",
+        "expected": "FRUSTRATED",
+        "predicted": "CONCERNED",
+        "score": 0.7482863333675941
+      },
+      {
+        "text": "I am furious that you ignored my request.",
+        "expected": "ANGRY",
+        "predicted": "ANGRY",
+        "score": 0.6954373039891123
+      },
+      {
+        "text": "I am angry about how the company treated me.",
+        "expected": "ANGRY",
+        "predicted": "ANGRY",
+        "score": 0.7763740619492158
+      },
+      {
+        "text": "This is outrageous and unacceptable!",
+        "expected": "ANGRY",
+        "predicted": "SKEPTICAL",
+        "score": 0.5553845319435375
+      },
+      {
+        "text": "I hate being misled by salespeople!",
+        "expected": "ANGRY",
+        "predicted": "ANGRY",
+        "score": 0.7330735405128633
+      },
+      {
+        "text": "I am terrified that my family will be left without support.",
+        "expected": "ANXIOUS",
+        "predicted": "ANXIOUS",
+        "score": 0.8581353236729247
+      },
+      {
+        "text": "I feel nervous about making the wrong choice.",
+        "expected": "ANXIOUS",
+        "predicted": "ANXIOUS",
+        "score": 0.7356469094965792
+      },
+      {
+        "text": "I am scared of not being able to pay hospital bills.",
+        "expected": "ANXIOUS",
+        "predicted": "ANXIOUS",
+        "score": 0.8788083003721744
+      },
+      {
+        "text": "I feel anxious and overwhelmed about the future.",
+        "expected": "ANXIOUS",
+        "predicted": "ANXIOUS",
+        "score": 0.7359435517470714
+      },
+      {
+        "text": "Thank you, that answers my question completely.",
+        "expected": "SATISFIED",
+        "predicted": "SATISFIED",
+        "score": 0.9591320778679685
+      },
+      {
+        "text": "I am satisfied with that explanation.",
+        "expected": "SATISFIED",
+        "predicted": "SATISFIED",
+        "score": 0.7983609968575481
+      },
+      {
+        "text": "That clears everything up, thanks.",
+        "expected": "SATISFIED",
+        "predicted": "SATISFIED",
+        "score": 0.9707758890443022
+      },
+      {
+        "text": "I feel relieved now that I understand the policy.",
+        "expected": "SATISFIED",
+        "predicted": "SATISFIED",
+        "score": 0.445966683794338
+      }
+    ],
+    "confusion": {
+      "POSITIVE": {
+        "POSITIVE": 4,
+        "NEUTRAL": 0,
+        "CONCERNED": 0,
+        "SKEPTICAL": 0,
+        "FRUSTRATED": 0,
+        "ANGRY": 0,
+        "ANXIOUS": 0,
+        "SATISFIED": 0
+      },
+      "NEUTRAL": {
+        "POSITIVE": 0,
+        "NEUTRAL": 4,
+        "CONCERNED": 0,
+        "SKEPTICAL": 0,
+        "FRUSTRATED": 0,
+        "ANGRY": 0,
+        "ANXIOUS": 0,
+        "SATISFIED": 0
+      },
+      "CONCERNED": {
+        "POSITIVE": 0,
+        "NEUTRAL": 0,
+        "CONCERNED": 2,
+        "SKEPTICAL": 0,
+        "FRUSTRATED": 0,
+        "ANGRY": 0,
+        "ANXIOUS": 2,
+        "SATISFIED": 0
+      },
+      "SKEPTICAL": {
+        "POSITIVE": 0,
+        "NEUTRAL": 0,
+        "CONCERNED": 2,
+        "SKEPTICAL": 2,
+        "FRUSTRATED": 0,
+        "ANGRY": 0,
+        "ANXIOUS": 0,
+        "SATISFIED": 0
+      },
+      "FRUSTRATED": {
+        "POSITIVE": 0,
+        "NEUTRAL": 0,
+        "CONCERNED": 2,
+        "SKEPTICAL": 0,
+        "FRUSTRATED": 2,
+        "ANGRY": 0,
+        "ANXIOUS": 0,
+        "SATISFIED": 0
+      },
+      "ANGRY": {
+        "POSITIVE": 0,
+        "NEUTRAL": 0,
+        "CONCERNED": 0,
+        "SKEPTICAL": 1,
+        "FRUSTRATED": 0,
+        "ANGRY": 3,
+        "ANXIOUS": 0,
+        "SATISFIED": 0
+      },
+      "ANXIOUS": {
+        "POSITIVE": 0,
+        "NEUTRAL": 0,
+        "CONCERNED": 0,
+        "SKEPTICAL": 0,
+        "FRUSTRATED": 0,
+        "ANGRY": 0,
+        "ANXIOUS": 4,
+        "SATISFIED": 0
+      },
+      "SATISFIED": {
+        "POSITIVE": 0,
+        "NEUTRAL": 0,
+        "CONCERNED": 0,
+        "SKEPTICAL": 0,
+        "FRUSTRATED": 0,
+        "ANGRY": 0,
+        "ANXIOUS": 0,
+        "SATISFIED": 4
+      }
+    }
+  },
+  "test_predictions": [
+    {
+      "text": "My spouse and I are shopping for a family health policy.",
+      "expected_intent": "PRODUCT_INQUIRY",
+      "intent": "PRODUCT_INQUIRY",
+      "expected_objections": [],
+      "objections": [
+        "NEED_FAMILY_APPROVAL"
+      ]
+    },
+    {
+      "text": "I am willing to answer, but please ask each question separately.",
+      "expected_intent": "PRODUCT_INQUIRY",
+      "intent": "OBJECTION",
+      "expected_objections": [],
+      "objections": [
+        "NEED_MORE_INFORMATION"
+      ]
+    },
+    {
+      "text": "Could you provide a yearly price quote?",
+      "expected_intent": "PRICE_INQUIRY",
+      "intent": "PRICE_INQUIRY",
+      "expected_objections": [],
+      "objections": []
+    },
+    {
+      "text": "Is the payment due monthly or annually?",
+      "expected_intent": "PRICE_INQUIRY",
+      "intent": "PRICE_INQUIRY",
+      "expected_objections": [],
+      "objections": []
+    },
+    {
+      "text": "Would the insurer cover an inpatient hospital stay?",
+      "expected_intent": "COVERAGE_INQUIRY",
+      "intent": "COVERAGE_INQUIRY",
+      "expected_objections": [],
+      "objections": []
+    },
+    {
+      "text": "Tell me which illnesses are excluded from the policy.",
+      "expected_intent": "COVERAGE_INQUIRY",
+      "intent": "COVERAGE_INQUIRY",
+      "expected_objections": [],
+      "objections": []
+    },
+    {
+      "text": "There is a group medical policy at my office.",
+      "expected_intent": "EXISTING_COVERAGE",
+      "intent": "PRODUCT_INQUIRY",
+      "expected_objections": [],
+      "objections": []
+    },
+    {
+      "text": "Our family currently has no policy.",
+      "expected_intent": "EXISTING_COVERAGE",
+      "intent": "EXISTING_COVERAGE",
+      "expected_objections": [],
+      "objections": [
+        "NEED_FAMILY_APPROVAL"
+      ]
+    },
+    {
+      "text": "Explain the differences between the available choices.",
+      "expected_intent": "COMPARISON",
+      "intent": "COMPARISON",
+      "expected_objections": [
+        "COMPARING_OPTIONS"
+      ],
+      "objections": [
+        "COMPARING_OPTIONS"
+      ]
+    },
+    {
+      "text": "I am evaluating offers from other providers too.",
+      "expected_intent": "COMPARISON",
+      "intent": "OBJECTION",
+      "expected_objections": [
+        "COMPARING_OPTIONS"
+      ],
+      "objections": []
+    },
+    {
+      "text": "I would like to sign up for the selected option.",
+      "expected_intent": "PURCHASE_INTEREST",
+      "intent": "PURCHASE_INTEREST",
+      "expected_objections": [],
+      "objections": []
+    },
+    {
+      "text": "What documents should I submit to purchase the policy?",
+      "expected_intent": "PURCHASE_INTEREST",
+      "intent": "PURCHASE_INTEREST",
+      "expected_objections": [],
+      "objections": []
+    },
+    {
+      "text": "Reach out again after the weekend.",
+      "expected_intent": "FOLLOW_UP",
+      "intent": "FOLLOW_UP",
+      "expected_objections": [],
+      "objections": [
+        "NEED_FAMILY_APPROVAL"
+      ]
+    },
+    {
+      "text": "Can you email the brochure and check back next month?",
+      "expected_intent": "FOLLOW_UP",
+      "intent": "FOLLOW_UP",
+      "expected_objections": [],
+      "objections": []
+    },
+    {
+      "text": "I am not interested in this. Please stop.",
+      "expected_intent": "REJECTION",
+      "intent": "REJECTION",
+      "expected_objections": [
+        "NOT_READY"
+      ],
+      "objections": [
+        "NOT_READY"
+      ]
+    },
+    {
+      "text": "Do not call me about policies again.",
+      "expected_intent": "REJECTION",
+      "intent": "OBJECTION",
+      "expected_objections": [
+        "NOT_READY"
+      ],
+      "objections": [
+        "NOT_READY"
+      ]
+    },
+    {
+      "text": "I would struggle to meet premiums this large.",
+      "expected_intent": "OBJECTION",
+      "intent": "OBJECTION",
+      "expected_objections": [
+        "PRICE_TOO_HIGH"
+      ],
+      "objections": [
+        "PRICE_TOO_HIGH"
+      ]
+    },
+    {
+      "text": "Your quote is outside my spending limit.",
+      "expected_intent": "OBJECTION",
+      "intent": "OBJECTION",
+      "expected_objections": [
+        "PRICE_TOO_HIGH"
+      ],
+      "objections": [
+        "PRICE_TOO_HIGH"
+      ]
+    },
+    {
+      "text": "My present plan includes all these benefits already.",
+      "expected_intent": "OBJECTION",
+      "intent": "OBJECTION",
+      "expected_objections": [
+        "ALREADY_INSURED"
+      ],
+      "objections": [
+        "ALREADY_INSURED"
+      ]
+    },
+    {
+      "text": "Wouldn't this overlap with the policy I hold?",
+      "expected_intent": "OBJECTION",
+      "intent": "OBJECTION",
+      "expected_objections": [
+        "ALREADY_INSURED"
+      ],
+      "objections": [
+        "ALREADY_INSURED",
+        "COMPARING_OPTIONS"
+      ]
+    },
+    {
+      "text": "There is no gap that this policy would fill for me.",
+      "expected_intent": "OBJECTION",
+      "intent": "OBJECTION",
+      "expected_objections": [
+        "NO_NEED"
+      ],
+      "objections": [
+        "NO_NEED"
+      ]
+    },
+    {
+      "text": "Why would I require additional protection at all?",
+      "expected_intent": "OBJECTION",
+      "intent": "OBJECTION",
+      "expected_objections": [
+        "NO_NEED"
+      ],
+      "objections": [
+        "NO_NEED"
+      ]
+    },
+    {
+      "text": "What assurance is there that your company will honor a claim?",
+      "expected_intent": "OBJECTION",
+      "intent": "COVERAGE_INQUIRY",
+      "expected_objections": [
+        "DO_NOT_TRUST_INSURER"
+      ],
+      "objections": []
+    },
+    {
+      "text": "I suspect this provider will find a reason not to pay.",
+      "expected_intent": "OBJECTION",
+      "intent": "OBJECTION",
+      "expected_objections": [
+        "DO_NOT_TRUST_INSURER"
+      ],
+      "objections": [
+        "DO_NOT_TRUST_INSURER"
+      ]
+    },
+    {
+      "text": "I am not sufficiently informed to make a choice yet.",
+      "expected_intent": "OBJECTION",
+      "intent": "OBJECTION",
+      "expected_objections": [
+        "NEED_MORE_INFORMATION"
+      ],
+      "objections": [
+        "NOT_READY"
+      ]
+    },
+    {
+      "text": "Can you supply the complete policy wording before I decide?",
+      "expected_intent": "OBJECTION",
+      "intent": "OBJECTION",
+      "expected_objections": [
+        "NEED_MORE_INFORMATION"
+      ],
+      "objections": []
+    },
+    {
+      "text": "The company I used before refused to settle a valid claim.",
+      "expected_intent": "OBJECTION",
+      "intent": "OBJECTION",
+      "expected_objections": [
+        "BAD_PAST_EXPERIENCE"
+      ],
+      "objections": [
+        "DO_NOT_TRUST_INSURER",
+        "BAD_PAST_EXPERIENCE"
+      ]
+    },
+    {
+      "text": "I lost money because of misleading advice from my former agent.",
+      "expected_intent": "OBJECTION",
+      "intent": "OBJECTION",
+      "expected_objections": [
+        "BAD_PAST_EXPERIENCE"
+      ],
+      "objections": [
+        "BAD_PAST_EXPERIENCE"
+      ]
+    },
+    {
+      "text": "The conditions for reimbursement are ambiguous to me.",
+      "expected_intent": "OBJECTION",
+      "intent": "OBJECTION",
+      "expected_objections": [
+        "COVERAGE_NOT_CLEAR"
+      ],
+      "objections": [
+        "COVERAGE_NOT_CLEAR"
+      ]
+    },
+    {
+      "text": "I cannot work out what these policy clauses actually cover.",
+      "expected_intent": "OBJECTION",
+      "intent": "OBJECTION",
+      "expected_objections": [
+        "COVERAGE_NOT_CLEAR"
+      ],
+      "objections": [
+        "COVERAGE_NOT_CLEAR"
+      ]
+    },
+    {
+      "text": "My wife needs to agree before I take out the policy.",
+      "expected_intent": "OBJECTION",
+      "intent": "OBJECTION",
+      "expected_objections": [
+        "NEED_FAMILY_APPROVAL"
+      ],
+      "objections": [
+        "NEED_FAMILY_APPROVAL"
+      ]
+    },
+    {
+      "text": "This purchase needs a discussion with my household first.",
+      "expected_intent": "OBJECTION",
+      "intent": "OBJECTION",
+      "expected_objections": [
+        "NEED_FAMILY_APPROVAL"
+      ],
+      "objections": [
+        "NEED_FAMILY_APPROVAL"
+      ]
+    },
+    {
+      "text": "I am not in a position to commit right now.",
+      "expected_intent": "OBJECTION",
+      "intent": "OBJECTION",
+      "expected_objections": [
+        "NOT_READY"
+      ],
+      "objections": [
+        "NOT_READY"
+      ]
+    },
+    {
+      "text": "I would rather leave the decision until later.",
+      "expected_intent": "OBJECTION",
+      "intent": "OBJECTION",
+      "expected_objections": [
+        "NOT_READY"
+      ],
+      "objections": [
+        "NOT_READY"
+      ]
+    },
+    {
+      "text": "I already have a policy, and paying for this one would exceed my budget.",
+      "expected_intent": "OBJECTION",
+      "intent": "OBJECTION",
+      "expected_objections": [
+        "ALREADY_INSURED",
+        "PRICE_TOO_HIGH"
+      ],
+      "objections": [
+        "PRICE_TOO_HIGH",
+        "ALREADY_INSURED"
+      ]
+    },
+    {
+      "text": "My former insurer refused my claim, so I don't trust insurance companies.",
+      "expected_intent": "OBJECTION",
+      "intent": "OBJECTION",
+      "expected_objections": [
+        "BAD_PAST_EXPERIENCE",
+        "DO_NOT_TRUST_INSURER"
+      ],
+      "objections": [
+        "DO_NOT_TRUST_INSURER",
+        "BAD_PAST_EXPERIENCE"
+      ]
+    },
+    {
+      "text": "Before buying I need my husband's agreement and a comparison with other providers.",
+      "expected_intent": "OBJECTION",
+      "intent": "OBJECTION",
+      "expected_objections": [
+        "NEED_FAMILY_APPROVAL",
+        "COMPARING_OPTIONS"
+      ],
+      "objections": [
+        "NEED_FAMILY_APPROVAL"
+      ]
+    },
+    {
+      "text": "Your policy terms are ambiguous and I cannot afford those premiums.",
+      "expected_intent": "OBJECTION",
+      "intent": "OBJECTION",
+      "expected_objections": [
+        "COVERAGE_NOT_CLEAR",
+        "PRICE_TOO_HIGH"
+      ],
+      "objections": [
+        "PRICE_TOO_HIGH",
+        "COVERAGE_NOT_CLEAR"
+      ]
+    },
+    {
+      "text": "I require more product information, and I am not ready to choose today.",
+      "expected_intent": "OBJECTION",
+      "intent": "OBJECTION",
+      "expected_objections": [
+        "NEED_MORE_INFORMATION",
+        "NOT_READY"
+      ],
+      "objections": [
+        "NEED_MORE_INFORMATION",
+        "NOT_READY"
+      ]
+    }
+  ]
+}

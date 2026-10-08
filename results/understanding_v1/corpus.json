@@ -1,0 +1,2414 @@
+{
+  "train": [
+    {
+      "text": "I need health insurance for my family.",
+      "intent": "PRODUCT_INQUIRY",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "We are looking for a life insurance policy.",
+      "intent": "PRODUCT_INQUIRY",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Which health plans can I look at?",
+      "intent": "PRODUCT_INQUIRY",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Can you show me individual medical insurance?",
+      "intent": "PRODUCT_INQUIRY",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Yes, I am happy to share my information. Ask one by one.",
+      "intent": "PRODUCT_INQUIRY",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Please ask me one question at a time.",
+      "intent": "PRODUCT_INQUIRY",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Sure, go ahead and ask me about my needs.",
+      "intent": "PRODUCT_INQUIRY",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I want protection for my children.",
+      "intent": "PRODUCT_INQUIRY",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "What will be my payment?",
+      "intent": "PRICE_INQUIRY",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "How much is the annual premium?",
+      "intent": "PRICE_INQUIRY",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Can you tell me the monthly cost?",
+      "intent": "PRICE_INQUIRY",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "What is the price for a family plan?",
+      "intent": "PRICE_INQUIRY",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "How much would I pay every year?",
+      "intent": "PRICE_INQUIRY",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Please explain the premium amount.",
+      "intent": "PRICE_INQUIRY",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "My premium budget is 25000 per year.",
+      "intent": "PRICE_INQUIRY",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "What treatments are covered?",
+      "intent": "COVERAGE_INQUIRY",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Does the policy include hospitalization?",
+      "intent": "COVERAGE_INQUIRY",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "What is the waiting period?",
+      "intent": "COVERAGE_INQUIRY",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Are pre-existing conditions excluded?",
+      "intent": "COVERAGE_INQUIRY",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "What is the sum insured?",
+      "intent": "COVERAGE_INQUIRY",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Does it cover maternity?",
+      "intent": "COVERAGE_INQUIRY",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I want coverage of ten lakh.",
+      "intent": "COVERAGE_INQUIRY",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "My employer provides health coverage.",
+      "intent": "EXISTING_COVERAGE",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I currently hold a policy for five lakh.",
+      "intent": "EXISTING_COVERAGE",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "We have some cover through work.",
+      "intent": "EXISTING_COVERAGE",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "My existing policy expires in June.",
+      "intent": "EXISTING_COVERAGE",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I do not have any existing insurance.",
+      "intent": "EXISTING_COVERAGE",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "No, I have no current coverage.",
+      "intent": "EXISTING_COVERAGE",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Compare the two plans for me.",
+      "intent": "COMPARISON",
+      "objections": [
+        "COMPARING_OPTIONS"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "How does this differ from another insurer?",
+      "intent": "COMPARISON",
+      "objections": [
+        "COMPARING_OPTIONS"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I am checking several competing policies.",
+      "intent": "COMPARISON",
+      "objections": [
+        "COMPARING_OPTIONS"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Show a comparison of benefits.",
+      "intent": "COMPARISON",
+      "objections": [
+        "COMPARING_OPTIONS"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Which is better, this plan or my current one?",
+      "intent": "COMPARISON",
+      "objections": [
+        "COMPARING_OPTIONS"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I need to compare insurance companies first.",
+      "intent": "COMPARISON",
+      "objections": [
+        "COMPARING_OPTIONS"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I am ready to apply.",
+      "intent": "PURCHASE_INTEREST",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I want to proceed with this policy.",
+      "intent": "PURCHASE_INTEREST",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "How can I submit an application?",
+      "intent": "PURCHASE_INTEREST",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Let us move forward with the purchase.",
+      "intent": "PURCHASE_INTEREST",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I would like to buy this insurance.",
+      "intent": "PURCHASE_INTEREST",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Please connect me to someone for enrollment.",
+      "intent": "PURCHASE_INTEREST",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Call me tomorrow afternoon.",
+      "intent": "FOLLOW_UP",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Can we discuss this next week?",
+      "intent": "FOLLOW_UP",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Send the details and follow up later.",
+      "intent": "FOLLOW_UP",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Please contact me on Monday.",
+      "intent": "FOLLOW_UP",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Let us arrange another meeting.",
+      "intent": "FOLLOW_UP",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I am busy now, could we speak later?",
+      "intent": "FOLLOW_UP",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Please stop contacting me.",
+      "intent": "REJECTION",
+      "objections": [
+        "NOT_READY"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I am not interested, stop.",
+      "intent": "REJECTION",
+      "objections": [
+        "NOT_READY"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Do not call me again.",
+      "intent": "REJECTION",
+      "objections": [
+        "NOT_READY"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "End this conversation.",
+      "intent": "REJECTION",
+      "objections": [
+        "NOT_READY"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "No thanks.",
+      "intent": "REJECTION",
+      "objections": [
+        "NOT_READY"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Leave me alone.",
+      "intent": "REJECTION",
+      "objections": [
+        "NOT_READY"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "The premium is too expensive.",
+      "intent": "OBJECTION",
+      "objections": [
+        "PRICE_TOO_HIGH"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "This exceeds my budget.",
+      "intent": "OBJECTION",
+      "objections": [
+        "PRICE_TOO_HIGH"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I cannot afford that payment.",
+      "intent": "OBJECTION",
+      "objections": [
+        "PRICE_TOO_HIGH"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "The annual price is too high for me.",
+      "intent": "OBJECTION",
+      "objections": [
+        "PRICE_TOO_HIGH"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "That plan costs more than I can spend.",
+      "intent": "OBJECTION",
+      "objections": [
+        "PRICE_TOO_HIGH"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I need a cheaper option.",
+      "intent": "OBJECTION",
+      "objections": [
+        "PRICE_TOO_HIGH"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I already have insurance, why do I need another?",
+      "intent": "OBJECTION",
+      "objections": [
+        "ALREADY_INSURED"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "My current policy already covers this.",
+      "intent": "OBJECTION",
+      "objections": [
+        "ALREADY_INSURED"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I do not want duplicate insurance.",
+      "intent": "OBJECTION",
+      "objections": [
+        "ALREADY_INSURED"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I have enough coverage from my existing insurer.",
+      "intent": "OBJECTION",
+      "objections": [
+        "ALREADY_INSURED"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Another policy would overlap with mine.",
+      "intent": "OBJECTION",
+      "objections": [
+        "ALREADY_INSURED"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "There is no point buying the same cover twice.",
+      "intent": "OBJECTION",
+      "objections": [
+        "ALREADY_INSURED"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I don't need more insurance.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NO_NEED"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I see no reason to buy cover.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NO_NEED"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "This insurance is unnecessary for me.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NO_NEED"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I do not think I need this protection.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NO_NEED"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I am healthy so I see no need for a policy.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NO_NEED"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I have no requirement for this product.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NO_NEED"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I don't trust this insurer.",
+      "intent": "OBJECTION",
+      "objections": [
+        "DO_NOT_TRUST_INSURER"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I doubt the company will pay claims.",
+      "intent": "OBJECTION",
+      "objections": [
+        "DO_NOT_TRUST_INSURER"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Your company does not seem reliable.",
+      "intent": "OBJECTION",
+      "objections": [
+        "DO_NOT_TRUST_INSURER"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "How can I trust your promises?",
+      "intent": "OBJECTION",
+      "objections": [
+        "DO_NOT_TRUST_INSURER"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I worry this insurer will refuse to pay.",
+      "intent": "OBJECTION",
+      "objections": [
+        "DO_NOT_TRUST_INSURER"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I am skeptical about this company's honesty.",
+      "intent": "OBJECTION",
+      "objections": [
+        "DO_NOT_TRUST_INSURER"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I need more information before deciding.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NEED_MORE_INFORMATION"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Please send more details before I choose.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NEED_MORE_INFORMATION"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I cannot decide without reading the brochure.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NEED_MORE_INFORMATION"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I want to understand the product better first.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NEED_MORE_INFORMATION"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "There is not enough information to make a decision.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NEED_MORE_INFORMATION"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I need further explanation before proceeding.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NEED_MORE_INFORMATION"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "My last insurer rejected my claim.",
+      "intent": "OBJECTION",
+      "objections": [
+        "BAD_PAST_EXPERIENCE"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I had a bad experience with insurance before.",
+      "intent": "OBJECTION",
+      "objections": [
+        "BAD_PAST_EXPERIENCE"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "A previous company delayed my reimbursement.",
+      "intent": "OBJECTION",
+      "objections": [
+        "BAD_PAST_EXPERIENCE"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "My earlier policy caused many problems.",
+      "intent": "OBJECTION",
+      "objections": [
+        "BAD_PAST_EXPERIENCE"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I was misled by an insurance agent last time.",
+      "intent": "OBJECTION",
+      "objections": [
+        "BAD_PAST_EXPERIENCE"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "The last claim process was a nightmare.",
+      "intent": "OBJECTION",
+      "objections": [
+        "BAD_PAST_EXPERIENCE"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "The exclusions and coverage are not clear.",
+      "intent": "OBJECTION",
+      "objections": [
+        "COVERAGE_NOT_CLEAR"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I cannot understand what is covered.",
+      "intent": "OBJECTION",
+      "objections": [
+        "COVERAGE_NOT_CLEAR"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "The policy wording is confusing.",
+      "intent": "OBJECTION",
+      "objections": [
+        "COVERAGE_NOT_CLEAR"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I am unclear about the waiting period.",
+      "intent": "OBJECTION",
+      "objections": [
+        "COVERAGE_NOT_CLEAR"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "These benefits are too vague.",
+      "intent": "OBJECTION",
+      "objections": [
+        "COVERAGE_NOT_CLEAR"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "It is not clear which treatments are excluded.",
+      "intent": "OBJECTION",
+      "objections": [
+        "COVERAGE_NOT_CLEAR"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I need to discuss this with my wife.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NEED_FAMILY_APPROVAL"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "My family must approve first.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NEED_FAMILY_APPROVAL"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Let me ask my husband before deciding.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NEED_FAMILY_APPROVAL"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I need my partner's agreement.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NEED_FAMILY_APPROVAL"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I have to check with my parents.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NEED_FAMILY_APPROVAL"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "My spouse and I must decide together.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NEED_FAMILY_APPROVAL"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I am not ready to decide.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NOT_READY"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I need more time to think.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NOT_READY"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Maybe later, I cannot commit today.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NOT_READY"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Please do not rush my decision.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NOT_READY"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I am still undecided.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NOT_READY"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "It is too soon for me to choose.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NOT_READY"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Compare the two plans for me, and the premium is too expensive.",
+      "intent": "OBJECTION",
+      "objections": [
+        "COMPARING_OPTIONS",
+        "PRICE_TOO_HIGH"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "How does this differ from another insurer?, and this exceeds my budget.",
+      "intent": "OBJECTION",
+      "objections": [
+        "COMPARING_OPTIONS",
+        "PRICE_TOO_HIGH"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "Compare the two plans for me, and i already have insurance, why do i need another?",
+      "intent": "OBJECTION",
+      "objections": [
+        "COMPARING_OPTIONS",
+        "ALREADY_INSURED"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "How does this differ from another insurer?, and my current policy already covers this.",
+      "intent": "OBJECTION",
+      "objections": [
+        "COMPARING_OPTIONS",
+        "ALREADY_INSURED"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "Compare the two plans for me, and i don't need more insurance.",
+      "intent": "OBJECTION",
+      "objections": [
+        "COMPARING_OPTIONS",
+        "NO_NEED"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "How does this differ from another insurer?, and i see no reason to buy cover.",
+      "intent": "OBJECTION",
+      "objections": [
+        "COMPARING_OPTIONS",
+        "NO_NEED"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "Compare the two plans for me, and i don't trust this insurer.",
+      "intent": "OBJECTION",
+      "objections": [
+        "COMPARING_OPTIONS",
+        "DO_NOT_TRUST_INSURER"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "How does this differ from another insurer?, and i doubt the company will pay claims.",
+      "intent": "OBJECTION",
+      "objections": [
+        "COMPARING_OPTIONS",
+        "DO_NOT_TRUST_INSURER"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "Compare the two plans for me, and i need more information before deciding.",
+      "intent": "OBJECTION",
+      "objections": [
+        "COMPARING_OPTIONS",
+        "NEED_MORE_INFORMATION"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "How does this differ from another insurer?, and please send more details before i choose.",
+      "intent": "OBJECTION",
+      "objections": [
+        "COMPARING_OPTIONS",
+        "NEED_MORE_INFORMATION"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "Compare the two plans for me, and my last insurer rejected my claim.",
+      "intent": "OBJECTION",
+      "objections": [
+        "COMPARING_OPTIONS",
+        "BAD_PAST_EXPERIENCE"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "How does this differ from another insurer?, and i had a bad experience with insurance before.",
+      "intent": "OBJECTION",
+      "objections": [
+        "COMPARING_OPTIONS",
+        "BAD_PAST_EXPERIENCE"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "Compare the two plans for me, and the exclusions and coverage are not clear.",
+      "intent": "OBJECTION",
+      "objections": [
+        "COMPARING_OPTIONS",
+        "COVERAGE_NOT_CLEAR"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "How does this differ from another insurer?, and i cannot understand what is covered.",
+      "intent": "OBJECTION",
+      "objections": [
+        "COMPARING_OPTIONS",
+        "COVERAGE_NOT_CLEAR"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "Compare the two plans for me, and i need to discuss this with my wife.",
+      "intent": "OBJECTION",
+      "objections": [
+        "COMPARING_OPTIONS",
+        "NEED_FAMILY_APPROVAL"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "How does this differ from another insurer?, and my family must approve first.",
+      "intent": "OBJECTION",
+      "objections": [
+        "COMPARING_OPTIONS",
+        "NEED_FAMILY_APPROVAL"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "Compare the two plans for me, and i am not ready to decide.",
+      "intent": "OBJECTION",
+      "objections": [
+        "COMPARING_OPTIONS",
+        "NOT_READY"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "How does this differ from another insurer?, and i need more time to think.",
+      "intent": "OBJECTION",
+      "objections": [
+        "COMPARING_OPTIONS",
+        "NOT_READY"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "The premium is too expensive, and i already have insurance, why do i need another?",
+      "intent": "OBJECTION",
+      "objections": [
+        "PRICE_TOO_HIGH",
+        "ALREADY_INSURED"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "This exceeds my budget, and my current policy already covers this.",
+      "intent": "OBJECTION",
+      "objections": [
+        "PRICE_TOO_HIGH",
+        "ALREADY_INSURED"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "The premium is too expensive, and i don't need more insurance.",
+      "intent": "OBJECTION",
+      "objections": [
+        "PRICE_TOO_HIGH",
+        "NO_NEED"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "This exceeds my budget, and i see no reason to buy cover.",
+      "intent": "OBJECTION",
+      "objections": [
+        "PRICE_TOO_HIGH",
+        "NO_NEED"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "The premium is too expensive, and i don't trust this insurer.",
+      "intent": "OBJECTION",
+      "objections": [
+        "PRICE_TOO_HIGH",
+        "DO_NOT_TRUST_INSURER"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "This exceeds my budget, and i doubt the company will pay claims.",
+      "intent": "OBJECTION",
+      "objections": [
+        "PRICE_TOO_HIGH",
+        "DO_NOT_TRUST_INSURER"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "The premium is too expensive, and i need more information before deciding.",
+      "intent": "OBJECTION",
+      "objections": [
+        "PRICE_TOO_HIGH",
+        "NEED_MORE_INFORMATION"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "This exceeds my budget, and please send more details before i choose.",
+      "intent": "OBJECTION",
+      "objections": [
+        "PRICE_TOO_HIGH",
+        "NEED_MORE_INFORMATION"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "The premium is too expensive, and my last insurer rejected my claim.",
+      "intent": "OBJECTION",
+      "objections": [
+        "PRICE_TOO_HIGH",
+        "BAD_PAST_EXPERIENCE"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "This exceeds my budget, and i had a bad experience with insurance before.",
+      "intent": "OBJECTION",
+      "objections": [
+        "PRICE_TOO_HIGH",
+        "BAD_PAST_EXPERIENCE"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "The premium is too expensive, and the exclusions and coverage are not clear.",
+      "intent": "OBJECTION",
+      "objections": [
+        "PRICE_TOO_HIGH",
+        "COVERAGE_NOT_CLEAR"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "This exceeds my budget, and i cannot understand what is covered.",
+      "intent": "OBJECTION",
+      "objections": [
+        "PRICE_TOO_HIGH",
+        "COVERAGE_NOT_CLEAR"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "The premium is too expensive, and i need to discuss this with my wife.",
+      "intent": "OBJECTION",
+      "objections": [
+        "PRICE_TOO_HIGH",
+        "NEED_FAMILY_APPROVAL"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "This exceeds my budget, and my family must approve first.",
+      "intent": "OBJECTION",
+      "objections": [
+        "PRICE_TOO_HIGH",
+        "NEED_FAMILY_APPROVAL"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "The premium is too expensive, and i am not ready to decide.",
+      "intent": "OBJECTION",
+      "objections": [
+        "PRICE_TOO_HIGH",
+        "NOT_READY"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "This exceeds my budget, and i need more time to think.",
+      "intent": "OBJECTION",
+      "objections": [
+        "PRICE_TOO_HIGH",
+        "NOT_READY"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I already have insurance, why do I need another?, and i don't need more insurance.",
+      "intent": "OBJECTION",
+      "objections": [
+        "ALREADY_INSURED",
+        "NO_NEED"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "My current policy already covers this, and i see no reason to buy cover.",
+      "intent": "OBJECTION",
+      "objections": [
+        "ALREADY_INSURED",
+        "NO_NEED"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I already have insurance, why do I need another?, and i don't trust this insurer.",
+      "intent": "OBJECTION",
+      "objections": [
+        "ALREADY_INSURED",
+        "DO_NOT_TRUST_INSURER"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "My current policy already covers this, and i doubt the company will pay claims.",
+      "intent": "OBJECTION",
+      "objections": [
+        "ALREADY_INSURED",
+        "DO_NOT_TRUST_INSURER"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I already have insurance, why do I need another?, and i need more information before deciding.",
+      "intent": "OBJECTION",
+      "objections": [
+        "ALREADY_INSURED",
+        "NEED_MORE_INFORMATION"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "My current policy already covers this, and please send more details before i choose.",
+      "intent": "OBJECTION",
+      "objections": [
+        "ALREADY_INSURED",
+        "NEED_MORE_INFORMATION"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I already have insurance, why do I need another?, and my last insurer rejected my claim.",
+      "intent": "OBJECTION",
+      "objections": [
+        "ALREADY_INSURED",
+        "BAD_PAST_EXPERIENCE"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "My current policy already covers this, and i had a bad experience with insurance before.",
+      "intent": "OBJECTION",
+      "objections": [
+        "ALREADY_INSURED",
+        "BAD_PAST_EXPERIENCE"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I already have insurance, why do I need another?, and the exclusions and coverage are not clear.",
+      "intent": "OBJECTION",
+      "objections": [
+        "ALREADY_INSURED",
+        "COVERAGE_NOT_CLEAR"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "My current policy already covers this, and i cannot understand what is covered.",
+      "intent": "OBJECTION",
+      "objections": [
+        "ALREADY_INSURED",
+        "COVERAGE_NOT_CLEAR"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I already have insurance, why do I need another?, and i need to discuss this with my wife.",
+      "intent": "OBJECTION",
+      "objections": [
+        "ALREADY_INSURED",
+        "NEED_FAMILY_APPROVAL"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "My current policy already covers this, and my family must approve first.",
+      "intent": "OBJECTION",
+      "objections": [
+        "ALREADY_INSURED",
+        "NEED_FAMILY_APPROVAL"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I already have insurance, why do I need another?, and i am not ready to decide.",
+      "intent": "OBJECTION",
+      "objections": [
+        "ALREADY_INSURED",
+        "NOT_READY"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "My current policy already covers this, and i need more time to think.",
+      "intent": "OBJECTION",
+      "objections": [
+        "ALREADY_INSURED",
+        "NOT_READY"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I don't need more insurance, and i don't trust this insurer.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NO_NEED",
+        "DO_NOT_TRUST_INSURER"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I see no reason to buy cover, and i doubt the company will pay claims.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NO_NEED",
+        "DO_NOT_TRUST_INSURER"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I don't need more insurance, and i need more information before deciding.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NO_NEED",
+        "NEED_MORE_INFORMATION"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I see no reason to buy cover, and please send more details before i choose.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NO_NEED",
+        "NEED_MORE_INFORMATION"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I don't need more insurance, and my last insurer rejected my claim.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NO_NEED",
+        "BAD_PAST_EXPERIENCE"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I see no reason to buy cover, and i had a bad experience with insurance before.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NO_NEED",
+        "BAD_PAST_EXPERIENCE"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I don't need more insurance, and the exclusions and coverage are not clear.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NO_NEED",
+        "COVERAGE_NOT_CLEAR"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I see no reason to buy cover, and i cannot understand what is covered.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NO_NEED",
+        "COVERAGE_NOT_CLEAR"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I don't need more insurance, and i need to discuss this with my wife.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NO_NEED",
+        "NEED_FAMILY_APPROVAL"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I see no reason to buy cover, and my family must approve first.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NO_NEED",
+        "NEED_FAMILY_APPROVAL"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I don't need more insurance, and i am not ready to decide.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NO_NEED",
+        "NOT_READY"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I see no reason to buy cover, and i need more time to think.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NO_NEED",
+        "NOT_READY"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I don't trust this insurer, and i need more information before deciding.",
+      "intent": "OBJECTION",
+      "objections": [
+        "DO_NOT_TRUST_INSURER",
+        "NEED_MORE_INFORMATION"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I doubt the company will pay claims, and please send more details before i choose.",
+      "intent": "OBJECTION",
+      "objections": [
+        "DO_NOT_TRUST_INSURER",
+        "NEED_MORE_INFORMATION"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I don't trust this insurer, and my last insurer rejected my claim.",
+      "intent": "OBJECTION",
+      "objections": [
+        "DO_NOT_TRUST_INSURER",
+        "BAD_PAST_EXPERIENCE"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I doubt the company will pay claims, and i had a bad experience with insurance before.",
+      "intent": "OBJECTION",
+      "objections": [
+        "DO_NOT_TRUST_INSURER",
+        "BAD_PAST_EXPERIENCE"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I don't trust this insurer, and the exclusions and coverage are not clear.",
+      "intent": "OBJECTION",
+      "objections": [
+        "DO_NOT_TRUST_INSURER",
+        "COVERAGE_NOT_CLEAR"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I doubt the company will pay claims, and i cannot understand what is covered.",
+      "intent": "OBJECTION",
+      "objections": [
+        "DO_NOT_TRUST_INSURER",
+        "COVERAGE_NOT_CLEAR"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I don't trust this insurer, and i need to discuss this with my wife.",
+      "intent": "OBJECTION",
+      "objections": [
+        "DO_NOT_TRUST_INSURER",
+        "NEED_FAMILY_APPROVAL"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I doubt the company will pay claims, and my family must approve first.",
+      "intent": "OBJECTION",
+      "objections": [
+        "DO_NOT_TRUST_INSURER",
+        "NEED_FAMILY_APPROVAL"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I don't trust this insurer, and i am not ready to decide.",
+      "intent": "OBJECTION",
+      "objections": [
+        "DO_NOT_TRUST_INSURER",
+        "NOT_READY"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I doubt the company will pay claims, and i need more time to think.",
+      "intent": "OBJECTION",
+      "objections": [
+        "DO_NOT_TRUST_INSURER",
+        "NOT_READY"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I need more information before deciding, and my last insurer rejected my claim.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NEED_MORE_INFORMATION",
+        "BAD_PAST_EXPERIENCE"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "Please send more details before I choose, and i had a bad experience with insurance before.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NEED_MORE_INFORMATION",
+        "BAD_PAST_EXPERIENCE"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I need more information before deciding, and the exclusions and coverage are not clear.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NEED_MORE_INFORMATION",
+        "COVERAGE_NOT_CLEAR"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "Please send more details before I choose, and i cannot understand what is covered.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NEED_MORE_INFORMATION",
+        "COVERAGE_NOT_CLEAR"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I need more information before deciding, and i need to discuss this with my wife.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NEED_MORE_INFORMATION",
+        "NEED_FAMILY_APPROVAL"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "Please send more details before I choose, and my family must approve first.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NEED_MORE_INFORMATION",
+        "NEED_FAMILY_APPROVAL"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I need more information before deciding, and i am not ready to decide.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NEED_MORE_INFORMATION",
+        "NOT_READY"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "Please send more details before I choose, and i need more time to think.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NEED_MORE_INFORMATION",
+        "NOT_READY"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "My last insurer rejected my claim, and the exclusions and coverage are not clear.",
+      "intent": "OBJECTION",
+      "objections": [
+        "BAD_PAST_EXPERIENCE",
+        "COVERAGE_NOT_CLEAR"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I had a bad experience with insurance before, and i cannot understand what is covered.",
+      "intent": "OBJECTION",
+      "objections": [
+        "BAD_PAST_EXPERIENCE",
+        "COVERAGE_NOT_CLEAR"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "My last insurer rejected my claim, and i need to discuss this with my wife.",
+      "intent": "OBJECTION",
+      "objections": [
+        "BAD_PAST_EXPERIENCE",
+        "NEED_FAMILY_APPROVAL"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I had a bad experience with insurance before, and my family must approve first.",
+      "intent": "OBJECTION",
+      "objections": [
+        "BAD_PAST_EXPERIENCE",
+        "NEED_FAMILY_APPROVAL"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "My last insurer rejected my claim, and i am not ready to decide.",
+      "intent": "OBJECTION",
+      "objections": [
+        "BAD_PAST_EXPERIENCE",
+        "NOT_READY"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I had a bad experience with insurance before, and i need more time to think.",
+      "intent": "OBJECTION",
+      "objections": [
+        "BAD_PAST_EXPERIENCE",
+        "NOT_READY"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "The exclusions and coverage are not clear, and i need to discuss this with my wife.",
+      "intent": "OBJECTION",
+      "objections": [
+        "COVERAGE_NOT_CLEAR",
+        "NEED_FAMILY_APPROVAL"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I cannot understand what is covered, and my family must approve first.",
+      "intent": "OBJECTION",
+      "objections": [
+        "COVERAGE_NOT_CLEAR",
+        "NEED_FAMILY_APPROVAL"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "The exclusions and coverage are not clear, and i am not ready to decide.",
+      "intent": "OBJECTION",
+      "objections": [
+        "COVERAGE_NOT_CLEAR",
+        "NOT_READY"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I cannot understand what is covered, and i need more time to think.",
+      "intent": "OBJECTION",
+      "objections": [
+        "COVERAGE_NOT_CLEAR",
+        "NOT_READY"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "I need to discuss this with my wife, and i am not ready to decide.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NEED_FAMILY_APPROVAL",
+        "NOT_READY"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "My family must approve first, and i need more time to think.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NEED_FAMILY_APPROVAL",
+        "NOT_READY"
+      ],
+      "source": "synthetic_train_only_composition"
+    },
+    {
+      "text": "Tell me about your individual health policy options.",
+      "intent": "PRODUCT_INQUIRY",
+      "objections": [],
+      "source": "legacy_synthetic_weak_label"
+    },
+    {
+      "text": "What is the premium for this?",
+      "intent": "PRICE_INQUIRY",
+      "objections": [
+        "PRICE_TOO_HIGH"
+      ],
+      "source": "legacy_synthetic_weak_label"
+    },
+    {
+      "text": "Don't call me again about this.",
+      "intent": "REJECTION",
+      "objections": [
+        "NOT_READY"
+      ],
+      "source": "legacy_synthetic_weak_label"
+    },
+    {
+      "text": "What does the family health plan cover?",
+      "intent": "PRODUCT_INQUIRY",
+      "objections": [],
+      "source": "legacy_synthetic_weak_label"
+    },
+    {
+      "text": "This looks expensive, what will I pay monthly?",
+      "intent": "PRICE_INQUIRY",
+      "objections": [
+        "PRICE_TOO_HIGH"
+      ],
+      "source": "legacy_synthetic_weak_label"
+    },
+    {
+      "text": "No, I am not interested, please stop.",
+      "intent": "REJECTION",
+      "objections": [
+        "NOT_READY"
+      ],
+      "source": "legacy_synthetic_weak_label"
+    },
+    {
+      "text": "Tell me about your general financial protection policy options.",
+      "intent": "PRODUCT_INQUIRY",
+      "objections": [],
+      "source": "legacy_synthetic_weak_label"
+    },
+    {
+      "text": "My current insurer covers me partly.",
+      "intent": "EXISTING_COVERAGE",
+      "objections": [
+        "ALREADY_INSURED"
+      ],
+      "source": "legacy_synthetic_weak_label"
+    },
+    {
+      "text": "I already have insurance; would this duplicate it?",
+      "intent": "OBJECTION",
+      "objections": [
+        "ALREADY_INSURED"
+      ],
+      "source": "legacy_synthetic_weak_label"
+    },
+    {
+      "text": "Show me a comparison of options.",
+      "intent": "COMPARISON",
+      "objections": [
+        "COMPARING_OPTIONS"
+      ],
+      "source": "legacy_synthetic_weak_label"
+    },
+    {
+      "text": "I need my family's approval first.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NEED_FAMILY_APPROVAL"
+      ],
+      "source": "legacy_synthetic_weak_label"
+    },
+    {
+      "text": "Please call me next week.",
+      "intent": "FOLLOW_UP",
+      "objections": [
+        "NEED_FAMILY_APPROVAL"
+      ],
+      "source": "legacy_synthetic_weak_label"
+    },
+    {
+      "text": "Can I discuss with my family and get back?",
+      "intent": "FOLLOW_UP",
+      "objections": [
+        "NEED_FAMILY_APPROVAL"
+      ],
+      "source": "legacy_synthetic_weak_label"
+    },
+    {
+      "text": "Is hospitalization fully covered?",
+      "intent": "COVERAGE_INQUIRY",
+      "objections": [],
+      "source": "legacy_synthetic_weak_label"
+    },
+    {
+      "text": "What does the income protection plan cover?",
+      "intent": "PRODUCT_INQUIRY",
+      "objections": [],
+      "source": "legacy_synthetic_weak_label"
+    },
+    {
+      "text": "I already have a 5 lakh policy.",
+      "intent": "EXISTING_COVERAGE",
+      "objections": [
+        "ALREADY_INSURED"
+      ],
+      "source": "legacy_synthetic_weak_label"
+    },
+    {
+      "text": "I think I want to go ahead with this.",
+      "intent": "PURCHASE_INTEREST",
+      "objections": [],
+      "source": "legacy_synthetic_weak_label"
+    },
+    {
+      "text": "Okay, show me the options.",
+      "intent": "PURCHASE_INTEREST",
+      "objections": [],
+      "source": "legacy_synthetic_weak_label"
+    },
+    {
+      "text": "What does the accident protection plan cover?",
+      "intent": "PRODUCT_INQUIRY",
+      "objections": [],
+      "source": "legacy_synthetic_weak_label"
+    },
+    {
+      "text": "I had a bad experience with an insurer in the past.",
+      "intent": "OBJECTION",
+      "objections": [
+        "BAD_PAST_EXPERIENCE"
+      ],
+      "source": "legacy_synthetic_weak_label"
+    },
+    {
+      "text": "How is this better than my current plan?",
+      "intent": "COMPARISON",
+      "objections": [
+        "COMPARING_OPTIONS"
+      ],
+      "source": "legacy_synthetic_weak_label"
+    },
+    {
+      "text": "Tell me about your accident protection policy options.",
+      "intent": "PRODUCT_INQUIRY",
+      "objections": [],
+      "source": "legacy_synthetic_weak_label"
+    },
+    {
+      "text": "I want to compare options first.",
+      "intent": "OBJECTION",
+      "objections": [
+        "COMPARING_OPTIONS"
+      ],
+      "source": "legacy_synthetic_weak_label"
+    },
+    {
+      "text": "The premium is too high for me.",
+      "intent": "OBJECTION",
+      "objections": [
+        "PRICE_TOO_HIGH"
+      ],
+      "source": "legacy_synthetic_weak_label"
+    },
+    {
+      "text": "What is excluded from coverage?",
+      "intent": "COVERAGE_INQUIRY",
+      "objections": [],
+      "source": "legacy_synthetic_weak_label"
+    },
+    {
+      "text": "I'm not ready to decide.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NOT_READY"
+      ],
+      "source": "legacy_synthetic_weak_label"
+    },
+    {
+      "text": "What does the retirement plan cover?",
+      "intent": "PRODUCT_INQUIRY",
+      "objections": [],
+      "source": "legacy_synthetic_weak_label"
+    },
+    {
+      "text": "What does the critical illness plan cover?",
+      "intent": "PRODUCT_INQUIRY",
+      "objections": [],
+      "source": "legacy_synthetic_weak_label"
+    },
+    {
+      "text": "Tell me about your critical illness policy options.",
+      "intent": "PRODUCT_INQUIRY",
+      "objections": [],
+      "source": "legacy_synthetic_weak_label"
+    },
+    {
+      "text": "Tell me about your life protection policy options.",
+      "intent": "PRODUCT_INQUIRY",
+      "objections": [],
+      "source": "legacy_synthetic_weak_label"
+    },
+    {
+      "text": "Tell me about your child protection policy options.",
+      "intent": "PRODUCT_INQUIRY",
+      "objections": [],
+      "source": "legacy_synthetic_weak_label"
+    },
+    {
+      "text": "Tell me about your retirement policy options.",
+      "intent": "PRODUCT_INQUIRY",
+      "objections": [],
+      "source": "legacy_synthetic_weak_label"
+    },
+    {
+      "text": "What does the individual health plan cover?",
+      "intent": "PRODUCT_INQUIRY",
+      "objections": [],
+      "source": "legacy_synthetic_weak_label"
+    },
+    {
+      "text": "What does the child protection plan cover?",
+      "intent": "PRODUCT_INQUIRY",
+      "objections": [],
+      "source": "legacy_synthetic_weak_label"
+    },
+    {
+      "text": "What does the general financial protection plan cover?",
+      "intent": "PRODUCT_INQUIRY",
+      "objections": [],
+      "source": "legacy_synthetic_weak_label"
+    },
+    {
+      "text": "Tell me about your family health policy options.",
+      "intent": "PRODUCT_INQUIRY",
+      "objections": [],
+      "source": "legacy_synthetic_weak_label"
+    },
+    {
+      "text": "Tell me about your income protection policy options.",
+      "intent": "PRODUCT_INQUIRY",
+      "objections": [],
+      "source": "legacy_synthetic_weak_label"
+    },
+    {
+      "text": "What does the life protection plan cover?",
+      "intent": "PRODUCT_INQUIRY",
+      "objections": [],
+      "source": "legacy_synthetic_weak_label"
+    }
+  ],
+  "val": [
+    {
+      "text": "Help me explore family medical cover.",
+      "intent": "PRODUCT_INQUIRY",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Yes please, continue with your questions.",
+      "intent": "PRODUCT_INQUIRY",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "What would this cost per month?",
+      "intent": "PRICE_INQUIRY",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "How much money do I need for the premium?",
+      "intent": "PRICE_INQUIRY",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Which medical expenses does this plan reimburse?",
+      "intent": "COVERAGE_INQUIRY",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Is there a waiting period for surgery?",
+      "intent": "COVERAGE_INQUIRY",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "My workplace covers me but not my children.",
+      "intent": "EXISTING_COVERAGE",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I have never bought insurance before.",
+      "intent": "EXISTING_COVERAGE",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Put these policies side by side.",
+      "intent": "COMPARISON",
+      "objections": [
+        "COMPARING_OPTIONS"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "How is this different from the alternative?",
+      "intent": "COMPARISON",
+      "objections": [
+        "COMPARING_OPTIONS"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I have decided to go ahead and apply.",
+      "intent": "PURCHASE_INTEREST",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Start the application process please.",
+      "intent": "PURCHASE_INTEREST",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Schedule a callback for Friday.",
+      "intent": "FOLLOW_UP",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Let us continue this discussion another day.",
+      "intent": "FOLLOW_UP",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Please stop calling about insurance.",
+      "intent": "REJECTION",
+      "objections": [
+        "NOT_READY"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "No thank you, end the conversation.",
+      "intent": "REJECTION",
+      "objections": [
+        "NOT_READY"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "The cost is beyond what I can afford.",
+      "intent": "OBJECTION",
+      "objections": [
+        "PRICE_TOO_HIGH"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "This payment would strain my finances.",
+      "intent": "OBJECTION",
+      "objections": [
+        "PRICE_TOO_HIGH"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "This seems to duplicate my current protection.",
+      "intent": "OBJECTION",
+      "objections": [
+        "ALREADY_INSURED"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I already pay another provider for this coverage.",
+      "intent": "OBJECTION",
+      "objections": [
+        "ALREADY_INSURED"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I cannot see a need for extra protection.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NO_NEED"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Insurance does not seem necessary for my situation.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NO_NEED"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I have doubts about your insurer's reliability.",
+      "intent": "OBJECTION",
+      "objections": [
+        "DO_NOT_TRUST_INSURER"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I do not believe the company keeps its promises.",
+      "intent": "OBJECTION",
+      "objections": [
+        "DO_NOT_TRUST_INSURER"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I would need more details before committing.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NEED_MORE_INFORMATION"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Let me read the full documentation before deciding.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NEED_MORE_INFORMATION"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "An insurer let me down in the past.",
+      "intent": "OBJECTION",
+      "objections": [
+        "BAD_PAST_EXPERIENCE"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "My previous claim was handled terribly.",
+      "intent": "OBJECTION",
+      "objections": [
+        "BAD_PAST_EXPERIENCE"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I find the coverage terms difficult to understand.",
+      "intent": "OBJECTION",
+      "objections": [
+        "COVERAGE_NOT_CLEAR"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Your description leaves the exclusions unclear.",
+      "intent": "OBJECTION",
+      "objections": [
+        "COVERAGE_NOT_CLEAR"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I cannot proceed without my family's approval.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NEED_FAMILY_APPROVAL"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Let me consult my partner about this.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NEED_FAMILY_APPROVAL"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I would like to postpone making this decision.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NOT_READY"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Give me time to think it over.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NOT_READY"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "The cost is beyond my means and I doubt the company's reliability.",
+      "intent": "OBJECTION",
+      "objections": [
+        "PRICE_TOO_HIGH",
+        "DO_NOT_TRUST_INSURER"
+      ],
+      "source": "authored_synthetic_compound"
+    },
+    {
+      "text": "The wording is unclear and I must discuss this with my partner.",
+      "intent": "OBJECTION",
+      "objections": [
+        "COVERAGE_NOT_CLEAR",
+        "NEED_FAMILY_APPROVAL"
+      ],
+      "source": "authored_synthetic_compound"
+    },
+    {
+      "text": "I need further details and time to think before deciding.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NEED_MORE_INFORMATION",
+        "NOT_READY"
+      ],
+      "source": "authored_synthetic_compound"
+    }
+  ],
+  "test": [
+    {
+      "text": "My spouse and I are shopping for a family health policy.",
+      "intent": "PRODUCT_INQUIRY",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I am willing to answer, but please ask each question separately.",
+      "intent": "PRODUCT_INQUIRY",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Could you provide a yearly price quote?",
+      "intent": "PRICE_INQUIRY",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Is the payment due monthly or annually?",
+      "intent": "PRICE_INQUIRY",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Would the insurer cover an inpatient hospital stay?",
+      "intent": "COVERAGE_INQUIRY",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Tell me which illnesses are excluded from the policy.",
+      "intent": "COVERAGE_INQUIRY",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "There is a group medical policy at my office.",
+      "intent": "EXISTING_COVERAGE",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Our family currently has no policy.",
+      "intent": "EXISTING_COVERAGE",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Explain the differences between the available choices.",
+      "intent": "COMPARISON",
+      "objections": [
+        "COMPARING_OPTIONS"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I am evaluating offers from other providers too.",
+      "intent": "COMPARISON",
+      "objections": [
+        "COMPARING_OPTIONS"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I would like to sign up for the selected option.",
+      "intent": "PURCHASE_INTEREST",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "What documents should I submit to purchase the policy?",
+      "intent": "PURCHASE_INTEREST",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Reach out again after the weekend.",
+      "intent": "FOLLOW_UP",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Can you email the brochure and check back next month?",
+      "intent": "FOLLOW_UP",
+      "objections": [],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I am not interested in this. Please stop.",
+      "intent": "REJECTION",
+      "objections": [
+        "NOT_READY"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Do not call me about policies again.",
+      "intent": "REJECTION",
+      "objections": [
+        "NOT_READY"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I would struggle to meet premiums this large.",
+      "intent": "OBJECTION",
+      "objections": [
+        "PRICE_TOO_HIGH"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Your quote is outside my spending limit.",
+      "intent": "OBJECTION",
+      "objections": [
+        "PRICE_TOO_HIGH"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "My present plan includes all these benefits already.",
+      "intent": "OBJECTION",
+      "objections": [
+        "ALREADY_INSURED"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Wouldn't this overlap with the policy I hold?",
+      "intent": "OBJECTION",
+      "objections": [
+        "ALREADY_INSURED"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "There is no gap that this policy would fill for me.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NO_NEED"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Why would I require additional protection at all?",
+      "intent": "OBJECTION",
+      "objections": [
+        "NO_NEED"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "What assurance is there that your company will honor a claim?",
+      "intent": "OBJECTION",
+      "objections": [
+        "DO_NOT_TRUST_INSURER"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I suspect this provider will find a reason not to pay.",
+      "intent": "OBJECTION",
+      "objections": [
+        "DO_NOT_TRUST_INSURER"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I am not sufficiently informed to make a choice yet.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NEED_MORE_INFORMATION"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "Can you supply the complete policy wording before I decide?",
+      "intent": "OBJECTION",
+      "objections": [
+        "NEED_MORE_INFORMATION"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "The company I used before refused to settle a valid claim.",
+      "intent": "OBJECTION",
+      "objections": [
+        "BAD_PAST_EXPERIENCE"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I lost money because of misleading advice from my former agent.",
+      "intent": "OBJECTION",
+      "objections": [
+        "BAD_PAST_EXPERIENCE"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "The conditions for reimbursement are ambiguous to me.",
+      "intent": "OBJECTION",
+      "objections": [
+        "COVERAGE_NOT_CLEAR"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I cannot work out what these policy clauses actually cover.",
+      "intent": "OBJECTION",
+      "objections": [
+        "COVERAGE_NOT_CLEAR"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "My wife needs to agree before I take out the policy.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NEED_FAMILY_APPROVAL"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "This purchase needs a discussion with my household first.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NEED_FAMILY_APPROVAL"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I am not in a position to commit right now.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NOT_READY"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I would rather leave the decision until later.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NOT_READY"
+      ],
+      "source": "authored_synthetic"
+    },
+    {
+      "text": "I already have a policy, and paying for this one would exceed my budget.",
+      "intent": "OBJECTION",
+      "objections": [
+        "ALREADY_INSURED",
+        "PRICE_TOO_HIGH"
+      ],
+      "source": "authored_synthetic_compound"
+    },
+    {
+      "text": "My former insurer refused my claim, so I don't trust insurance companies.",
+      "intent": "OBJECTION",
+      "objections": [
+        "BAD_PAST_EXPERIENCE",
+        "DO_NOT_TRUST_INSURER"
+      ],
+      "source": "authored_synthetic_compound"
+    },
+    {
+      "text": "Before buying I need my husband's agreement and a comparison with other providers.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NEED_FAMILY_APPROVAL",
+        "COMPARING_OPTIONS"
+      ],
+      "source": "authored_synthetic_compound"
+    },
+    {
+      "text": "Your policy terms are ambiguous and I cannot afford those premiums.",
+      "intent": "OBJECTION",
+      "objections": [
+        "COVERAGE_NOT_CLEAR",
+        "PRICE_TOO_HIGH"
+      ],
+      "source": "authored_synthetic_compound"
+    },
+    {
+      "text": "I require more product information, and I am not ready to choose today.",
+      "intent": "OBJECTION",
+      "objections": [
+        "NEED_MORE_INFORMATION",
+        "NOT_READY"
+      ],
+      "source": "authored_synthetic_compound"
+    }
+  ]
+}
